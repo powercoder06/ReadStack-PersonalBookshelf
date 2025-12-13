@@ -4,6 +4,13 @@ import { motion } from "framer-motion";
 import { NavLink, Outlet } from "react-router-dom";
 
 function MyNotes({ darkMode }) {
+   const getNavLinkStyle = ({ isActive }) => {
+      if (!isActive) return {};
+      return darkMode 
+         ? { backgroundColor: "#c20aff", color: "#1f1f1f" }
+         : { backgroundColor: "#5d0085", color: "#ffffff" };
+   };
+
    return (
       <motion.main
          className={darkMode ? "my-notes-container dark-mode" : "my-notes-container"}
@@ -15,33 +22,17 @@ function MyNotes({ darkMode }) {
          <div className="book-notes-selection">
             <NavLink
                className="link"
-               style={
-                  darkMode
-                     ? ({ isActive }) => {
-                          return isActive ? { backgroundColor: "#c20aff", color: "#1f1f1f" } : {};
-                       }
-                     : ({ isActive }) => {
-                          return isActive ? { backgroundColor: "#5d0085", color: "#ffffff" } : {};
-                       }
-               }
+               style={getNavLinkStyle}
                to="/mynotes/currentreadingbooksnotes"
             >
                Current reading books notes
             </NavLink>
             <NavLink
                className="link"
-               style={
-                  darkMode
-                     ? ({ isActive }) => {
-                          return isActive ? { backgroundColor: "#c20aff", color: "#1f1f1f" } : {};
-                       }
-                     : ({ isActive }) => {
-                          return isActive ? { backgroundColor: "#5d0085", color: "#ffffff" } : {};
-                       }
-               }
+               style={getNavLinkStyle}
                to="/mynotes/archivedbooksnotes"
             >
-               archived books notes
+               Archived books notes
             </NavLink>
          </div>
          <Outlet />

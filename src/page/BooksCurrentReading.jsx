@@ -7,7 +7,7 @@ import deleteIconDarkMode from "../assets/delete-icon-darkmode.svg";
 import deleteAllIcon from "../assets/delete-all-icon.svg";
 import deleteAllIconDarkMode from "../assets/delete-all-icon-darkmode.svg";
 import BookArchivedIcon from "../assets/book-archived-icon.svg";
-import BookArchivedIconDarMode from "../assets/book-archive-icon-darkmode.svg";
+import BookArchivedIconDarkMode from "../assets/book-archive-icon-darkmode.svg";
 import noteWriteIcon from "../assets/note-write-icon.svg";
 import noteWriteIconDarkMode from "../assets/note-write-icon-darkmode.svg";
 import { motion } from "framer-motion";
@@ -214,7 +214,7 @@ function BooksCurrentReading({
                                 />
                              </Link>
                              <img
-                                src={darkMode ? BookArchivedIconDarMode : BookArchivedIcon}
+                                src={darkMode ? BookArchivedIconDarkMode : BookArchivedIcon}
                                 alt="see book icon"
                                 id={book.id}
                                 onClick={moveToArchivedBooks}
