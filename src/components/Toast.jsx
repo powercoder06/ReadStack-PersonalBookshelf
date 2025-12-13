@@ -15,43 +15,41 @@ export const notifyEmptyList = (categoryList) =>
    toast(`The ${categoryList} list is empty`, { duration: 1250 });
 
 function Toast({ darkMode }) {
+   const lightTheme = {
+      style: {
+         padding: " 1rem",
+         fontWeight: "bold",
+         color: "#ffffff",
+         backgroundColor: "#5d0085",
+         textAlign: "center",
+      },
+      success: {
+         iconTheme: {
+            primary: "#ffffff",
+            secondary: "#5d0085",
+         },
+      },
+   };
+
+   const darkTheme = {
+      style: {
+         padding: " 1rem",
+         fontWeight: "bold",
+         color: "#1f1f1f",
+         backgroundColor: "#c20aff",
+         textAlign: "center",
+      },
+      success: {
+         iconTheme: {
+            primary: "#1f1f1f",
+            secondary: "#c20aff",
+         },
+      },
+   };
+
    return (
       <>
-         <Toaster
-            toastOptions={
-               !darkMode
-                  ? {
-                       style: {
-                          padding: " 1rem",
-                          fontWeight: "bold",
-                          color: "#ffffff",
-                          backgroundColor: "#5d0085",
-                          textAlign: "center",
-                       },
-                       success: {
-                          iconTheme: {
-                             primary: "#ffffff",
-                             secondary: "#5d0085",
-                          },
-                       },
-                    }
-                  : {
-                       style: {
-                          padding: " 1rem",
-                          fontWeight: "bold",
-                          color: "#1f1f1f",
-                          backgroundColor: "#c20aff",
-                          textAlign: "center",
-                       },
-                       success: {
-                          iconTheme: {
-                             primary: "#1f1f1f",
-                             secondary: "#c20aff",
-                          },
-                       },
-                    }
-            }
-         />
+         <Toaster toastOptions={darkMode ? darkTheme : lightTheme} />
       </>
    );
 }
