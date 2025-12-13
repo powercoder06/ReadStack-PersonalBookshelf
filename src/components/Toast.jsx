@@ -16,7 +16,7 @@ export const notifyEmptyList = (categoryList) =>
 
 const lightTheme = {
    style: {
-      padding: " 1rem",
+      padding: "1rem",
       fontWeight: "bold",
       color: "#ffffff",
       backgroundColor: "#5d0085",
@@ -32,7 +32,7 @@ const lightTheme = {
 
 const darkTheme = {
    style: {
-      padding: " 1rem",
+      padding: "1rem",
       fontWeight: "bold",
       color: "#1f1f1f",
       backgroundColor: "#c20aff",

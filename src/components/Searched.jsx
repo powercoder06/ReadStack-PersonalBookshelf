@@ -28,8 +28,15 @@ function Searched({ darkMode, archivedBooks }) {
    const bookKey = location.state.bookDetails.id;
    const initialRating = sessionStorage.getItem(bookKey) || 0;
 
-   console.log("Initial Rating:", initialRating);
-   console.log("Book Key:", bookKey);
+   try {
+      if (!bookKey) {
+         console.error("[Searched] Missing book key from location state");
+      } else {
+         console.info(`[Searched] Loaded book rating - Key: ${bookKey}, Rating: ${initialRating || 'none'}`);
+      }
+   } catch (error) {
+      console.error("[Searched] Error loading book rating:", error);
+   }
 
    const [rating, setRating] = useState(parseInt(initialRating));
    const [hoverRating, setHoverRating] = useState(0);
@@ -96,10 +103,10 @@ function Searched({ darkMode, archivedBooks }) {
    const renderStars = () => {
       const stars = [];
       const maxRating = 5;
-      const starColorLightMode = '#5d0085';
-      const starColorDarkMode = '#c20aff';
+      const starColor = darkMode ? '#c20aff' : '#5d0085';
     
       for (let i = 1; i <= maxRating; i++) {
+        const isActive = i <= (hoverRating || rating);
         stars.push(
           <span
             key={i}
@@ -109,8 +116,8 @@ function Searched({ darkMode, archivedBooks }) {
             onMouseLeave={handleResetHoverRating}
           >
             <FontAwesomeIcon 
-              icon={i <= (hoverRating || rating) ? solidStar : regularStar} 
-              style={{ color: i <= (hoverRating || rating) ? (darkMode ? starColorDarkMode : starColorLightMode) : (darkMode ? starColorDarkMode : starColorLightMode) }} 
+              icon={isActive ? solidStar : regularStar} 
+              style={{ color: starColor }} 
             />
           </span>
         );

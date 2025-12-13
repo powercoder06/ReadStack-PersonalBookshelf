@@ -70,7 +70,7 @@ function AllCurrentReadingBooksNotes({
       setCurrentReadingBookNotes(currentReadingBookNotes);
    };
 
-   const handlEditedTextAndCharactersCount = (e) => {
+   const handleEditedTextAndCharactersCount = (e) => {
       setEditedText(e.target.value);
       if (e.target.value.length - editedText.length === 1) {
          setCharactersLeft((charactersLeft) => charactersLeft - 1);
@@ -205,7 +205,7 @@ function AllCurrentReadingBooksNotes({
                                  <textarea
                                     className="textarea-edited-note"
                                     maxLength="350"
-                                    onChange={handlEditedTextAndCharactersCount}
+                                    onChange={handleEditedTextAndCharactersCount}
                                  ></textarea>
                                  <div className="characters-and-buttons">
                                     <p className="characters">
