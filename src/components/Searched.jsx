@@ -42,14 +42,9 @@ function Searched({ darkMode, archivedBooks }) {
    const [hoverRating, setHoverRating] = useState(0);
 
    const handleAddingBooks = (booksCategory, setBooksCategory, name) => {
-      if (booksCategory) {
-         const foundBook = booksCategory.find((book) => book.id === location.state.bookDetails.id);
-         if (foundBook) {
-            notifyAlreadyAdded(name);
-         } else {
-            setBooksCategory([...booksCategory, location.state.bookDetails]);
-            notifySuccessfullyAdded(name);
-         }
+      const foundBook = booksCategory?.find((book) => book.id === location.state.bookDetails.id);
+      if (foundBook) {
+         notifyAlreadyAdded(name);
       } else {
          setBooksCategory([...booksCategory, location.state.bookDetails]);
          notifySuccessfullyAdded(name);

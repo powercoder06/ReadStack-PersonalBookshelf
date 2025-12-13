@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo } from "react";
 import "../styles/displayNoteStyles/displayNote.css";
 import { Link } from "react-router-dom";
 function DisplayNote({ currentBook, currentReadingBookNotes, bookId, darkMode }) {
-   const [displayNote, setDispalyNote] = useState();
+   const displayNote = useMemo(() => {
+      return currentReadingBookNotes.filter(note => note.bookId === bookId);
+   }, [currentReadingBookNotes, bookId]);
+
    useEffect(() => {
       if (currentBook) {
          localStorage.setItem(
@@ -10,10 +13,6 @@ function DisplayNote({ currentBook, currentReadingBookNotes, bookId, darkMode })
             JSON.stringify(currentReadingBookNotes)
          );
       }
-      const notes = currentReadingBookNotes.filter((note) => {
-         return note.bookId === bookId;
-      });
-      setDispalyNote(notes);
    }, [currentBook, currentReadingBookNotes]);
    return (
       <main className={darkMode ? "display-note-container dark-mode" : "display-note-container"}>
