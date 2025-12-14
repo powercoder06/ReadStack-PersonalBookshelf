@@ -37,12 +37,8 @@ function BooksToRead({ darkMode }) {
    const deleteToReadBooks = (e) => {
       deleteOneItemAlert(darkMode, "book").then((result) => {
          if (result.isConfirmed) {
-            if (toReadBooks.length > 1) {
-               const nonDeletedBooks = toReadBooks.filter((book) => book.id !== e.target.id);
-               setToReadBooks(nonDeletedBooks);
-            } else {
-               setToReadBooks([]);
-            }
+            const nonDeletedBooks = toReadBooks.filter((book) => book.id !== e.target.id);
+            setToReadBooks(nonDeletedBooks);
             deleteOneItemConfirmed(darkMode, "book");
          }
       });
@@ -91,7 +87,7 @@ function BooksToRead({ darkMode }) {
                     return (
                        <div key={book.id} className="books-displayed">
                           <img
-                             src={book.volumeInfo.imageLinks.thumbnail}
+                             src={book.volumeInfo.imageLinks?.thumbnail}
                              alt={book.volumeInfo.title}
                              onClick={handleClickBook}
                           />

@@ -25,11 +25,6 @@ function Home({ darkMode, data, setData }) {
          )
             .then((response) => response.json())
             .then((result) => {
-               result.items
-                  .filter((book) => book.volumeInfo.pageCount && book.volumeInfo.title)
-                  .map((book) => {
-                     return book;
-                  });
                setData(result.items);
             });
       } catch (error) {

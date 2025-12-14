@@ -81,46 +81,21 @@ function BooksCurrentReading({
    };
 
    const deleteCurrentReadingBooks = (e) => {
-      const foundNote = currentReadingBookNotes.filter((note) => note.bookId === e.target.id);
-      if (foundNote.length) {
-         deleteOneBookWithNoteAlert(darkMode).then((result) => {
-            if (result.isConfirmed) {
-               if (currentReadingBooks.length > 1) {
-                  const nonDeletedBooks = currentReadingBooks.filter(
-                     (book) => book.id !== e.target.id
-                  );
-                  const nonDeletedNotes = currentReadingBookNotes.filter(
-                     (note) => note.bookId !== e.target.id
-                  );
-                  setCurrentReadingBooks(nonDeletedBooks);
-                  setCurrentReadingBookNotes(nonDeletedNotes);
-               } else {
-                  setCurrentReadingBooks([]);
-                  setCurrentReadingBookNotes([]);
-               }
-               deleteOneItemConfirmed(darkMode, "book");
-            }
-         });
-      } else {
-         deleteOneItemAlert(darkMode, "book").then((result) => {
-            if (result.isConfirmed) {
-               if (currentReadingBooks.length > 1) {
-                  const nonDeletedBooks = currentReadingBooks.filter(
-                     (book) => book.id !== e.target.id
-                  );
-                  const nonDeletedNotes = currentReadingBookNotes.filter(
-                     (note) => note.bookId !== e.target.id
-                  );
-                  setCurrentReadingBooks(nonDeletedBooks);
-                  setCurrentReadingBookNotes(nonDeletedNotes);
-               } else {
-                  setCurrentReadingBooks([]);
-                  setCurrentReadingBookNotes([]);
-               }
-               deleteOneItemConfirmed(darkMode, "book");
-            }
-         });
-      }
+      const bookId = e.target.id;
+      const foundNote = currentReadingBookNotes.filter((note) => note.bookId === bookId);
+      const alertPromise = foundNote.length
+         ? deleteOneBookWithNoteAlert(darkMode)
+         : deleteOneItemAlert(darkMode, "book");
+
+      alertPromise.then((result) => {
+         if (result.isConfirmed) {
+            const nonDeletedBooks = currentReadingBooks.filter((book) => book.id !== bookId);
+            const nonDeletedNotes = currentReadingBookNotes.filter((note) => note.bookId !== bookId);
+            setCurrentReadingBooks(nonDeletedBooks);
+            setCurrentReadingBookNotes(nonDeletedNotes);
+            deleteOneItemConfirmed(darkMode, "book");
+         }
+      });
    };
 
    const deleteAllCurrentReadingBooks = () => {
@@ -202,7 +177,7 @@ function BooksCurrentReading({
                     return (
                        <div key={book.id} className="books-displayed">
                           <img
-                             src={book.volumeInfo.imageLinks.thumbnail}
+                             src={book.volumeInfo.imageLinks?.thumbnail}
                              alt={book.volumeInfo.title}
                              onClick={handleClickBook}
                           />

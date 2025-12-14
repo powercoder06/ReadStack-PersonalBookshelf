@@ -22,13 +22,7 @@ function WriteNote({ darkMode, currentReadingBookNotes, setCurrentReadingBookNot
 
    const handleNoteText = (e) => {
       setNoteText(e.target.value);
-      if (e.target.value.length - noteText.length === 1) {
-         setCharactersLeft((charactersLeft) => charactersLeft - 1);
-      } else if (e.target.value.length - noteText.length === -1) {
-         setCharactersLeft((charactersLeft) => charactersLeft + 1);
-      } else {
-         setCharactersLeft(350 - e.target.value.length);
-      }
+      setCharactersLeft(350 - e.target.value.length);
    };
 
    const handleSavedNote = (e) => {
@@ -63,14 +57,16 @@ function WriteNote({ darkMode, currentReadingBookNotes, setCurrentReadingBookNot
    };
 
    useEffect(() => {
-      if (location.state.currentBook) {
+      if (location.state?.currentBook) {
          setNotePage(0);
          setNoteText("");
-         textAreaRef.current.value = "";
+         if (textAreaRef.current) {
+            textAreaRef.current.value = "";
+         }
       }
-      setBookId(location.state.bookId);
-      setCurrentBook(location.state.currentBook);
-   }, [location.state.crrentBook]);
+      setBookId(location.state?.bookId || "");
+      setCurrentBook(location.state?.currentBook);
+   }, [location.state?.currentBook]);
 
    return (
       <article className={darkMode ? "write-note-container dark-mode" : "write-note-container"}>
@@ -79,7 +75,7 @@ function WriteNote({ darkMode, currentReadingBookNotes, setCurrentReadingBookNot
             <section className="current-book">
                <div className="current-book-image">
                   <img
-                     src={location.state.currentBook.volumeInfo.imageLinks.thumbnail}
+                     src={location.state.currentBook.volumeInfo.imageLinks?.thumbnail}
                      alt={location.state.currentBook.volumeInfo.title}
                   />
                </div>
@@ -89,7 +85,7 @@ function WriteNote({ darkMode, currentReadingBookNotes, setCurrentReadingBookNot
                         {location.state.currentBook.volumeInfo.title}
                      </h3>
                      <p className="current-book-authors">
-                        {location.state.currentBook.volumeInfo.authors.map(
+                        {location.state.currentBook.volumeInfo.authors?.map(
                            (author) => `${author} `
                         )}
                      </p>

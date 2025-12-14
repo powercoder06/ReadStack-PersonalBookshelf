@@ -11,9 +11,11 @@ export const toReadBooksContext = createContext();
 export const haveReadBooksContext = createContext();
 
 export const getLocalStorage = (name) => {
-   if (localStorage.getItem(name)) {
-      return JSON.parse(localStorage.getItem(name));
-   } else {
+   try {
+      const item = localStorage.getItem(name);
+      return item ? JSON.parse(item) : [];
+   } catch (error) {
+      console.error(`[App] Failed to parse localStorage item "${name}":`, error);
       return [];
    }
 };

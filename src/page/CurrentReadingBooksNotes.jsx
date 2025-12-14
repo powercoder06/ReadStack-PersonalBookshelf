@@ -69,14 +69,14 @@ function CurrentReadingBooksNotes({
             />
          </h3>
          <section className="all-my-current-Reading-notes">
-            {currentReadingBookNotes.length ? (
+            {currentReadingBookNotes?.length ? (
                currentReadingBookNotes.map((note) => {
                   return (
                      <div className="book-current-Reading-note" key={note.id}>
                         <div className="image-infos-current-Reading-book-note">
                            <div className="image-current-Reading-book-note">
                               <img
-                                 src={note.currentBook.volumeInfo.imageLinks.thumbnail}
+                                 src={note.currentBook.volumeInfo.imageLinks?.thumbnail}
                                  alt={note.currentBook.volumeInfo.title}
                               />
                            </div>

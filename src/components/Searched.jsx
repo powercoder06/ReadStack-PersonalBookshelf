@@ -25,8 +25,8 @@ function Searched({ darkMode, archivedBooks }) {
 
    const location = useLocation();
 
-   const bookKey = location.state.bookDetails.id;
-   const initialRating = sessionStorage.getItem(bookKey) || 0;
+   const bookKey = location.state?.bookDetails?.id;
+   const initialRating = bookKey ? sessionStorage.getItem(bookKey) || 0 : 0;
 
    try {
       if (!bookKey) {
@@ -128,8 +128,12 @@ function Searched({ darkMode, archivedBooks }) {
     };
 
    const handleBuyNow = () => {
-      const googleBooksLink = location.state.bookDetails.volumeInfo.infoLink;
-      window.open(googleBooksLink, "_blank");
+      const googleBooksLink = location.state?.bookDetails?.volumeInfo?.infoLink;
+      if (googleBooksLink && googleBooksLink.startsWith('https://books.google.')) {
+         window.open(googleBooksLink, "_blank");
+      } else {
+         console.warn('[Searched] Invalid or untrusted URL blocked:', googleBooksLink);
+      }
    };
 
    return (
@@ -179,7 +183,7 @@ function Searched({ darkMode, archivedBooks }) {
          {location.state.bookDetails ? (
             <article className="searched-book">
                <section className="searched-book-image">
-                  <img src={location.state.bookDetails.volumeInfo.imageLinks.thumbnail} alt="" />
+                  <img src={location.state.bookDetails.volumeInfo.imageLinks?.thumbnail} alt="Book cover" />
                </section>
                <section className="searched-book-text">
                   <h2 className="searched-title">
@@ -188,7 +192,7 @@ function Searched({ darkMode, archivedBooks }) {
                   </h2>
                   <p className="searched-authors">
                      <span>Authors: </span>
-                     {location.state.bookDetails.volumeInfo.authors.map((author) => `${author} `)}
+                     {location.state.bookDetails.volumeInfo.authors?.map((author) => `${author} `)}
                   </p>
                   <p className="searched-publisher">
                      <span>Publisher: </span>

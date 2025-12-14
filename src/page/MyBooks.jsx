@@ -115,7 +115,7 @@ function MyBooks({ darkMode }) {
                                 state={{ bookDetails: book }}
                              >
                                 <img
-                                   src={book.volumeInfo.imageLinks.thumbnail}
+                                   src={book.volumeInfo.imageLinks?.thumbnail}
                                    alt={book.volumeInfo.title}
                                    id={book.id}
                                 />
@@ -137,7 +137,7 @@ function MyBooks({ darkMode }) {
                                 state={{ bookDetails: book }}
                              >
                                 <img
-                                   src={book.volumeInfo.imageLinks.thumbnail}
+                                   src={book.volumeInfo.imageLinks?.thumbnail}
                                    alt={book.volumeInfo.title}
                                    id={book.id}
                                 />
@@ -159,7 +159,7 @@ function MyBooks({ darkMode }) {
                                 state={{ bookDetails: book }}
                              >
                                 <img
-                                   src={book.volumeInfo.imageLinks.thumbnail}
+                                   src={book.volumeInfo.imageLinks?.thumbnail}
                                    alt={book.volumeInfo.title}
                                    id={book.id}
                                 />
@@ -181,7 +181,7 @@ function MyBooks({ darkMode }) {
                                 state={{ bookDetails: book }}
                              >
                                 <img
-                                   src={book.volumeInfo.imageLinks.thumbnail}
+                                   src={book.volumeInfo.imageLinks?.thumbnail}
                                    alt={book.volumeInfo.title}
                                    id={book.id}
                                 />
