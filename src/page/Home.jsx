@@ -25,15 +25,14 @@ function Home({ darkMode, data, setData }) {
          )
             .then((response) => response.json())
             .then((result) => {
-               result.items
-                  .filter((book) => book.volumeInfo.pageCount && book.volumeInfo.title)
-                  .map((book) => {
-                     return book;
-                  });
                setData(result.items);
             });
       } catch (error) {
-         console.error(error);
+         console.error(`[Home] Failed to fetch books for query: "${query}"`, {
+            error: error.message,
+            query,
+            timestamp: new Date().toISOString()
+         });
       }
    };
 
@@ -65,8 +64,8 @@ function Home({ darkMode, data, setData }) {
    };
 
    const handleSubmit = async (e) => {
+      e.preventDefault();
       setResult(false);
-      await e.preventDefault();
       await fetchData();
       setResult(true);
    };
@@ -161,9 +160,9 @@ function Home({ darkMode, data, setData }) {
                              </div>
                              <div className="book-text">
                                 <h3 className="title">{book.volumeInfo.title}</h3>
-                                <p className="authors-and-date">{`${book.volumeInfo.authors.map(
-                                   (author) => `${author} `
-                                )}  ${book.volumeInfo.publishedDate}`}</p>
+                                <p className="authors-and-date">
+                                   {book.volumeInfo.authors.join(", ")} - {book.volumeInfo.publishedDate}
+                                </p>
                                 <p className="description">{book.volumeInfo.description}</p>
                                 <p className="genre">{book.volumeInfo.categories.join(", ")}</p> 
                              </div>

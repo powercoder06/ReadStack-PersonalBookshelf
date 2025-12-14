@@ -59,18 +59,17 @@ function AllCurrentReadingBooksNotes({
    };
 
    const handleEditClick = (e) => {
-      const nonEditedNotes = currentReadingBookNotes.filter((note) => note.id !== e.target.id);
-      nonEditedNotes.map((note) => (note.editing ? (note.editing = false) : note.editing));
-      const editedNote = currentReadingBookNotes.filter((note) => note.id === e.target.id);
-      editedNote[0].editing = true ? (editedNote[0].editing = true) : editedNote[0].editing;
-      setEdited(...editedNote);
-      currentReadingBookNotes.map((note) =>
-         note.id === editedNote[0].id ? (note = editedNote[0]) : note
-      );
-      setCurrentReadingBookNotes(currentReadingBookNotes);
+      const targetId = e.target.id;
+      const updatedNotes = currentReadingBookNotes.map((note) => ({
+         ...note,
+         editing: note.id === targetId
+      }));
+      const editedNote = updatedNotes.find((note) => note.id === targetId);
+      setEdited(editedNote);
+      setCurrentReadingBookNotes(updatedNotes);
    };
 
-   const handlEditedTextAndCharactersCount = (e) => {
+   const handleEditedTextAndCharactersCount = (e) => {
       setEditedText(e.target.value);
       if (e.target.value.length - editedText.length === 1) {
          setCharactersLeft((charactersLeft) => charactersLeft - 1);
@@ -205,7 +204,7 @@ function AllCurrentReadingBooksNotes({
                                  <textarea
                                     className="textarea-edited-note"
                                     maxLength="350"
-                                    onChange={handlEditedTextAndCharactersCount}
+                                    onChange={handleEditedTextAndCharactersCount}
                                  ></textarea>
                                  <div className="characters-and-buttons">
                                     <p className="characters">

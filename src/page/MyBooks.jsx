@@ -14,9 +14,9 @@ import FavoriteBookIconDarkMode from "../assets/favorite-book-icon-darkmode.svg"
 import BookToReadIcon from "../assets/book-to-read-icon.svg";
 import BookToReadIconDarkMode from "../assets/book-to-read-icon-darkmode.svg";
 import BookHaveReadIcon from "../assets/book-have-read-icon.svg";
-import BookHaveReadIconDarMode from "../assets/book-have-read-icon-darkmode.svg";
+import BookHaveReadIconDarkMode from "../assets/book-have-read-icon-darkmode.svg";
 import BookArchivedIcon from "../assets/book-archived-icon.svg";
-import BookArchivedIconDarMode from "../assets/book-archive-icon-darkmode.svg";
+import BookArchivedIconDarkMode from "../assets/book-archive-icon-darkmode.svg";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -72,7 +72,7 @@ function MyBooks({ darkMode }) {
                      <li>
                         <Link className="book-category" to="bookshaveread">
                            <img
-                              src={darkMode ? BookHaveReadIconDarMode : BookHaveReadIcon}
+                              src={darkMode ? BookHaveReadIconDarkMode : BookHaveReadIcon}
                               alt="have read book icon"
                            />
                            <p>Have Read</p>
@@ -81,7 +81,7 @@ function MyBooks({ darkMode }) {
                      <li>
                         <Link className="book-category" to="booksarchived">
                            <img
-                              src={darkMode ? BookArchivedIconDarMode : BookArchivedIcon}
+                              src={darkMode ? BookArchivedIconDarkMode : BookArchivedIcon}
                               alt="archived book icon"
                            />
                            <p>Archived</p>
@@ -115,7 +115,7 @@ function MyBooks({ darkMode }) {
                                 state={{ bookDetails: book }}
                              >
                                 <img
-                                   src={book.volumeInfo.imageLinks.thumbnail}
+                                   src={book.volumeInfo.imageLinks?.thumbnail}
                                    alt={book.volumeInfo.title}
                                    id={book.id}
                                 />
@@ -137,7 +137,7 @@ function MyBooks({ darkMode }) {
                                 state={{ bookDetails: book }}
                              >
                                 <img
-                                   src={book.volumeInfo.imageLinks.thumbnail}
+                                   src={book.volumeInfo.imageLinks?.thumbnail}
                                    alt={book.volumeInfo.title}
                                    id={book.id}
                                 />
@@ -159,7 +159,7 @@ function MyBooks({ darkMode }) {
                                 state={{ bookDetails: book }}
                              >
                                 <img
-                                   src={book.volumeInfo.imageLinks.thumbnail}
+                                   src={book.volumeInfo.imageLinks?.thumbnail}
                                    alt={book.volumeInfo.title}
                                    id={book.id}
                                 />
@@ -181,7 +181,7 @@ function MyBooks({ darkMode }) {
                                 state={{ bookDetails: book }}
                              >
                                 <img
-                                   src={book.volumeInfo.imageLinks.thumbnail}
+                                   src={book.volumeInfo.imageLinks?.thumbnail}
                                    alt={book.volumeInfo.title}
                                    id={book.id}
                                 />

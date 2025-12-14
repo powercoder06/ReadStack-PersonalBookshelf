@@ -25,24 +25,26 @@ function Searched({ darkMode, archivedBooks }) {
 
    const location = useLocation();
 
-   const bookKey = location.state.bookDetails.id;
-   const initialRating = sessionStorage.getItem(bookKey) || 0;
+   const bookKey = location.state?.bookDetails?.id;
+   const initialRating = bookKey ? sessionStorage.getItem(bookKey) || 0 : 0;
 
-   console.log("Initial Rating:", initialRating);
-   console.log("Book Key:", bookKey);
+   try {
+      if (!bookKey) {
+         console.error("[Searched] Missing book key from location state");
+      } else {
+         console.info(`[Searched] Loaded book rating - Key: ${bookKey}, Rating: ${initialRating || 'none'}`);
+      }
+   } catch (error) {
+      console.error("[Searched] Error loading book rating:", error);
+   }
 
    const [rating, setRating] = useState(parseInt(initialRating));
    const [hoverRating, setHoverRating] = useState(0);
 
    const handleAddingBooks = (booksCategory, setBooksCategory, name) => {
-      if (booksCategory) {
-         const foundBook = booksCategory.find((book) => book.id === location.state.bookDetails.id);
-         if (foundBook) {
-            notifyAlreadyAdded(name);
-         } else {
-            setBooksCategory([...booksCategory, location.state.bookDetails]);
-            notifySuccessfullyAdded(name);
-         }
+      const foundBook = booksCategory?.find((book) => book.id === location.state.bookDetails.id);
+      if (foundBook) {
+         notifyAlreadyAdded(name);
       } else {
          setBooksCategory([...booksCategory, location.state.bookDetails]);
          notifySuccessfullyAdded(name);
@@ -96,10 +98,10 @@ function Searched({ darkMode, archivedBooks }) {
    const renderStars = () => {
       const stars = [];
       const maxRating = 5;
-      const starColorLightMode = '#5d0085';
-      const starColorDarkMode = '#c20aff';
+      const starColor = darkMode ? '#c20aff' : '#5d0085';
     
       for (let i = 1; i <= maxRating; i++) {
+        const isActive = i <= (hoverRating || rating);
         stars.push(
           <span
             key={i}
@@ -109,8 +111,8 @@ function Searched({ darkMode, archivedBooks }) {
             onMouseLeave={handleResetHoverRating}
           >
             <FontAwesomeIcon 
-              icon={i <= (hoverRating || rating) ? solidStar : regularStar} 
-              style={{ color: i <= (hoverRating || rating) ? (darkMode ? starColorDarkMode : starColorLightMode) : (darkMode ? starColorDarkMode : starColorLightMode) }} 
+              icon={isActive ? solidStar : regularStar} 
+              style={{ color: starColor }} 
             />
           </span>
         );
@@ -126,8 +128,12 @@ function Searched({ darkMode, archivedBooks }) {
     };
 
    const handleBuyNow = () => {
-      const googleBooksLink = location.state.bookDetails.volumeInfo.infoLink;
-      window.open(googleBooksLink, "_blank");
+      const googleBooksLink = location.state?.bookDetails?.volumeInfo?.infoLink;
+      if (googleBooksLink && googleBooksLink.startsWith('https://books.google.')) {
+         window.open(googleBooksLink, "_blank");
+      } else {
+         console.warn('[Searched] Invalid or untrusted URL blocked:', googleBooksLink);
+      }
    };
 
    return (
@@ -177,7 +183,7 @@ function Searched({ darkMode, archivedBooks }) {
          {location.state.bookDetails ? (
             <article className="searched-book">
                <section className="searched-book-image">
-                  <img src={location.state.bookDetails.volumeInfo.imageLinks.thumbnail} alt="" />
+                  <img src={location.state.bookDetails.volumeInfo.imageLinks?.thumbnail} alt="Book cover" />
                </section>
                <section className="searched-book-text">
                   <h2 className="searched-title">
@@ -186,7 +192,7 @@ function Searched({ darkMode, archivedBooks }) {
                   </h2>
                   <p className="searched-authors">
                      <span>Authors: </span>
-                     {location.state.bookDetails.volumeInfo.authors.map((author) => `${author} `)}
+                     {location.state.bookDetails.volumeInfo.authors?.map((author) => `${author} `)}
                   </p>
                   <p className="searched-publisher">
                      <span>Publisher: </span>

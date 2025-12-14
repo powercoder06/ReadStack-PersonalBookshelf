@@ -37,13 +37,20 @@ function BooksArchived({
    const booksRef = useRef();
 
    const handleClickBook = (e) => {
-      if (e.target.nextElementSibling.style.bottom === "-1.8rem") {
-         e.target.nextElementSibling.style.bottom = "1.8rem";
+      const targetElement = e.target.nextElementSibling;
+      if (!targetElement) return;
+      
+      const isExpanded = targetElement.style.bottom === "-1.8rem";
+      
+      if (isExpanded) {
+         targetElement.style.bottom = "1.8rem";
       } else {
-         for (let child of booksRef.current.childNodes) {
-            child.firstElementChild.nextElementSibling.style.bottom = "1.8rem";
-         }
-         e.target.nextElementSibling.style.bottom = "-1.8rem";
+         // Close all other expanded items
+         booksRef.current?.childNodes.forEach(child => {
+            const iconContainer = child.firstElementChild?.nextElementSibling;
+            if (iconContainer) iconContainer.style.bottom = "1.8rem";
+         });
+         targetElement.style.bottom = "-1.8rem";
       }
    };
 
@@ -75,42 +82,21 @@ function BooksArchived({
    };
 
    const deleteArchivedBooks = (e) => {
-      const foundNote = archivedBookNotes.filter((note) => note.bookId === e.target.id);
-      if (foundNote.length) {
-         deleteOneBookWithNoteAlert(darkMode).then((result) => {
-            if (result.isConfirmed) {
-               if (archivedBooks.length > 1) {
-                  const nonDeletedBooks = archivedBooks.filter((book) => book.id !== e.target.id);
-                  const nonDeletedNotes = archivedBookNotes.filter(
-                     (note) => note.bookId !== e.target.id
-                  );
-                  setArchivedBooks(nonDeletedBooks);
-                  setArchivedBookNotes(nonDeletedNotes);
-               } else {
-                  setArchivedBooks([]);
-                  setArchivedBookNotes([]);
-               }
-               deleteOneItemConfirmed(darkMode, "book");
-            }
-         });
-      } else {
-         deleteOneItemAlert(darkMode, "book").then((result) => {
-            if (result.isConfirmed) {
-               if (archivedBooks.length > 1) {
-                  const nonDeletedBooks = archivedBooks.filter((book) => book.id !== e.target.id);
-                  const nonDeletedNotes = archivedBookNotes.filter(
-                     (note) => note.bookId !== e.target.id
-                  );
-                  setArchivedBooks(nonDeletedBooks);
-                  setArchivedBookNotes(nonDeletedNotes);
-               } else {
-                  setArchivedBooks([]);
-                  setArchivedBookNotes([]);
-               }
-               deleteOneItemConfirmed(darkMode, "book");
-            }
-         });
-      }
+      const bookId = e.target.id;
+      const foundNote = archivedBookNotes.filter((note) => note.bookId === bookId);
+      const alertPromise = foundNote.length 
+         ? deleteOneBookWithNoteAlert(darkMode)
+         : deleteOneItemAlert(darkMode, "book");
+
+      alertPromise.then((result) => {
+         if (result.isConfirmed) {
+            const nonDeletedBooks = archivedBooks.filter((book) => book.id !== bookId);
+            const nonDeletedNotes = archivedBookNotes.filter((note) => note.bookId !== bookId);
+            setArchivedBooks(nonDeletedBooks);
+            setArchivedBookNotes(nonDeletedNotes);
+            deleteOneItemConfirmed(darkMode, "book");
+         }
+      });
    };
 
    const deleteAllArchivedBooks = () => {
@@ -138,31 +124,17 @@ function BooksArchived({
    };
 
    useEffect(() => {
-      if (currentReadingBooks) {
-         localStorage.setItem("current reading books", JSON.stringify(currentReadingBooks));
-      }
-   }, [currentReadingBooks]);
-
-   useEffect(() => {
-      if (currentReadingBookNotes) {
-         localStorage.setItem(
-            "current reading book notes",
-            JSON.stringify(currentReadingBookNotes)
-         );
-      }
-   }, [currentReadingBookNotes]);
-
-   useEffect(() => {
-      if (archivedBooks) {
-         localStorage.setItem("archived books", JSON.stringify(archivedBooks));
-      }
-   }, [archivedBooks]);
-
-   useEffect(() => {
-      if (archivedBookNotes) {
-         localStorage.setItem("archived book notes", JSON.stringify(archivedBookNotes));
-      }
-   }, [archivedBookNotes]);
+      const updates = [
+         [currentReadingBooks, "current reading books"],
+         [currentReadingBookNotes, "current reading book notes"],
+         [archivedBooks, "archived books"],
+         [archivedBookNotes, "archived book notes"]
+      ];
+      
+      updates.forEach(([data, key]) => {
+         if (data) localStorage.setItem(key, JSON.stringify(data));
+      });
+   }, [currentReadingBooks, currentReadingBookNotes, archivedBooks, archivedBookNotes]);
 
    return (
       <main
@@ -183,7 +155,7 @@ function BooksArchived({
                     return (
                        <div key={book.id} className="books-displayed">
                           <img
-                             src={book.volumeInfo.imageLinks.thumbnail}
+                             src={book.volumeInfo.imageLinks?.thumbnail}
                              alt={book.volumeInfo.title}
                              onClick={handleClickBook}
                           />

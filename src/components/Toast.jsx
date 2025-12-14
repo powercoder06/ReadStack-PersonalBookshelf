@@ -10,13 +10,13 @@ export const notifySuccessfullyEdited = () =>
    toast.success("Successfully edited", { duration: 1250 });
 export const notifyAlreadyArchivedBook = () => toast(`This book is archived`, { duration: 1250 });
 export const notifyDeniedArchiving = () =>
-   toast(`Can not archive a book with 0 note`, { duration: 1250 });
+   toast(`Cannot archive a book with 0 notes`, { duration: 1250 });
 export const notifyEmptyList = (categoryList) =>
    toast(`The ${categoryList} list is empty`, { duration: 1250 });
 
 const lightTheme = {
    style: {
-      padding: " 1rem",
+      padding: "1rem",
       fontWeight: "bold",
       color: "#ffffff",
       backgroundColor: "#5d0085",
@@ -32,7 +32,7 @@ const lightTheme = {
 
 const darkTheme = {
    style: {
-      padding: " 1rem",
+      padding: "1rem",
       fontWeight: "bold",
       color: "#1f1f1f",
       backgroundColor: "#c20aff",
@@ -47,12 +47,7 @@ const darkTheme = {
 };
 
 function Toast({ darkMode }) {
-
-   return (
-      <>
-         <Toaster toastOptions={darkMode ? darkTheme : lightTheme} />
-      </>
-   );
+   return <Toaster toastOptions={darkMode ? darkTheme : lightTheme} />;
 }
 
 export default Toast;

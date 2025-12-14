@@ -11,9 +11,11 @@ export const toReadBooksContext = createContext();
 export const haveReadBooksContext = createContext();
 
 export const getLocalStorage = (name) => {
-   if (localStorage.getItem(name)) {
-      return JSON.parse(localStorage.getItem(name));
-   } else {
+   try {
+      const item = localStorage.getItem(name);
+      return item ? JSON.parse(item) : [];
+   } catch (error) {
+      console.error(`[App] Failed to parse localStorage item "${name}":`, error);
       return [];
    }
 };
@@ -28,19 +30,25 @@ function App() {
    const [toReadBooks, setToReadBooks] = useState(() => getLocalStorage("to read books"));
    const [haveReadBooks, setHaveReadBooks] = useState(() => getLocalStorage("have read books"));
 
+   const providers = [
+      [currentReadingContext, { currentReadingBooks, setCurrentReadingBooks }],
+      [favoriteBooksContext, { favoriteBooks, setFavoriteBooks }],
+      [toReadBooksContext, { toReadBooks, setToReadBooks }],
+      [haveReadBooksContext, { haveReadBooks, setHaveReadBooks }]
+   ];
+
    return (
       <Router>
          <div className="App">
-            <currentReadingContext.Provider value={{ currentReadingBooks, setCurrentReadingBooks }}>
-               <favoriteBooksContext.Provider value={{ favoriteBooks, setFavoriteBooks }}>
-                  <toReadBooksContext.Provider value={{ toReadBooks, setToReadBooks }}>
-                     <haveReadBooksContext.Provider value={{ haveReadBooks, setHaveReadBooks }}>
-                        <Header darkMode={darkMode} setDarkMode={setDarkMode}></Header>
-                        <AnimatedRoutes darkMode={darkMode} />
-                     </haveReadBooksContext.Provider>
-                  </toReadBooksContext.Provider>
-               </favoriteBooksContext.Provider>
-            </currentReadingContext.Provider>
+            {providers.reduceRight(
+               (children, [Context, value]) => (
+                  <Context.Provider value={value}>{children}</Context.Provider>
+               ),
+               <>
+                  <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+                  <AnimatedRoutes darkMode={darkMode} />
+               </>
+            )}
          </div>
       </Router>
    );

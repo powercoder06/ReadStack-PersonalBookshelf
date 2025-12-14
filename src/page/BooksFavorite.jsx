@@ -37,12 +37,8 @@ function BooksFavorite({ darkMode }) {
    const deleteFavoriteBooks = (e) => {
       deleteOneItemAlert(darkMode, "book").then((result) => {
          if (result.isConfirmed) {
-            if (favoriteBooks.length > 1) {
-               const nonDeletedBooks = favoriteBooks.filter((book) => book.id !== e.target.id);
-               setFavoriteBooks(nonDeletedBooks);
-            } else {
-               setFavoriteBooks([]);
-            }
+            const nonDeletedBooks = favoriteBooks.filter((book) => book.id !== e.target.id);
+            setFavoriteBooks(nonDeletedBooks);
             deleteOneItemConfirmed(darkMode, "book");
          }
       });
@@ -91,7 +87,7 @@ function BooksFavorite({ darkMode }) {
                     return (
                        <div key={book.id} className="books-displayed">
                           <img
-                             src={book.volumeInfo.imageLinks.thumbnail}
+                             src={book.volumeInfo.imageLinks?.thumbnail}
                              alt={book.volumeInfo.title}
                              onClick={handleClickBook}
                           />

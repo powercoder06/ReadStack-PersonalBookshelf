@@ -22,9 +22,16 @@ function Header({ darkMode, setDarkMode }) {
       setSideBar(!sideBar);
    };
 
+   const getNavLinkStyle = ({ isActive }) => {
+      if (!isActive) return {};
+      return darkMode
+         ? { backgroundColor: "#c20aff", color: "#1f1f1f" }
+         : { backgroundColor: "#7800ac", color: "#ffffff" };
+   };
+
    useEffect(() => {
       const closeSideBar = (e) => {
-         if (!navRef.current.contains(e.target)) {
+         if (navRef.current && !navRef.current.contains(e.target)) {
             setSideBar(false);
          }
       };
@@ -53,65 +60,17 @@ function Header({ darkMode, setDarkMode }) {
             />
             <ul>
                <li>
-                  <NavLink
-                     className="link"
-                     style={
-                        darkMode
-                           ? ({ isActive }) => {
-                                return isActive
-                                   ? { backgroundColor: "#c20aff", color: "#1f1f1f" }
-                                   : {};
-                             }
-                           : ({ isActive }) => {
-                                return isActive
-                                   ? { backgroundColor: "#7800ac", color: "#ffffff" }
-                                   : {};
-                             }
-                     }
-                     to="/"
-                  >
+                  <NavLink className="link" style={getNavLinkStyle} to="/">
                      Home
                   </NavLink>
                </li>
                <li>
-                  <NavLink
-                     className="link"
-                     style={
-                        darkMode
-                           ? ({ isActive }) => {
-                                return isActive
-                                   ? { backgroundColor: "#c20aff", color: "#1f1f1f" }
-                                   : {};
-                             }
-                           : ({ isActive }) => {
-                                return isActive
-                                   ? { backgroundColor: "#7800ac", color: "#ffffff" }
-                                   : {};
-                             }
-                     }
-                     to="mybooks"
-                  >
-                      Bookshelf
+                  <NavLink className="link" style={getNavLinkStyle} to="mybooks">
+                     Bookshelf
                   </NavLink>
                </li>
                <li>
-                  <NavLink
-                     className="link"
-                     style={
-                        darkMode
-                           ? ({ isActive }) => {
-                                return isActive
-                                   ? { backgroundColor: "#c20aff", color: "#1f1f1f" }
-                                   : {};
-                             }
-                           : ({ isActive }) => {
-                                return isActive
-                                   ? { backgroundColor: "#7800ac", color: "#ffffff" }
-                                   : {};
-                             }
-                     }
-                     to="mynotes/currentreadingbooksnotes"
-                  >
+                  <NavLink className="link" style={getNavLinkStyle} to="mynotes/currentreadingbooksnotes">
                      My Notes
                   </NavLink>
                </li>

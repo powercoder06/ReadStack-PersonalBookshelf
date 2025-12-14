@@ -7,18 +7,20 @@ function AllArchivedBooksNotes({ darkMode, archivedBookNotes }) {
    const [singleArchivedBookNotes, setArchivedSingleBookNotes] = useState();
    const location = useLocation();
    useEffect(() => {
-      if (archivedBookNotes) {
-         const filteredNotes = archivedBookNotes.filter((note) => {
-            return note.bookId === location.state.bookId;
-         });
+      if (archivedBookNotes && location.state?.bookId) {
+         const filteredNotes = archivedBookNotes.filter((note) => note.bookId === location.state?.bookId);
          if (filteredNotes.length) {
             setArchivedSingleBookNotes(filteredNotes);
          } else {
             setArchivedSingleBookNotes(null);
          }
-         localStorage.setItem("archived book notes", JSON.stringify(archivedBookNotes));
+         try {
+            localStorage.setItem("archived book notes", JSON.stringify(archivedBookNotes));
+         } catch (error) {
+            console.error("[AllArchivedBooksNotes] Failed to save notes to localStorage:", error);
+         }
       }
-   }, [archivedBookNotes]);
+   }, [archivedBookNotes, location.state?.bookId]);
 
    return (
       <motion.main
@@ -34,11 +36,11 @@ function AllArchivedBooksNotes({ darkMode, archivedBookNotes }) {
          }}
       >
          <article>
-            {location.state.currentBook ? (
+            {location.state?.currentBook ? (
                <section className="filtered-archived-book-info">
                   <div className="filtered-archived-book-image">
                      <img
-                        src={location.state.currentBook.volumeInfo.imageLinks.thumbnail}
+                        src={location.state.currentBook.volumeInfo.imageLinks?.thumbnail}
                         alt={`${location.state.currentBook.volumeInfo.title} cover`}
                      />
                   </div>
@@ -49,8 +51,8 @@ function AllArchivedBooksNotes({ darkMode, archivedBookNotes }) {
                      </p>
                      <p className="filtered-archived-book-authors">
                         <span>Authors: </span>
-                        {location.state.currentBook.volumeInfo.authors.map(
-                           (author) => `${author} `
+                        {location.state.currentBook.volumeInfo.authors?.map(
+                           (author, index) => <span key={index}>{author} </span>
                         )}
                      </p>
                      <p className="filtered-archived-book-plublisher">

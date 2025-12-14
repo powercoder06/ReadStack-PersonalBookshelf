@@ -24,6 +24,8 @@ function BooksHaveRead({ darkMode }) {
    const booksRef = useRef();
 
    const handleClickBook = (e) => {
+      if (!e.target.nextElementSibling || !booksRef.current) return;
+      
       if (e.target.nextElementSibling.style.bottom === "-1.8rem") {
          e.target.nextElementSibling.style.bottom = "1.8rem";
       } else {
@@ -37,12 +39,8 @@ function BooksHaveRead({ darkMode }) {
    const deleteHaveReadBooks = (e) => {
       deleteOneItemAlert(darkMode, "book").then((result) => {
          if (result.isConfirmed) {
-            if (haveReadBooks.length > 1) {
-               const nonDeletedBooks = haveReadBooks.filter((book) => book.id !== e.target.id);
-               setHaveReadBooks(nonDeletedBooks);
-            } else {
-               setHaveReadBooks([]);
-            }
+            const nonDeletedBooks = haveReadBooks.filter((book) => book.id !== e.target.id);
+            setHaveReadBooks(nonDeletedBooks);
             deleteOneItemConfirmed(darkMode, "book");
          }
       });
@@ -86,35 +84,31 @@ function BooksHaveRead({ darkMode }) {
             />
          </h3>
          <section className="display-have-read-books" ref={booksRef}>
-            {haveReadBooks
-               ? haveReadBooks.map((book) => {
-                    return (
-                       <div key={book.id} className="books-displayed">
-                          <img
-                             src={book.volumeInfo.imageLinks.thumbnail}
-                             alt={book.volumeInfo.title}
-                             onClick={handleClickBook}
-                          />
-                          <div className="see-and-delete-icons">
-                             <Link to={`/searchedbook/${book.id}`} state={{ bookDetails: book }}>
-                                <img
-                                   src={darkMode ? seeBookIconDarkMode : seeBookIcon}
-                                   alt="see book icon"
-                                />
-                             </Link>
-                             <img
-                                src={darkMode ? deleteIconDarkMode : deleteIcon}
-                                alt="delete icon"
-                                id={book.id}
-                                onClick={deleteHaveReadBooks}
-                             />
-                          </div>
-                       </div>
-                    );
-                 })
-               : null}
+            {haveReadBooks.map((book) => (
+               <div key={book.id} className="books-displayed">
+                  <img
+                     src={book.volumeInfo.imageLinks.thumbnail}
+                     alt={book.volumeInfo.title}
+                     onClick={handleClickBook}
+                  />
+                  <div className="see-and-delete-icons">
+                     <Link to={`/searchedbook/${book.id}`} state={{ bookDetails: book }}>
+                        <img
+                           src={darkMode ? seeBookIconDarkMode : seeBookIcon}
+                           alt="see book icon"
+                        />
+                     </Link>
+                     <img
+                        src={darkMode ? deleteIconDarkMode : deleteIcon}
+                        alt="delete icon"
+                        id={book.id}
+                        onClick={deleteHaveReadBooks}
+                     />
+                  </div>
+               </div>
+            ))}
          </section>
-         <Toast />
+         <Toast darkMode={darkMode} />
       </motion.main>
    );
 }

@@ -18,14 +18,14 @@ function ArchivedBooksNotes({ darkMode, archivedBookNotes }) {
       >
          <h3 className="all-archived-notes-title">Archived Notes</h3>
          <section className="all-my-archived-notes">
-            {archivedBookNotes.length ? (
+            {archivedBookNotes?.length ? (
                archivedBookNotes.map((note) => {
                   return (
                      <div className="book-archived-note" key={note.id}>
                         <div className="image-infos-archived-book-note">
                            <div className="image-archived-book-note">
                               <img
-                                 src={note.currentBook.volumeInfo.imageLinks.thumbnail}
+                                 src={note.currentBook.volumeInfo.imageLinks?.thumbnail}
                                  alt={note.currentBook.volumeInfo.title}
                               />
                            </div>
