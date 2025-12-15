@@ -41,7 +41,7 @@ function BooksCurrentReading({
       if (e.target.nextElementSibling.style.bottom === "-1.8rem") {
          e.target.nextElementSibling.style.bottom = "1.8rem";
       } else {
-         for (let child of booksRef.current.childNodes) {
+         for (const child of booksRef.current.childNodes) {
             child.firstElementChild.nextElementSibling.style.bottom = "1.8rem";
          }
          e.target.nextElementSibling.style.bottom = "-1.8rem";
