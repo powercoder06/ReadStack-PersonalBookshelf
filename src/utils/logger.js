@@ -42,7 +42,7 @@ class Logger {
     const consoleMethod =
       level === LOG_LEVELS.ERROR ? "error" : level === LOG_LEVELS.WARN ? "warn" : "log";
     // eslint-disable-next-line no-console
-    console[consoleMethod](JSON.stringify(logEntry));
+    // console[consoleMethod](JSON.stringify(logEntry));
   }
 
   addToBuffer(logEntry) {

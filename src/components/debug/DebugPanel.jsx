@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ErrorMonitor from "./ErrorMonitor";
 import PerformanceDashboard from "./PerformanceDashboard";
-import logger from "../utils/logger";
+import logger from "../../utils/logger";
 
 const DebugPanel = () => {
   const [showErrorMonitor, setShowErrorMonitor] = useState(false);

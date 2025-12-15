@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import AnimatedRoutes from "./animatedRoutes/AnimatedRoutes";
 import ErrorBoundary from "./components/ErrorBoundary";
 import NetworkStatus from "./components/NetworkStatus";
-import DebugPanel from "./components/DebugPanel";
+import DebugPanel from "./components/debug/DebugPanel";
 import errorReporter from "./utils/errorReporter";
 import logger from "./utils/logger";
 import { BookProvider } from "./contexts/BookContext";

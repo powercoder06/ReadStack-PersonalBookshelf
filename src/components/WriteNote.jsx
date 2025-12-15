@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import "../styles/writeNoteStyles/writeNote.css";
 import Back from "./Back";
-import DisplayNote from "./DispalyNote";
+import DisplayNote from "./DisplayNote";
 import Toast, { notifySuccessfullySaved } from "./Toast";
 import { useLocation } from "react-router-dom";
 

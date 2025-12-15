@@ -1,0 +1,38 @@
+@use "../../../styles/colors" as *;
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+
+  &-text {
+    font-weight: 600;
+    color: $Very-dark-blue;
+  }
+
+  &-stars {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .star {
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease;
+
+    &:hover:not(.readonly) {
+      transform: scale(1.1);
+    }
+
+    &.readonly {
+      cursor: default;
+    }
+  }
+
+  &.dark-mode {
+    .rating-text {
+      color: $White;
+    }
+  }
+}

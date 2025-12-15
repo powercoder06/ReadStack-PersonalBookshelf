@@ -1,0 +1,47 @@
+@use "../../../styles/colors" as *;
+@use "../../../styles/mixins" as *;
+
+.book-actions {
+  @include flexbox(flex-start, center, 1rem, 0.5rem, row, wrap);
+
+  .book-action {
+    @include flexbox(center, center, 0, 0.25rem, column);
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba($Very-dark-blue, 0.1);
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &__label {
+      font-size: 0.75rem;
+      color: $Gray;
+      text-align: center;
+      margin: 0;
+    }
+  }
+
+  &.dark-mode {
+    .book-action {
+      &:hover {
+        background-color: rgba($Turquoise, 0.1);
+      }
+
+      &__label {
+        color: $White;
+      }
+    }
+  }
+}
