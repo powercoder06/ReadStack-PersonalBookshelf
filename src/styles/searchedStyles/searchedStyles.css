@@ -90,7 +90,8 @@
   width: 18rem;
   height: 27rem;
   margin-bottom: 0.5rem;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+  box-shadow:
+    0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
     -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
 }
 
@@ -167,8 +168,6 @@
   margin-top: 10px;
 }
 
-
-
 .rating-stars {
   font-size: 24px;
 }
@@ -176,8 +175,6 @@
 .star {
   cursor: pointer;
 }
-
-
 
 @media (hover: hover) {
   .searched-container .back-and-add-to .add-to div img:hover {

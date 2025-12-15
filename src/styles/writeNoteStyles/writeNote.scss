@@ -3,266 +3,267 @@
 @use "../colors" as *;
 
 .write-note-container {
-   width: 100%;
-   min-height: calc(100vh - 4.5rem);
-   padding: 0 2rem 1rem;
-   background-color: $White;
-   transition: 0.3s;
-   .current-book {
-      width: 100%;
-      margin-top: 1rem;
-      @include flexbox(flex-start, flex-start, 4rem);
-      .current-book-image {
-         width: 14rem;
-         height: 21rem;
-         img {
-            width: inherit;
-            height: inherit;
-            box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
-               -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
-         }
+  width: 100%;
+  min-height: calc(100vh - 4.5rem);
+  padding: 0 2rem 1rem;
+  background-color: $White;
+  transition: 0.3s;
+  .current-book {
+    width: 100%;
+    margin-top: 1rem;
+    @include flexbox(flex-start, flex-start, 4rem);
+    .current-book-image {
+      width: 14rem;
+      height: 21rem;
+      img {
+        width: inherit;
+        height: inherit;
+        box-shadow:
+          0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+          -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
       }
-      .current-book-text {
-         .current-book-title-and-authors {
-            color: $Very-dark-blue;
-            .current-book-title {
-               margin-bottom: 1rem;
-               font-size: 1.5rem;
-               font-weight: $font-700;
-            }
-            .current-book-authors {
-               margin-bottom: 1rem;
-               font-weight: $font-500;
-            }
-         }
-         .input-range {
-            margin-bottom: 1rem;
-            @include flexbox(flex-start, center);
-            input {
-               width: 45rem;
-            }
-            .page-number {
-               width: 5rem;
-               font-weight: $font-500;
-               color: $Very-dark-blue;
-               text-align: center;
-            }
-         }
-         .textarea-note {
-            width: 45rem;
-            height: 7rem;
-            padding: 0 0.5rem;
-            margin-bottom: 1rem;
-            color: $Very-dark-blue;
-            border: 0.15rem solid $Very-dark-blue;
-            outline: none;
-            resize: none;
-            font-size: 1rem;
-            transition: 0.3s;
-         }
-         .characters-and-button-save {
-            width: 45rem;
-            @include flexbox(space-between, flex-start);
-            .characters {
-               color: $Very-dark-blue;
-               span {
-                  font-weight: $font-500;
-               }
-            }
-            button {
-               width: 5rem;
-               padding: 0.6rem 0;
-               background-color: $Very-dark-blue;
-               color: $White;
-               font-weight: $font-700;
-               outline: none;
-               border: none;
-               border-radius: 0.5rem;
-            }
-         }
+    }
+    .current-book-text {
+      .current-book-title-and-authors {
+        color: $Very-dark-blue;
+        .current-book-title {
+          margin-bottom: 1rem;
+          font-size: 1.5rem;
+          font-weight: $font-700;
+        }
+        .current-book-authors {
+          margin-bottom: 1rem;
+          font-weight: $font-500;
+        }
       }
-   }
+      .input-range {
+        margin-bottom: 1rem;
+        @include flexbox(flex-start, center);
+        input {
+          width: 45rem;
+        }
+        .page-number {
+          width: 5rem;
+          font-weight: $font-500;
+          color: $Very-dark-blue;
+          text-align: center;
+        }
+      }
+      .textarea-note {
+        width: 45rem;
+        height: 7rem;
+        padding: 0 0.5rem;
+        margin-bottom: 1rem;
+        color: $Very-dark-blue;
+        border: 0.15rem solid $Very-dark-blue;
+        outline: none;
+        resize: none;
+        font-size: 1rem;
+        transition: 0.3s;
+      }
+      .characters-and-button-save {
+        width: 45rem;
+        @include flexbox(space-between, flex-start);
+        .characters {
+          color: $Very-dark-blue;
+          span {
+            font-weight: $font-500;
+          }
+        }
+        button {
+          width: 5rem;
+          padding: 0.6rem 0;
+          background-color: $Very-dark-blue;
+          color: $White;
+          font-weight: $font-700;
+          outline: none;
+          border: none;
+          border-radius: 0.5rem;
+        }
+      }
+    }
+  }
 }
 
 .write-note-container.dark-mode {
-   background-color: $Black;
-   .current-book {
-      .current-book-text {
-         .current-book-title-and-authors {
-            color: $Turquoise;
-         }
+  background-color: $Black;
+  .current-book {
+    .current-book-text {
+      .current-book-title-and-authors {
+        color: $Turquoise;
       }
-      .input-range {
-         .page-number {
-            color: $Turquoise;
-         }
+    }
+    .input-range {
+      .page-number {
+        color: $Turquoise;
       }
-      .textarea-note {
-         background-color: $Dark-gray;
-         border-color: $Turquoise;
-         color: $Turquoise;
+    }
+    .textarea-note {
+      background-color: $Dark-gray;
+      border-color: $Turquoise;
+      color: $Turquoise;
+    }
+    .characters-and-button-save {
+      .characters {
+        color: $Turquoise;
       }
-      .characters-and-button-save {
-         .characters {
-            color: $Turquoise;
-         }
-         > button {
-            background-color: $Turquoise;
-            color: $Black;
-         }
+      > button {
+        background-color: $Turquoise;
+        color: $Black;
       }
-   }
+    }
+  }
 }
 
 @media (hover: hover) {
-   .write-note-container {
-      .current-book {
-         .input-range input,
-         .characters-and-button-save button:hover {
-            cursor: pointer;
-            opacity: 0.9;
-         }
+  .write-note-container {
+    .current-book {
+      .input-range input,
+      .characters-and-button-save button:hover {
+        cursor: pointer;
+        opacity: 0.9;
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 1150px) {
-   .write-note-container {
-      .current-book {
-         .current-book-image {
-            width: 13rem;
-            height: 19.5rem;
-         }
-         @include flexbox(flex-start, flex-start, 3rem);
-         .current-book-text {
-            .input-range {
-               input {
-                  width: 33rem;
-               }
-            }
-            .textarea-note {
-               width: 33rem;
-               font-size: 0.9rem;
-            }
-            .characters-and-button-save {
-               width: 33rem;
-            }
-         }
+  .write-note-container {
+    .current-book {
+      .current-book-image {
+        width: 13rem;
+        height: 19.5rem;
       }
-   }
+      @include flexbox(flex-start, flex-start, 3rem);
+      .current-book-text {
+        .input-range {
+          input {
+            width: 33rem;
+          }
+        }
+        .textarea-note {
+          width: 33rem;
+          font-size: 0.9rem;
+        }
+        .characters-and-button-save {
+          width: 33rem;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 900px) {
-   .write-note-container {
-      .current-book {
-         @include flexbox(flex-start, flex-start, 2rem);
-         .current-book-image {
-            width: 12rem;
-            height: 18rem;
-         }
-         .current-book-text {
-            .current-book-title-and-authors {
-               .current-book-title {
-                  font-size: 1.3rem;
-                  margin-bottom: 0.5rem;
-               }
-               .current-book-authors {
-                  font-size: 1rem;
-               }
-            }
-            .input-range {
-               margin-bottom: 0.5rem;
-               input {
-                  width: 25rem;
-               }
-               .page-number {
-                  font-size: 1rem;
-               }
-            }
-            .textarea-note {
-               width: 25rem;
-               height: 9rem;
-               font-size: 0.9rem;
-               margin-bottom: 0.5rem;
-            }
-            .characters-and-button-save {
-               width: 25rem;
-               font-size: 1rem;
-               button {
-                  width: 4rem;
-                  padding: 0.5rem 0;
-               }
-            }
-         }
+  .write-note-container {
+    .current-book {
+      @include flexbox(flex-start, flex-start, 2rem);
+      .current-book-image {
+        width: 12rem;
+        height: 18rem;
       }
-   }
+      .current-book-text {
+        .current-book-title-and-authors {
+          .current-book-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+          }
+          .current-book-authors {
+            font-size: 1rem;
+          }
+        }
+        .input-range {
+          margin-bottom: 0.5rem;
+          input {
+            width: 25rem;
+          }
+          .page-number {
+            font-size: 1rem;
+          }
+        }
+        .textarea-note {
+          width: 25rem;
+          height: 9rem;
+          font-size: 0.9rem;
+          margin-bottom: 0.5rem;
+        }
+        .characters-and-button-save {
+          width: 25rem;
+          font-size: 1rem;
+          button {
+            width: 4rem;
+            padding: 0.5rem 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 750px) {
-   .write-note-container {
-      .current-book {
-         width: 100%;
-         @include flexbox(flex-start, center, 0rem, 1rem, column);
-         .current-book-image {
-            display: none;
-         }
-         .current-book-text {
-            width: 100%;
-            .input-range {
-               width: 100%;
-               @include flexbox(flex-start, flex-end, 0, 0, column);
-               input {
-                  width: inherit;
-               }
-            }
-            .textarea-note {
-               width: 100%;
-            }
-            .characters-and-button-save {
-               width: 100%;
-            }
-         }
+  .write-note-container {
+    .current-book {
+      width: 100%;
+      @include flexbox(flex-start, center, 0rem, 1rem, column);
+      .current-book-image {
+        display: none;
       }
-   }
+      .current-book-text {
+        width: 100%;
+        .input-range {
+          width: 100%;
+          @include flexbox(flex-start, flex-end, 0, 0, column);
+          input {
+            width: inherit;
+          }
+        }
+        .textarea-note {
+          width: 100%;
+        }
+        .characters-and-button-save {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 500px) {
-   .write-note-container {
-      padding: 0 1rem 1rem;
-      .current-book {
-         .current-book-text {
-            .textarea-note {
-               height: 11rem;
-            }
-         }
+  .write-note-container {
+    padding: 0 1rem 1rem;
+    .current-book {
+      .current-book-text {
+        .textarea-note {
+          height: 11rem;
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 375px) {
-   .write-note-container {
-      .current-book {
-         .current-book-text {
-            .current-book-title-and-authors {
-               .current-book-title {
-                  font-size: 1.1rem;
-               }
-               .current-book-authors {
-                  font-size: 0.9rem;
-               }
-            }
-            .input-range {
-               .page-number {
-                  font-size: 0.9rem;
-               }
-            }
-            .textarea-note {
-               font-size: 0.85rem;
-            }
-            .textarea-note {
-               height: 12rem;
-            }
-         }
+  .write-note-container {
+    .current-book {
+      .current-book-text {
+        .current-book-title-and-authors {
+          .current-book-title {
+            font-size: 1.1rem;
+          }
+          .current-book-authors {
+            font-size: 0.9rem;
+          }
+        }
+        .input-range {
+          .page-number {
+            font-size: 0.9rem;
+          }
+        }
+        .textarea-note {
+          font-size: 0.85rem;
+        }
+        .textarea-note {
+          height: 12rem;
+        }
       }
-   }
+    }
+  }
 }

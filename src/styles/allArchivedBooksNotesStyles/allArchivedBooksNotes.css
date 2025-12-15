@@ -10,7 +10,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 2rem;
-       column-gap: 2rem;
+  column-gap: 2rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -19,10 +19,15 @@
   width: 8.5rem;
   height: 12.75rem;
 }
-.all-archived-notes-book-container .filtered-archived-book-info .filtered-archived-book-image > img {
+.all-archived-notes-book-container
+  .filtered-archived-book-info
+  .filtered-archived-book-image
+  > img {
   width: inherit;
   height: inherit;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3), -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+  box-shadow:
+    0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+    -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
 }
 .all-archived-notes-book-container .filtered-archived-book-info .filtered-archived-book-text p {
   color: #1f1f1f;
@@ -32,7 +37,11 @@
   line-height: 1.6;
   transition: 0.3s;
 }
-.all-archived-notes-book-container .filtered-archived-book-info .filtered-archived-book-text p span {
+.all-archived-notes-book-container
+  .filtered-archived-book-info
+  .filtered-archived-book-text
+  p
+  span {
   color: #5d0085;
   font-size: 1.1rem;
   font-weight: 500;
@@ -48,7 +57,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 3rem;
-       column-gap: 3rem;
+  column-gap: 3rem;
   row-gap: 3rem;
   flex-direction: row;
   flex-wrap: wrap;
@@ -57,13 +66,18 @@
   width: calc((100% - 6rem) / 3);
   min-height: 15rem;
   padding: 1rem 1rem 0;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3), -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+  box-shadow:
+    0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+    -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
   border-radius: 0.5rem;
   overflow-wrap: break-word;
   transition: 0.3s;
   position: relative;
 }
-.all-archived-notes-book-container .filtered-archived-book-notes .filtered-archived-note .filtered-archived-note-date-and-page {
+.all-archived-notes-book-container
+  .filtered-archived-book-notes
+  .filtered-archived-note
+  .filtered-archived-note-date-and-page {
   margin-bottom: 1rem;
   font-size: 1.1rem;
   font-weight: 500;
@@ -72,12 +86,15 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  column-gap: 1rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.all-archived-notes-book-container .filtered-archived-book-notes .filtered-archived-note .filtered-archived-note-text {
+.all-archived-notes-book-container
+  .filtered-archived-book-notes
+  .filtered-archived-note
+  .filtered-archived-note-text {
   color: #1f1f1f;
 }
 .all-archived-notes-book-container .no-note-found-book {
@@ -91,19 +108,33 @@
 .all-archived-notes-book-container.dark-mode {
   background-color: #1f1f1f;
 }
-.all-archived-notes-book-container.dark-mode .filtered-archived-book-info .filtered-archived-book-text p {
+.all-archived-notes-book-container.dark-mode
+  .filtered-archived-book-info
+  .filtered-archived-book-text
+  p {
   color: #ffffff;
 }
-.all-archived-notes-book-container.dark-mode .filtered-archived-book-info .filtered-archived-book-text p span {
+.all-archived-notes-book-container.dark-mode
+  .filtered-archived-book-info
+  .filtered-archived-book-text
+  p
+  span {
   color: #c20aff;
 }
 .all-archived-notes-book-container.dark-mode .all-archived-book-notes {
   color: #c20aff;
 }
-.all-archived-notes-book-container.dark-mode .filtered-archived-book-notes .filtered-archived-note .filtered-archived-note-date-and-page > p {
+.all-archived-notes-book-container.dark-mode
+  .filtered-archived-book-notes
+  .filtered-archived-note
+  .filtered-archived-note-date-and-page
+  > p {
   color: #c20aff;
 }
-.all-archived-notes-book-container.dark-mode .filtered-archived-book-notes .filtered-archived-note .filtered-archived-note-text {
+.all-archived-notes-book-container.dark-mode
+  .filtered-archived-book-notes
+  .filtered-archived-note
+  .filtered-archived-note-text {
   color: #ffffff;
 }
 .all-archived-notes-book-container.dark-mode .filtered-archived-book-notes .no-note-found-book {
@@ -119,7 +150,10 @@
   .all-archived-notes-book-container .filtered-archived-book-info {
     margin-bottom: 1rem;
   }
-  .all-archived-notes-book-container .filtered-archived-book-info .filtered-archived-book-text .filtered-archived-book-plublished-page {
+  .all-archived-notes-book-container
+    .filtered-archived-book-info
+    .filtered-archived-book-text
+    .filtered-archived-book-plublished-page {
     display: none;
   }
   .all-archived-notes-book-container .filtered-archived-book-notes .filtered-archived-note {
@@ -130,7 +164,10 @@
   .all-archived-notes-book-container .filtered-archived-book-info {
     margin-bottom: 1rem;
   }
-  .all-archived-notes-book-container .filtered-archived-book-info .filtered-archived-book-text .filtered-archived-book-plublished-date {
+  .all-archived-notes-book-container
+    .filtered-archived-book-info
+    .filtered-archived-book-text
+    .filtered-archived-book-plublished-date {
     display: none;
   }
   .all-archived-notes-book-container .filtered-archived-book-notes .filtered-archived-note {
@@ -138,7 +175,10 @@
   }
 }
 @media (max-width: 700px) {
-  .all-archived-notes-book-container .filtered-archived-book-info .filtered-archived-book-text .filtered-archived-book-plublisher {
+  .all-archived-notes-book-container
+    .filtered-archived-book-info
+    .filtered-archived-book-text
+    .filtered-archived-book-plublisher {
     display: none;
   }
   .all-archived-notes-book-container .filtered-archived-book-notes .filtered-archived-note {
@@ -152,7 +192,10 @@
   .all-archived-notes-book-container .filtered-archived-book-info {
     margin-bottom: 1rem;
   }
-  .all-archived-notes-book-container .filtered-archived-book-info .filtered-archived-book-text .filtered-archived-book-authors {
+  .all-archived-notes-book-container
+    .filtered-archived-book-info
+    .filtered-archived-book-text
+    .filtered-archived-book-authors {
     display: none;
   }
 }
@@ -166,16 +209,22 @@
     justify-content: center;
     align-items: flex-start;
     -moz-column-gap: 0;
-         column-gap: 0;
+    column-gap: 0;
     row-gap: 0;
     flex-direction: row;
     flex-wrap: nowrap;
   }
-  .all-archived-notes-book-container .filtered-archived-book-info .filtered-archived-book-image > img {
+  .all-archived-notes-book-container
+    .filtered-archived-book-info
+    .filtered-archived-book-image
+    > img {
     width: 8rem;
     height: 12rem;
   }
-  .all-archived-notes-book-container .filtered-archived-book-info .filtered-archived-book-text .filtered-archived-book-title {
+  .all-archived-notes-book-container
+    .filtered-archived-book-info
+    .filtered-archived-book-text
+    .filtered-archived-book-title {
     display: none;
   }
-}/*# sourceMappingURL=allArchivedBooksNotes.css.map */
+} /*# sourceMappingURL=allArchivedBooksNotes.css.map */

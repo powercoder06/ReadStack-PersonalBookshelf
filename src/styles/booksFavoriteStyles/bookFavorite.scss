@@ -3,97 +3,98 @@
 @use "../colors" as *;
 
 .books-favorite-container {
-   width: 100%;
-   min-height: 100vh;
-   padding: 0 2rem 1rem;
-   background-color: $White;
-   transition: 0.3s;
-   .category-book {
-      margin: 1rem 0;
-      color: $Very-dark-blue;
-      @include flexbox(flex-start, center, 1rem);
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 2rem 1rem;
+  background-color: $White;
+  transition: 0.3s;
+  .category-book {
+    margin: 1rem 0;
+    color: $Very-dark-blue;
+    @include flexbox(flex-start, center, 1rem);
+    img {
+      width: 1.6rem;
+    }
+  }
+  .display-favorite-books {
+    margin-bottom: 2rem;
+    @include flexbox(flex-start, flex-start, 2rem, 2.5rem, row, wrap);
+    .books-displayed {
+      position: relative;
       img {
-         width: 1.6rem;
+        width: 8rem;
+        height: 12rem;
+        box-shadow:
+          0.1rem 0.1rem 0.5rem rgba(128, 128, 128, 0.3),
+          -0.1rem -0.1rem 0.5rem rgba(128, 128, 128, 0.3);
+        position: relative;
+        z-index: 2;
       }
-   }
-   .display-favorite-books {
-      margin-bottom: 2rem;
-      @include flexbox(flex-start, flex-start, 2rem, 2.5rem, row, wrap);
-      .books-displayed {
-         position: relative;
-         img {
-            width: 8rem;
-            height: 12rem;
-            box-shadow: 0.1rem 0.1rem 0.5rem rgba(128, 128, 128, 0.3),
-               -0.1rem -0.1rem 0.5rem rgba(128, 128, 128, 0.3);
-            position: relative;
-            z-index: 2;
-         }
-         .see-and-delete-icons {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: 0.5s;
-            z-index: 1;
-            @include flexbox(flex-start, flex-start, 0.5rem);
-            img {
-               width: 1.6rem;
-               height: 1.6rem;
-               background-color: transparent;
-               box-shadow: none;
-            }
-         }
+      .see-and-delete-icons {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: 0.5s;
+        z-index: 1;
+        @include flexbox(flex-start, flex-start, 0.5rem);
+        img {
+          width: 1.6rem;
+          height: 1.6rem;
+          background-color: transparent;
+          box-shadow: none;
+        }
       }
-   }
+    }
+  }
 }
 
 .books-favorite-container.dark-mode {
-   background-color: $Black;
-   h3 {
-      color: $Turquoise;
-   }
+  background-color: $Black;
+  h3 {
+    color: $Turquoise;
+  }
 }
 
 @media (hover: hover) {
-   .books-favorite-container {
-      h3 {
-         img:hover {
+  .books-favorite-container {
+    h3 {
+      img:hover {
+        cursor: pointer;
+        scale: 1.1;
+      }
+    }
+    .display-favorite-books {
+      .books-displayed {
+        &:hover {
+          scale: 1.1;
+          transition: 0.3s;
+        }
+        .see-and-delete-icons {
+          img:hover {
             cursor: pointer;
             scale: 1.1;
-         }
+            z-index: 1;
+          }
+        }
       }
-      .display-favorite-books {
-         .books-displayed {
-            &:hover {
-               scale: 1.1;
-               transition: 0.3s;
-            }
-            .see-and-delete-icons {
-               img:hover {
-                  cursor: pointer;
-                  scale: 1.1;
-                  z-index: 1;
-               }
-            }
-         }
-      }
-   }
+    }
+  }
 }
 
 @media (max-width: 500px) {
-   .books-favorite-container {
-      padding: 0 1rem 1rem;
-   }
+  .books-favorite-container {
+    padding: 0 1rem 1rem;
+  }
 }
 
 @media (max-width: 375px) {
-   .books-favorite-container {
-      .display-favorite-books {
-         @include flexbox(center, flex-start, 2rem, 2.5rem, row, wrap);
-      }
-      .category-book {
-         font-size: 1.1rem;
-      }
-   }
+  .books-favorite-container {
+    .display-favorite-books {
+      @include flexbox(center, flex-start, 2rem, 2.5rem, row, wrap);
+    }
+    .category-book {
+      font-size: 1.1rem;
+    }
+  }
 }

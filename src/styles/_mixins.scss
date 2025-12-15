@@ -1,16 +1,16 @@
 @mixin flexbox(
-   $justifycontent: flex-start,
-   $alignitems: flex-start,
-   $columngap: 0,
-   $rowgap: 0,
-   $flexdirection: row,
-   $flexwrap: nowrap
+  $justifycontent: flex-start,
+  $alignitems: flex-start,
+  $columngap: 0,
+  $rowgap: 0,
+  $flexdirection: row,
+  $flexwrap: nowrap
 ) {
-   display: flex;
-   justify-content: $justifycontent;
-   align-items: $alignitems;
-   column-gap: $columngap;
-   row-gap: $rowgap;
-   flex-direction: $flexdirection;
-   flex-wrap: $flexwrap;
+  display: flex;
+  justify-content: $justifycontent;
+  align-items: $alignitems;
+  column-gap: $columngap;
+  row-gap: $rowgap;
+  flex-direction: $flexdirection;
+  flex-wrap: $flexwrap;
 }

@@ -10,7 +10,7 @@
   justify-content: flex-start;
   align-items: center;
   -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  column-gap: 1rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -25,7 +25,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 3rem;
-       column-gap: 3rem;
+  column-gap: 3rem;
   row-gap: 3rem;
   flex-direction: row;
   flex-wrap: wrap;
@@ -34,45 +34,77 @@
   width: calc((100% - 6rem) / 3);
   min-height: 20rem;
   padding: 1rem 1rem 0;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3), -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+  box-shadow:
+    0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+    -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
   border-radius: 0.5rem;
   overflow-wrap: break-word;
   transition: 0.3s;
   position: relative;
 }
-.current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .image-infos-current-Reading-book-note {
+.current-Reading-books-notes-container
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .image-infos-current-Reading-book-note {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
   margin-bottom: 1rem;
 }
-.current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .image-infos-current-Reading-book-note .image-current-Reading-book-note img {
+.current-Reading-books-notes-container
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .image-infos-current-Reading-book-note
+  .image-current-Reading-book-note
+  img {
   width: 5rem;
   height: 7.5rem;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3), -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+  box-shadow:
+    0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+    -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
 }
-.current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .image-infos-current-Reading-book-note .infos-current-Reading-book-note {
+.current-Reading-books-notes-container
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .image-infos-current-Reading-book-note
+  .infos-current-Reading-book-note {
   padding: 1rem 1rem 0;
   font-size: 1.2rem;
   font-weight: 500;
   color: #5d0085;
 }
-.current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .image-infos-current-Reading-book-note .infos-current-Reading-book-note .note-current-Reading-date {
+.current-Reading-books-notes-container
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .image-infos-current-Reading-book-note
+  .infos-current-Reading-book-note
+  .note-current-Reading-date {
   margin-bottom: 1rem;
 }
-.current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .image-infos-current-Reading-book-note .infos-current-Reading-book-note .note-current-Reading-time {
+.current-Reading-books-notes-container
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .image-infos-current-Reading-book-note
+  .infos-current-Reading-book-note
+  .note-current-Reading-time {
   margin-bottom: 1rem;
 }
-.current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .note-text-saved {
+.current-Reading-books-notes-container
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .note-text-saved {
   padding-bottom: 1rem;
   color: #1f1f1f;
 }
-.current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .show-all-and-delete {
+.current-Reading-books-notes-container
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .show-all-and-delete {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -80,15 +112,21 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
+  column-gap: 0.5rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
 }
-.current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .show-all-and-delete img {
+.current-Reading-books-notes-container
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .show-all-and-delete
+  img {
   width: 1.5rem;
 }
-.current-Reading-books-notes-container .all-my-current-Reading-notes .no-current-Reading-note-found {
+.current-Reading-books-notes-container
+  .all-my-current-Reading-notes
+  .no-current-Reading-note-found {
   width: 100%;
   font-size: 2rem;
   font-weight: 700;
@@ -98,7 +136,7 @@
   justify-content: center;
   align-items: center;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -110,13 +148,22 @@
 .current-Reading-books-notes-container.dark-mode .all-current-Reading-notes-title {
   color: #c20aff;
 }
-.current-Reading-books-notes-container.dark-mode .all-my-current-Reading-notes .book-current-Reading-note .image-infos-current-Reading-book-note .infos-current-Reading-book-note {
+.current-Reading-books-notes-container.dark-mode
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .image-infos-current-Reading-book-note
+  .infos-current-Reading-book-note {
   color: #c20aff;
 }
-.current-Reading-books-notes-container.dark-mode .all-my-current-Reading-notes .book-current-Reading-note .note-text-saved {
+.current-Reading-books-notes-container.dark-mode
+  .all-my-current-Reading-notes
+  .book-current-Reading-note
+  .note-text-saved {
   color: #ffffff;
 }
-.current-Reading-books-notes-container.dark-mode .all-my-current-Reading-notes .no-current-Reading-note-found {
+.current-Reading-books-notes-container.dark-mode
+  .all-my-current-Reading-notes
+  .no-current-Reading-note-found {
   color: #c20aff;
 }
 
@@ -125,10 +172,16 @@
     cursor: pointer;
     scale: 1.1;
   }
-  .current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note:hover {
+  .current-Reading-books-notes-container
+    .all-my-current-Reading-notes
+    .book-current-Reading-note:hover {
     scale: 1.1;
   }
-  .current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .show-all-and-delete img:hover {
+  .current-Reading-books-notes-container
+    .all-my-current-Reading-notes
+    .book-current-Reading-note
+    .show-all-and-delete
+    img:hover {
     cursor: pointer;
     scale: 1.1;
   }
@@ -147,33 +200,47 @@
   .current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note {
     width: 100%;
   }
-  .current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note:hover {
+  .current-Reading-books-notes-container
+    .all-my-current-Reading-notes
+    .book-current-Reading-note:hover {
     scale: none;
   }
 }
 @media (max-width: 375px) {
-  .current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .image-infos-current-Reading-book-note {
+  .current-Reading-books-notes-container
+    .all-my-current-Reading-notes
+    .book-current-Reading-note
+    .image-infos-current-Reading-book-note {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     -moz-column-gap: 0;
-         column-gap: 0;
+    column-gap: 0;
     row-gap: 0;
     flex-direction: column-reverse;
     flex-wrap: wrap;
   }
-  .current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .image-infos-current-Reading-book-note .image-current-Reading-book-note img {
+  .current-Reading-books-notes-container
+    .all-my-current-Reading-notes
+    .book-current-Reading-note
+    .image-infos-current-Reading-book-note
+    .image-current-Reading-book-note
+    img {
     width: 8rem;
     height: 12rem;
   }
-  .current-Reading-books-notes-container .all-my-current-Reading-notes .book-current-Reading-note .image-infos-current-Reading-book-note .infos-current-Reading-book-note {
+  .current-Reading-books-notes-container
+    .all-my-current-Reading-notes
+    .book-current-Reading-note
+    .image-infos-current-Reading-book-note
+    .infos-current-Reading-book-note {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     -moz-column-gap: 1rem;
-         column-gap: 1rem;
+    column-gap: 1rem;
     row-gap: 0;
     flex-direction: row;
     flex-wrap: wrap;
   }
-}/*# sourceMappingURL=currentReadingBooksNotes.css.map */
+} /*# sourceMappingURL=currentReadingBooksNotes.css.map */

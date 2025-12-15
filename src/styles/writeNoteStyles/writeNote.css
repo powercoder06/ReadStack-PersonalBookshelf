@@ -12,7 +12,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 4rem;
-       column-gap: 4rem;
+  column-gap: 4rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -24,17 +24,27 @@
 .write-note-container .current-book .current-book-image img {
   width: inherit;
   height: inherit;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3), -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+  box-shadow:
+    0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+    -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
 }
 .write-note-container .current-book .current-book-text .current-book-title-and-authors {
   color: #5d0085;
 }
-.write-note-container .current-book .current-book-text .current-book-title-and-authors .current-book-title {
+.write-note-container
+  .current-book
+  .current-book-text
+  .current-book-title-and-authors
+  .current-book-title {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
 }
-.write-note-container .current-book .current-book-text .current-book-title-and-authors .current-book-authors {
+.write-note-container
+  .current-book
+  .current-book-text
+  .current-book-title-and-authors
+  .current-book-authors {
   margin-bottom: 1rem;
   font-weight: 500;
 }
@@ -44,7 +54,7 @@
   justify-content: flex-start;
   align-items: center;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -76,7 +86,7 @@
   justify-content: space-between;
   align-items: flex-start;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -84,7 +94,12 @@
 .write-note-container .current-book .current-book-text .characters-and-button-save .characters {
   color: #5d0085;
 }
-.write-note-container .current-book .current-book-text .characters-and-button-save .characters span {
+.write-note-container
+  .current-book
+  .current-book-text
+  .characters-and-button-save
+  .characters
+  span {
   font-weight: 500;
 }
 .write-note-container .current-book .current-book-text .characters-and-button-save button {
@@ -133,7 +148,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     -moz-column-gap: 3rem;
-         column-gap: 3rem;
+    column-gap: 3rem;
     row-gap: 0;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -159,7 +174,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     -moz-column-gap: 2rem;
-         column-gap: 2rem;
+    column-gap: 2rem;
     row-gap: 0;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -168,11 +183,19 @@
     width: 12rem;
     height: 18rem;
   }
-  .write-note-container .current-book .current-book-text .current-book-title-and-authors .current-book-title {
+  .write-note-container
+    .current-book
+    .current-book-text
+    .current-book-title-and-authors
+    .current-book-title {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
   }
-  .write-note-container .current-book .current-book-text .current-book-title-and-authors .current-book-authors {
+  .write-note-container
+    .current-book
+    .current-book-text
+    .current-book-title-and-authors
+    .current-book-authors {
     font-size: 1rem;
   }
   .write-note-container .current-book .current-book-text .input-range {
@@ -206,7 +229,7 @@
     justify-content: flex-start;
     align-items: center;
     -moz-column-gap: 0rem;
-         column-gap: 0rem;
+    column-gap: 0rem;
     row-gap: 1rem;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -223,7 +246,7 @@
     justify-content: flex-start;
     align-items: flex-end;
     -moz-column-gap: 0;
-         column-gap: 0;
+    column-gap: 0;
     row-gap: 0;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -247,10 +270,18 @@
   }
 }
 @media (max-width: 375px) {
-  .write-note-container .current-book .current-book-text .current-book-title-and-authors .current-book-title {
+  .write-note-container
+    .current-book
+    .current-book-text
+    .current-book-title-and-authors
+    .current-book-title {
     font-size: 1.1rem;
   }
-  .write-note-container .current-book .current-book-text .current-book-title-and-authors .current-book-authors {
+  .write-note-container
+    .current-book
+    .current-book-text
+    .current-book-title-and-authors
+    .current-book-authors {
     font-size: 0.9rem;
   }
   .write-note-container .current-book .current-book-text .input-range .page-number {
@@ -262,4 +293,4 @@
   .write-note-container .current-book .current-book-text .textarea-note {
     height: 12rem;
   }
-}/*# sourceMappingURL=writeNote.css.map */
+} /*# sourceMappingURL=writeNote.css.map */

@@ -2,7 +2,7 @@
   background-image: url("bookshelf1.jpg");
 
   padding-left: 2rem;
-  padding-top: 2rem; 
+  padding-top: 2rem;
   border-radius: 30px;
 }
 
@@ -11,26 +11,24 @@
 
   padding-left: 2rem;
   padding-top: 2rem;
-  border-radius: 20px;  
+  border-radius: 20px;
 }
 
 .to-read-books {
   background-image: url("bookshelf1.jpg");
 
   padding-left: 2rem;
-  padding-top: 2rem; 
+  padding-top: 2rem;
   border-radius: 20px;
 }
 
 .have-read-books {
   background-image: url("bookshelf1.jpg");
 
-  padding-left: 2rem; 
-  padding-top: 2rem; 
+  padding-left: 2rem;
+  padding-top: 2rem;
   border-radius: 20px;
 }
-
-
 
 .mybooks-container {
   width: 100%;
@@ -45,7 +43,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -66,7 +64,7 @@
   justify-content: flex-start;
   align-items: center;
   -moz-column-gap: 2rem;
-       column-gap: 2rem;
+  column-gap: 2rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -101,7 +99,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 1.5rem;
-       column-gap: 1.5rem;
+  column-gap: 1.5rem;
   row-gap: 1.5rem;
   flex-direction: row;
   flex-wrap: wrap;
@@ -109,7 +107,9 @@
 .mybooks-container .books .display-books > div img {
   width: 8rem;
   height: 11rem;
-  box-shadow: 0.1rem 0.1rem 0.5rem rgba(128, 128, 128, 0.3), -0.1rem -0.1rem 0.5rem rgba(128, 128, 128, 0.3);
+  box-shadow:
+    0.1rem 0.1rem 0.5rem rgba(128, 128, 128, 0.3),
+    -0.1rem -0.1rem 0.5rem rgba(128, 128, 128, 0.3);
 }
 
 .mybooks-container.darkmode {
@@ -162,7 +162,7 @@
     justify-content: center;
     align-items: flex-start;
     -moz-column-gap: 0;
-         column-gap: 0;
+    column-gap: 0;
     row-gap: 1.5rem;
     flex-direction: row;
     flex-wrap: wrap;
@@ -172,4 +172,4 @@
   .mybooks-container .books .display-books {
     display: none;
   }
-}/*# sourceMappingURL=myBooks.css.map */
+} /*# sourceMappingURL=myBooks.css.map */

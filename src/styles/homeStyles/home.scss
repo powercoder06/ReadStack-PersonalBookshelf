@@ -3,475 +3,476 @@
 @use "../colors" as *;
 
 .home-container {
-   width: 100%;
-   min-height: calc(100vh - 4.5rem);
-   background-color: $White;
-   transition: 0.3s;
-   .hero {
-      @include flexbox(space-between, center);
-      .hero-image {
-         width: 45%;
-         img {
-            display: block;
-            width: 94%;
-         }
+  width: 100%;
+  min-height: calc(100vh - 4.5rem);
+  background-color: $White;
+  transition: 0.3s;
+  .hero {
+    @include flexbox(space-between, center);
+    .hero-image {
+      width: 45%;
+      img {
+        display: block;
+        width: 94%;
       }
-      .hero-text {
-         width: 50%;
-         height: 20rem;
-         padding: 0 2rem;
-         @include flexbox(space-between, flex-start, 0, 0, column);
-         .quote {
-            color: $Very-dark-blue;
-            h1 {
-               font-size: 2rem;
-               font-weight: $font-700;
-            }
-            p {
-               font-size: 1.5rem;
-               font-weight: $font-500;
-               text-align: right;
-            }
-         }
-         .get-started {
-            width: 100%;
-            color: $Very-dark-blue;
-            @include flexbox(flex-start, flex-start, 0, 1rem, column);
-            h2 {
-               font-size: 1.4rem;
-               font-weight: $font-700;
-            }
-            .form {
-               width: 100%;
-               @include flexbox(space-between, center);
-               .search-input {
-                  width: 80%;
-                  padding: 0 1rem;
-                  border-radius: 0.5rem;
-                  border: 0.1rem solid $Very-dark-blue;
-                  background-color: $Very-light-gray;
-                  transition: 0.3s;
-                  @include flexbox(flex-start, center, 0.5rem);
-                  input {
-                     width: 100%;
-                     padding: 0.75rem 0;
-                     outline: none;
-                     border: none;
-                     border-radius: 0.5rem;
-                     color: $Very-dark-blue;
-                     font-size: 1rem;
-                     background-color: $Very-light-gray;
-                     transition: 0.3s;
-                     &::placeholder {
-                        color: $Very-dark-blue;
-                        font-size: 1rem;
-                     }
-                  }
-                  img {
-                     width: 2rem;
-                  }
-               }
-               .search {
-                  width: 6rem;
-                  padding: 0.75rem 0;
-                  border: none;
-                  border-radius: 0.5rem;
-                  background-color: $Very-dark-blue;
-                  color: $White;
-                  font-size: 1rem;
-                  font-weight: $font-700;
-               }
-            }
-         }
-      }
-   }
-   .books {
+    }
+    .hero-text {
+      width: 50%;
+      height: 20rem;
       padding: 0 2rem;
-      background-color: $White;
-      transition: 0.3s;
-      @include flexbox(flex-start, flex-start, 2rem, 2rem, row, wrap);
-      .book {
-         max-width: calc((100% - 4rem) / 3);
-         height: 11.75rem;
-         padding-right: 1rem;
-         border-radius: 0.5rem;
-         box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
-            -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
-         transition: 0.3s;
-         @include flexbox(flex-start, flex-start, 1rem);
-         .book-image {
-            height: 100%;
-            img {
-               width: 7.5rem;
-               height: inherit;
-               border-radius: 0.5rem 0 0 0.5rem;
-            }
-         }
-         .book-text {
-            padding: 1rem 0;
-            .title {
-               color: $Black;
-               font-weight: $font-700;
-               margin-bottom: 0.5rem;
-            }
-            .authors-and-date {
-               color: $Gray;
-               font-size: 0.9rem;
-               font-weight: $font-500;
-               margin-bottom: 0.3rem;
-            }
-            .description {
-               color: $Black;
-               font-weight: $font-400;
-               $font-size: 0.8rem;
-               $max-lines: 3;
-               $line-height: 1.4;
-               line-height: $line-height;
-               font-size: $font-size;
-               height: calc($max-lines * $font-size * $line-height);
-               overflow: hidden;
-               margin-bottom: 0.25rem;
-            }
-         }
+      @include flexbox(space-between, flex-start, 0, 0, column);
+      .quote {
+        color: $Very-dark-blue;
+        h1 {
+          font-size: 2rem;
+          font-weight: $font-700;
+        }
+        p {
+          font-size: 1.5rem;
+          font-weight: $font-500;
+          text-align: right;
+        }
       }
-   }
-   .arrow-up {
-      width: 2.5rem;
-      position: fixed;
-      bottom: 1rem;
-      right: -2.5rem;
-   }
+      .get-started {
+        width: 100%;
+        color: $Very-dark-blue;
+        @include flexbox(flex-start, flex-start, 0, 1rem, column);
+        h2 {
+          font-size: 1.4rem;
+          font-weight: $font-700;
+        }
+        .form {
+          width: 100%;
+          @include flexbox(space-between, center);
+          .search-input {
+            width: 80%;
+            padding: 0 1rem;
+            border-radius: 0.5rem;
+            border: 0.1rem solid $Very-dark-blue;
+            background-color: $Very-light-gray;
+            transition: 0.3s;
+            @include flexbox(flex-start, center, 0.5rem);
+            input {
+              width: 100%;
+              padding: 0.75rem 0;
+              outline: none;
+              border: none;
+              border-radius: 0.5rem;
+              color: $Very-dark-blue;
+              font-size: 1rem;
+              background-color: $Very-light-gray;
+              transition: 0.3s;
+              &::placeholder {
+                color: $Very-dark-blue;
+                font-size: 1rem;
+              }
+            }
+            img {
+              width: 2rem;
+            }
+          }
+          .search {
+            width: 6rem;
+            padding: 0.75rem 0;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: $Very-dark-blue;
+            color: $White;
+            font-size: 1rem;
+            font-weight: $font-700;
+          }
+        }
+      }
+    }
+  }
+  .books {
+    padding: 0 2rem;
+    background-color: $White;
+    transition: 0.3s;
+    @include flexbox(flex-start, flex-start, 2rem, 2rem, row, wrap);
+    .book {
+      max-width: calc((100% - 4rem) / 3);
+      height: 11.75rem;
+      padding-right: 1rem;
+      border-radius: 0.5rem;
+      box-shadow:
+        0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+        -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+      transition: 0.3s;
+      @include flexbox(flex-start, flex-start, 1rem);
+      .book-image {
+        height: 100%;
+        img {
+          width: 7.5rem;
+          height: inherit;
+          border-radius: 0.5rem 0 0 0.5rem;
+        }
+      }
+      .book-text {
+        padding: 1rem 0;
+        .title {
+          color: $Black;
+          font-weight: $font-700;
+          margin-bottom: 0.5rem;
+        }
+        .authors-and-date {
+          color: $Gray;
+          font-size: 0.9rem;
+          font-weight: $font-500;
+          margin-bottom: 0.3rem;
+        }
+        .description {
+          color: $Black;
+          font-weight: $font-400;
+          $font-size: 0.8rem;
+          $max-lines: 3;
+          $line-height: 1.4;
+          line-height: $line-height;
+          font-size: $font-size;
+          height: calc($max-lines * $font-size * $line-height);
+          overflow: hidden;
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+  }
+  .arrow-up {
+    width: 2.5rem;
+    position: fixed;
+    bottom: 1rem;
+    right: -2.5rem;
+  }
 
-   .fixed {
-      right: 1rem;
-   }
+  .fixed {
+    right: 1rem;
+  }
 }
 
 .home-container.dark-mode {
-   background-color: $Black;
-   .hero {
-      .hero-text {
-         .quote {
-            color: $Turquoise;
-         }
-         .get-started {
-            color: $Turquoise;
-            .form {
-               .search-input {
-                  background-color: $Dark-gray;
-                  border-color: $Turquoise;
-                  input {
-                     background-color: $Dark-gray;
-                     color: $Turquoise;
-                     &::placeholder {
-                        color: $Turquoise;
-                     }
-                  }
-               }
-               .search {
-                  background-color: $Turquoise;
-                  color: $Black;
-               }
-            }
-         }
+  background-color: $Black;
+  .hero {
+    .hero-text {
+      .quote {
+        color: $Turquoise;
       }
-   }
-   .books.dark-mode {
-      background-color: $Black;
-      .book {
-         .book-text {
-            .title {
-               color: $White;
+      .get-started {
+        color: $Turquoise;
+        .form {
+          .search-input {
+            background-color: $Dark-gray;
+            border-color: $Turquoise;
+            input {
+              background-color: $Dark-gray;
+              color: $Turquoise;
+              &::placeholder {
+                color: $Turquoise;
+              }
             }
-            .authors-and-date {
-               color: $Gray;
-            }
-            .description {
-               color: $White;
-            }
-         }
+          }
+          .search {
+            background-color: $Turquoise;
+            color: $Black;
+          }
+        }
       }
-   }
+    }
+  }
+  .books.dark-mode {
+    background-color: $Black;
+    .book {
+      .book-text {
+        .title {
+          color: $White;
+        }
+        .authors-and-date {
+          color: $Gray;
+        }
+        .description {
+          color: $White;
+        }
+      }
+    }
+  }
 }
 
 @media (hover: hover) {
-   .home-container {
-      .hero {
-         .hero-text {
-            .get-started {
-               .form {
-                  .search:hover {
-                     cursor: pointer;
-                     opacity: 0.9;
-                  }
-               }
+  .home-container {
+    .hero {
+      .hero-text {
+        .get-started {
+          .form {
+            .search:hover {
+              cursor: pointer;
+              opacity: 0.9;
             }
-         }
+          }
+        }
       }
-      .books {
-         .book {
-            &:hover {
-               scale: 1.1;
-            }
-         }
+    }
+    .books {
+      .book {
+        &:hover {
+          scale: 1.1;
+        }
       }
-      .arrow-up:hover {
-         scale: 1.1;
-         opacity: 0.9;
-         cursor: pointer;
-      }
-   }
+    }
+    .arrow-up:hover {
+      scale: 1.1;
+      opacity: 0.9;
+      cursor: pointer;
+    }
+  }
 }
 
 @media (max-width: 1150px) {
-   .home-container {
-      .hero {
-         height: 32rem;
-         @include flexbox(space-between, center);
-         .hero-text {
-            height: 25rem;
-            @include flexbox(space-between, flex-start, 0, 0rem, column);
-            .get-started {
-               .form {
-                  @include flexbox(flex-start, flex-start, 0, 1rem, column);
-                  .search-input {
-                     width: 100%;
-                     input {
-                        width: 100%;
-                     }
-                  }
-                  .search {
-                     width: 100%;
-                  }
-               }
+  .home-container {
+    .hero {
+      height: 32rem;
+      @include flexbox(space-between, center);
+      .hero-text {
+        height: 25rem;
+        @include flexbox(space-between, flex-start, 0, 0rem, column);
+        .get-started {
+          .form {
+            @include flexbox(flex-start, flex-start, 0, 1rem, column);
+            .search-input {
+              width: 100%;
+              input {
+                width: 100%;
+              }
             }
-         }
-      }
-      .books {
-         .book {
-            min-width: calc((100% - 4rem) / 3);
-            .book-text {
-               .title {
-                  font-size: 1rem;
-               }
-               .authors-and-date {
-                  display: none;
-               }
-               .description {
-                  display: none;
-               }
+            .search {
+              width: 100%;
             }
-         }
+          }
+        }
       }
-   }
+    }
+    .books {
+      .book {
+        min-width: calc((100% - 4rem) / 3);
+        .book-text {
+          .title {
+            font-size: 1rem;
+          }
+          .authors-and-date {
+            display: none;
+          }
+          .description {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 900px) {
-   .home-container {
-      .hero {
-         height: auto;
-         @include flexbox(flex-start, center, 0, 0, column-reverse);
-         .hero-image {
-            width: 40%;
-            img {
-               width: 100%;
-            }
-         }
-         .hero-text {
-            width: 100%;
-            height: auto;
-            padding: 0rem 2rem;
-            @include flexbox(space-between, flex-start, 0, 1rem, column);
-            .quote {
-               h1 {
-                  font-size: 1.7rem;
-               }
-               p {
-                  font-size: 1.2rem;
-               }
-            }
-            .get-started {
-               @include flexbox(flex-start, flex-start, 0, 0.5rem, column);
-               h2 {
-                  font-size: 1.3rem;
-               }
-               .form {
-                  @include flexbox(flex-start, flex-start, 1rem, 0, row);
-                  .search-input {
-                     input {
-                        font-size: 0.9rem;
-                        &::placeholder {
-                           font-size: 0.9rem;
-                        }
-                     }
-                  }
-                  .search {
-                     width: 4.5rem;
-                     padding: 0.75rem 1rem;
-                     font-size: 0.9rem;
-                     @include flexbox(center, center);
-                  }
-               }
-            }
-         }
+  .home-container {
+    .hero {
+      height: auto;
+      @include flexbox(flex-start, center, 0, 0, column-reverse);
+      .hero-image {
+        width: 40%;
+        img {
+          width: 100%;
+        }
       }
-      .books {
-         margin-top: 1rem;
-         .book {
-            min-width: calc((100% - 2rem) / 2);
-         }
+      .hero-text {
+        width: 100%;
+        height: auto;
+        padding: 0rem 2rem;
+        @include flexbox(space-between, flex-start, 0, 1rem, column);
+        .quote {
+          h1 {
+            font-size: 1.7rem;
+          }
+          p {
+            font-size: 1.2rem;
+          }
+        }
+        .get-started {
+          @include flexbox(flex-start, flex-start, 0, 0.5rem, column);
+          h2 {
+            font-size: 1.3rem;
+          }
+          .form {
+            @include flexbox(flex-start, flex-start, 1rem, 0, row);
+            .search-input {
+              input {
+                font-size: 0.9rem;
+                &::placeholder {
+                  font-size: 0.9rem;
+                }
+              }
+            }
+            .search {
+              width: 4.5rem;
+              padding: 0.75rem 1rem;
+              font-size: 0.9rem;
+              @include flexbox(center, center);
+            }
+          }
+        }
       }
-   }
+    }
+    .books {
+      margin-top: 1rem;
+      .book {
+        min-width: calc((100% - 2rem) / 2);
+      }
+    }
+  }
 }
 
 @media (max-width: 700px) {
-   .home-container {
-      .hero {
-         .hero-image {
-            width: 48%;
-         }
+  .home-container {
+    .hero {
+      .hero-image {
+        width: 48%;
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 600px) {
-   .home-container {
-      .hero {
-         .hero-image {
-            width: 55%;
-         }
+  .home-container {
+    .hero {
+      .hero-image {
+        width: 55%;
       }
-      .books {
-         .book {
-            min-width: calc((100% - 4rem) / 3);
-            height: 12rem;
-            padding-right: 0;
+    }
+    .books {
+      .book {
+        min-width: calc((100% - 4rem) / 3);
+        height: 12rem;
+        padding-right: 0;
+        border-radius: 0;
+        .book-image {
+          height: 100%;
+          width: 100%;
+          img {
+            width: 100%;
             border-radius: 0;
-            .book-image {
-               height: 100%;
-               width: 100%;
-               img {
-                  width: 100%;
-                  border-radius: 0;
-               }
-            }
-            .book-text {
-               display: none;
-            }
-         }
+          }
+        }
+        .book-text {
+          display: none;
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 500px) {
-   .home-container {
-      .hero {
-         .hero-text {
-            padding: 0 1rem;
-         }
-         .hero-image {
-            width: 65%;
-         }
+  .home-container {
+    .hero {
+      .hero-text {
+        padding: 0 1rem;
       }
-      .books {
-         padding: 0 1rem;
-         @include flexbox(flex-start, flex-start, 2rem, 2rem, row, wrap);
-         .book {
-            max-width: calc((100% - 4rem) / 3);
-         }
+      .hero-image {
+        width: 65%;
       }
-   }
+    }
+    .books {
+      padding: 0 1rem;
+      @include flexbox(flex-start, flex-start, 2rem, 2rem, row, wrap);
+      .book {
+        max-width: calc((100% - 4rem) / 3);
+      }
+    }
+  }
 }
 
 @media (max-width: 450px) {
-   .home-container {
-      .hero {
-         .hero-text {
-            .quote {
-               h1 {
-                  font-size: 1.5rem;
-               }
-               p {
-                  font-size: 1.1rem;
-               }
+  .home-container {
+    .hero {
+      .hero-text {
+        .quote {
+          h1 {
+            font-size: 1.5rem;
+          }
+          p {
+            font-size: 1.1rem;
+          }
+        }
+        .get-started {
+          h2 {
+            font-size: 1.2rem;
+          }
+          .form {
+            .search-input {
+              input {
+                font-size: 0.8rem;
+                &::placeholder {
+                  font-size: 0.8rem;
+                }
+              }
             }
-            .get-started {
-               h2 {
-                  font-size: 1.2rem;
-               }
-               .form {
-                  .search-input {
-                     input {
-                        font-size: 0.8rem;
-                        &::placeholder {
-                           font-size: 0.8rem;
-                        }
-                     }
-                  }
-                  .search {
-                     font-size: 0.8rem;
-                  }
-               }
+            .search {
+              font-size: 0.8rem;
             }
-         }
+          }
+        }
       }
-      .books {
-         @include flexbox(flex-start, flex-start, 1rem, 1rem, row, wrap);
-         .book {
-            min-width: calc((100% - 2rem) / 3);
-         }
+    }
+    .books {
+      @include flexbox(flex-start, flex-start, 1rem, 1rem, row, wrap);
+      .book {
+        min-width: calc((100% - 2rem) / 3);
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 400px) {
-   .home-container {
-      .hero {
-         .hero-image {
-            width: 70%;
-         }
-         .hero-text {
-            .get-started {
-               .form {
-                  @include flexbox(flex-start, flex-start, 0, 1rem, column);
-                  .search-input {
-                     width: 100%;
-                     input {
-                        width: 100%;
-                     }
-                  }
-                  .search {
-                     width: 100%;
-                  }
-               }
+  .home-container {
+    .hero {
+      .hero-image {
+        width: 70%;
+      }
+      .hero-text {
+        .get-started {
+          .form {
+            @include flexbox(flex-start, flex-start, 0, 1rem, column);
+            .search-input {
+              width: 100%;
+              input {
+                width: 100%;
+              }
             }
-         }
+            .search {
+              width: 100%;
+            }
+          }
+        }
       }
-      .books {
-         @include flexbox(flex-start, flex-start, 2rem, 2rem, row, wrap);
-         .book {
-            min-width: calc((100% - 4rem) / 2);
-         }
+    }
+    .books {
+      @include flexbox(flex-start, flex-start, 2rem, 2rem, row, wrap);
+      .book {
+        min-width: calc((100% - 4rem) / 2);
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 375px) {
-   .home-container {
-      .hero {
-         .hero-text {
-            padding: 0 1rem;
-         }
+  .home-container {
+    .hero {
+      .hero-text {
+        padding: 0 1rem;
       }
-      .books {
-         @include flexbox(center, flex-start, 1rem, 1rem, row, wrap);
-         .book {
-            min-width: calc((100% - 2rem) / 2);
-            width: 9rem;
-            height: 12rem;
-            min-width: none;
-            max-width: none;
-         }
+    }
+    .books {
+      @include flexbox(center, flex-start, 1rem, 1rem, row, wrap);
+      .book {
+        min-width: calc((100% - 2rem) / 2);
+        width: 9rem;
+        height: 12rem;
+        min-width: none;
+        max-width: none;
       }
-   }
+    }
+  }
 }

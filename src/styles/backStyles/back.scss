@@ -3,34 +3,34 @@
 @use "../colors" as *;
 
 .back {
-   padding: 0.5rem;
-   background-color: $White;
-   border: 0.1rem solid $Very-dark-blue;
-   border-radius: 0.5rem;
-   font-size: 1.2rem;
-   font-weight: $font-500;
-   color: $Very-dark-blue;
-   box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.5);
-   transition: 0.3s;
-   @include flexbox(flex-start, center, 1rem);
-   img {
-      width: 1.5rem;
-   }
+  padding: 0.5rem;
+  background-color: $White;
+  border: 0.1rem solid $Very-dark-blue;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: $font-500;
+  color: $Very-dark-blue;
+  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.5);
+  transition: 0.3s;
+  @include flexbox(flex-start, center, 1rem);
+  img {
+    width: 1.5rem;
+  }
 }
 
 .back.dark-mode {
-   background-color: $Black;
-   color: $Turquoise;
-   border-color: $Turquoise;
+  background-color: $Black;
+  color: $Turquoise;
+  border-color: $Turquoise;
 }
 
 @media (hover: hover) {
-   .back:hover {
-      cursor: pointer;
-      background-color: $Very-light-gray;
-   }
+  .back:hover {
+    cursor: pointer;
+    background-color: $Very-light-gray;
+  }
 
-   .back.dark-mode:hover {
-      background-color: $Dark-gray;
-   }
+  .back.dark-mode:hover {
+    background-color: $Dark-gray;
+  }
 }

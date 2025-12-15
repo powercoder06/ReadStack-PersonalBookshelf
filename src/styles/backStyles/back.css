@@ -12,7 +12,7 @@
   justify-content: flex-start;
   align-items: center;
   -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  column-gap: 1rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -35,4 +35,4 @@
   .back.dark-mode:hover {
     background-color: #151519;
   }
-}/*# sourceMappingURL=back.css.map */
+} /*# sourceMappingURL=back.css.map */

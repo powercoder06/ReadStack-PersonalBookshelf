@@ -11,7 +11,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 2rem;
-       column-gap: 2rem;
+  column-gap: 2rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -50,9 +50,9 @@
     justify-content: flex-start;
     align-items: flex-start;
     -moz-column-gap: 0;
-         column-gap: 0;
+    column-gap: 0;
     row-gap: 0.5rem;
     flex-direction: column;
     flex-wrap: nowrap;
   }
-}/*# sourceMappingURL=myNotes.css.map */
+} /*# sourceMappingURL=myNotes.css.map */

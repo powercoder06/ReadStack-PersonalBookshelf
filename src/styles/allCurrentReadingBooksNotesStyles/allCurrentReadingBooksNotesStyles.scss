@@ -3,288 +3,290 @@
 @use "../colors" as *;
 
 .all-current-reading-notes-book-container {
-   width: 100%;
-   background-color: $White;
-   transition: 0.3s;
-   .filtered-current-reading-book-info {
-      width: inherit;
-      margin: 1rem 0 0;
-      @include flexbox(flex-start, flex-start, 2rem);
-      .filtered-current-reading-book-image {
-         width: 8.5rem;
-         height: 12.75rem;
-         > img {
-            width: inherit;
-            height: inherit;
-            box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
-               -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
-         }
+  width: 100%;
+  background-color: $White;
+  transition: 0.3s;
+  .filtered-current-reading-book-info {
+    width: inherit;
+    margin: 1rem 0 0;
+    @include flexbox(flex-start, flex-start, 2rem);
+    .filtered-current-reading-book-image {
+      width: 8.5rem;
+      height: 12.75rem;
+      > img {
+        width: inherit;
+        height: inherit;
+        box-shadow:
+          0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+          -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
       }
-      .filtered-current-reading-book-text {
-         p {
-            color: $Black;
-            font-size: 1rem;
-            font-weight: $font-400;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            transition: 0.3s;
-            span {
-               color: $Very-dark-blue;
-               font-size: 1.1rem;
-               font-weight: $font-500;
-               transition: 0.3s;
-            }
-         }
+    }
+    .filtered-current-reading-book-text {
+      p {
+        color: $Black;
+        font-size: 1rem;
+        font-weight: $font-400;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        transition: 0.3s;
+        span {
+          color: $Very-dark-blue;
+          font-size: 1.1rem;
+          font-weight: $font-500;
+          transition: 0.3s;
+        }
       }
-   }
-   .Delete-all-current-reading-book-notes {
-      margin: 0rem 0 1.5rem;
-      color: $Very-dark-blue;
-      @include flexbox(flex-start, center, 1rem);
-      img {
-         width: 1.6rem;
+    }
+  }
+  .Delete-all-current-reading-book-notes {
+    margin: 0rem 0 1.5rem;
+    color: $Very-dark-blue;
+    @include flexbox(flex-start, center, 1rem);
+    img {
+      width: 1.6rem;
+    }
+  }
+  .filtered-current-reading-book-notes {
+    width: 100%;
+    @include flexbox(flex-start, flex-start, 3rem, 3rem, row, wrap);
+    .filtered-current-reading-note {
+      width: calc((100% - 6rem) / 3);
+      min-height: 15rem;
+      padding: 1rem 1rem;
+      box-shadow:
+        0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+        -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+      border-radius: 0.5rem;
+      overflow-wrap: break-word;
+      transition: 0.3s;
+      position: relative;
+      .filtered-current-reading-note-date-and-page {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        font-weight: $font-500;
+        color: $Very-dark-blue;
+        @include flexbox(flex-start, flex-start, 1rem, 0, row, wrap);
       }
-   }
-   .filtered-current-reading-book-notes {
-      width: 100%;
-      @include flexbox(flex-start, flex-start, 3rem, 3rem, row, wrap);
-      .filtered-current-reading-note {
-         width: calc((100% - 6rem) / 3);
-         min-height: 15rem;
-         padding: 1rem 1rem;
-         box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
-            -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
-         border-radius: 0.5rem;
-         overflow-wrap: break-word;
-         transition: 0.3s;
-         position: relative;
-         .filtered-current-reading-note-date-and-page {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+      .edit-and-delete {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        @include flexbox(flex-start, flex-start, 0.5rem);
+        > img {
+          width: 1.5rem;
+        }
+      }
+      .textarea-edited-note {
+        width: 100%;
+        height: 8rem;
+        margin-bottom: 0.2rem;
+        background-color: $Very-light-gray;
+        color: $Very-dark-blue;
+        border: 0.15rem solid $Very-dark-blue;
+        outline: none;
+        resize: none;
+        transition: 0.3s;
+      }
+      .characters-and-buttons {
+        width: 100%;
+        @include flexbox(space-between, flex-start);
+        .characters {
+          color: $Very-dark-blue;
+          span {
             font-weight: $font-500;
-            color: $Very-dark-blue;
-            @include flexbox(flex-start, flex-start, 1rem, 0, row, wrap);
-         }
-         .edit-and-delete {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            @include flexbox(flex-start, flex-start, 0.5rem);
-            > img {
-               width: 1.5rem;
-            }
-         }
-         .textarea-edited-note {
-            width: 100%;
-            height: 8rem;
-            margin-bottom: 0.2rem;
-            background-color: $Very-light-gray;
-            color: $Very-dark-blue;
-            border: 0.15rem solid $Very-dark-blue;
+          }
+        }
+        .save-and-cancel {
+          @include flexbox(flex-end, flex-start, 0.5rem);
+          > button {
+            padding: 0.25rem 0.5rem;
+            background-color: $Very-dark-blue;
+            font-weight: $font-500;
+            color: $White;
             outline: none;
-            resize: none;
-            transition: 0.3s;
-         }
-         .characters-and-buttons {
-            width: 100%;
-            @include flexbox(space-between, flex-start);
-            .characters {
-               color: $Very-dark-blue;
-               span {
-                  font-weight: $font-500;
-               }
-            }
-            .save-and-cancel {
-               @include flexbox(flex-end, flex-start, 0.5rem);
-               > button {
-                  padding: 0.25rem 0.5rem;
-                  background-color: $Very-dark-blue;
-                  font-weight: $font-500;
-                  color: $White;
-                  outline: none;
-                  border: none;
-                  border-radius: 0.5rem;
-               }
-            }
-         }
-         .filtered-current-reading-note-text {
-            color: $Black;
-         }
+            border: none;
+            border-radius: 0.5rem;
+          }
+        }
       }
-   }
-   .no-note-found-book {
-      margin: 2rem auto;
-      font-size: 1.2rem;
-      font-weight: $font-700;
-      color: $Very-dark-blue;
-      text-align: center;
-   }
+      .filtered-current-reading-note-text {
+        color: $Black;
+      }
+    }
+  }
+  .no-note-found-book {
+    margin: 2rem auto;
+    font-size: 1.2rem;
+    font-weight: $font-700;
+    color: $Very-dark-blue;
+    text-align: center;
+  }
 }
 
 .all-current-reading-notes-book-container.dark-mode {
-   background-color: $Black;
-   .filtered-current-reading-book-info {
-      .filtered-current-reading-book-text {
-         p {
-            color: $White;
-            span {
-               color: $Turquoise;
-            }
-         }
+  background-color: $Black;
+  .filtered-current-reading-book-info {
+    .filtered-current-reading-book-text {
+      p {
+        color: $White;
+        span {
+          color: $Turquoise;
+        }
       }
-   }
-   .Delete-all-current-reading-book-notes {
+    }
+  }
+  .Delete-all-current-reading-book-notes {
+    color: $Turquoise;
+  }
+  .filtered-current-reading-book-notes {
+    .filtered-current-reading-note {
+      .filtered-current-reading-note-date-and-page {
+        > p {
+          color: $Turquoise;
+        }
+      }
+      .textarea-edited-note {
+        background-color: $Dark-gray;
+        color: $Turquoise;
+        border-color: $Turquoise;
+      }
+      .characters-and-buttons {
+        .characters {
+          color: $Turquoise;
+        }
+        .save-and-cancel {
+          > button {
+            background-color: $Turquoise;
+            color: $Black;
+          }
+        }
+      }
+      .filtered-current-reading-note-text {
+        color: $White;
+      }
+    }
+    .no-note-found-book {
       color: $Turquoise;
-   }
-   .filtered-current-reading-book-notes {
-      .filtered-current-reading-note {
-         .filtered-current-reading-note-date-and-page {
-            > p {
-               color: $Turquoise;
-            }
-         }
-         .textarea-edited-note {
-            background-color: $Dark-gray;
-            color: $Turquoise;
-            border-color: $Turquoise;
-         }
-         .characters-and-buttons {
-            .characters {
-               color: $Turquoise;
-            }
-            .save-and-cancel {
-               > button {
-                  background-color: $Turquoise;
-                  color: $Black;
-               }
-            }
-         }
-         .filtered-current-reading-note-text {
-            color: $White;
-         }
-      }
-      .no-note-found-book {
-         color: $Turquoise;
-      }
-   }
+    }
+  }
 }
 
 @media (hover: hover) {
-   .all-current-reading-notes-book-container {
-      .Delete-all-current-reading-book-notes {
-         img:hover {
+  .all-current-reading-notes-book-container {
+    .Delete-all-current-reading-book-notes {
+      img:hover {
+        cursor: pointer;
+        scale: 1.1;
+      }
+    }
+    .filtered-current-reading-book-notes {
+      .filtered-current-reading-note {
+        &:hover {
+          scale: 1.1;
+          .edit-and-delete {
+            > img:hover {
+              cursor: pointer;
+              scale: 1.1;
+            }
+          }
+        }
+        .save-and-cancel {
+          > button:hover {
             cursor: pointer;
-            scale: 1.1;
-         }
+          }
+        }
       }
-      .filtered-current-reading-book-notes {
-         .filtered-current-reading-note {
-            &:hover {
-               scale: 1.1;
-               .edit-and-delete {
-                  > img:hover {
-                     cursor: pointer;
-                     scale: 1.1;
-                  }
-               }
-            }
-            .save-and-cancel {
-               > button:hover {
-                  cursor: pointer;
-               }
-            }
-         }
-      }
-   }
+    }
+  }
 }
 
 @media (max-width: 1150px) {
-   .all-current-reading-notes-book-container {
-      .filtered-current-reading-book-info {
-         margin-bottom: 1rem;
-         .filtered-current-reading-book-text {
-            .filtered-current-reading-book-plublished-page {
-               display: none;
-            }
-         }
+  .all-current-reading-notes-book-container {
+    .filtered-current-reading-book-info {
+      margin-bottom: 1rem;
+      .filtered-current-reading-book-text {
+        .filtered-current-reading-book-plublished-page {
+          display: none;
+        }
       }
-      .filtered-current-reading-book-notes {
-         .filtered-current-reading-note {
-            padding: 3rem 1rem 1rem;
-         }
+    }
+    .filtered-current-reading-book-notes {
+      .filtered-current-reading-note {
+        padding: 3rem 1rem 1rem;
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 900px) {
-   .all-current-reading-notes-book-container {
-      .filtered-current-reading-book-info {
-         margin-bottom: 1rem;
-         .filtered-current-reading-book-text {
-            .filtered-current-reading-book-plublished-date {
-               display: none;
-            }
-         }
+  .all-current-reading-notes-book-container {
+    .filtered-current-reading-book-info {
+      margin-bottom: 1rem;
+      .filtered-current-reading-book-text {
+        .filtered-current-reading-book-plublished-date {
+          display: none;
+        }
       }
-      .filtered-current-reading-book-notes {
-         .filtered-current-reading-note {
-            width: calc((100% - 3rem) / 2);
-         }
+    }
+    .filtered-current-reading-book-notes {
+      .filtered-current-reading-note {
+        width: calc((100% - 3rem) / 2);
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 700px) {
-   .all-current-reading-notes-book-container {
-      .filtered-current-reading-book-info {
-         margin-bottom: 1rem;
-         .filtered-current-reading-book-text {
-            .filtered-current-reading-book-plublisher {
-               display: none;
-            }
-         }
+  .all-current-reading-notes-book-container {
+    .filtered-current-reading-book-info {
+      margin-bottom: 1rem;
+      .filtered-current-reading-book-text {
+        .filtered-current-reading-book-plublisher {
+          display: none;
+        }
       }
-      .filtered-current-reading-book-notes {
-         .filtered-current-reading-note {
-            width: 100%;
-         }
-         .filtered-current-reading-note:hover {
-            scale: none;
-         }
+    }
+    .filtered-current-reading-book-notes {
+      .filtered-current-reading-note {
+        width: 100%;
       }
-   }
+      .filtered-current-reading-note:hover {
+        scale: none;
+      }
+    }
+  }
 }
 
 @media (max-width: 500px) {
-   .all-current-reading-notes-book-container {
-      .filtered-current-reading-book-info {
-         margin-bottom: 1rem;
-         .filtered-current-reading-book-text {
-            .filtered-current-reading-book-authors {
-               display: none;
-            }
-         }
+  .all-current-reading-notes-book-container {
+    .filtered-current-reading-book-info {
+      margin-bottom: 1rem;
+      .filtered-current-reading-book-text {
+        .filtered-current-reading-book-authors {
+          display: none;
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 375px) {
-   .all-current-reading-notes-book-container {
-      .filtered-current-reading-book-info {
-         margin-bottom: 1rem;
-         .filtered-current-reading-book-image {
-            width: 100%;
-            @include flexbox(center, flex-start);
-            > img {
-               width: 8rem;
-               height: 12rem;
-            }
-         }
-         .filtered-current-reading-book-text {
-            .filtered-current-reading-book-title {
-               display: none;
-            }
-         }
+  .all-current-reading-notes-book-container {
+    .filtered-current-reading-book-info {
+      margin-bottom: 1rem;
+      .filtered-current-reading-book-image {
+        width: 100%;
+        @include flexbox(center, flex-start);
+        > img {
+          width: 8rem;
+          height: 12rem;
+        }
       }
-   }
+      .filtered-current-reading-book-text {
+        .filtered-current-reading-book-title {
+          display: none;
+        }
+      }
+    }
+  }
 }

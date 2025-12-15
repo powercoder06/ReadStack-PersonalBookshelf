@@ -10,7 +10,22 @@
     "test": "vitest",
     "test:ui": "vitest --ui --coverage",
     "test:coverage": "vitest --coverage",
-    "test:ci": "vitest run --coverage"
+    "test:ci": "vitest run --coverage",
+    "lint": "eslint src --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext js,jsx,ts,tsx --fix",
+    "format": "prettier --write src/**/*.{js,jsx,css,scss,json}",
+    "format:check": "prettier --check src/**/*.{js,jsx,css,scss,json}",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix --max-warnings 50"
+    ],
+    "src/**/*.{css,scss,json}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
@@ -30,10 +45,20 @@
     "@testing-library/user-event": "^14.5.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^5.1.2",
     "@vitest/coverage-v8": "^4.0.15",
     "@vitest/ui": "^4.0.15",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "husky": "^8.0.3",
     "jsdom": "^25.0.1",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.2.2",
     "vite": "^6.0.7",
     "vitest": "^4.0.15"
   }

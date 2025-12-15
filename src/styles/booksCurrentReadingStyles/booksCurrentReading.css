@@ -12,7 +12,7 @@
   justify-content: flex-start;
   align-items: center;
   -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  column-gap: 1rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -26,7 +26,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 2rem;
-       column-gap: 2rem;
+  column-gap: 2rem;
   row-gap: 2.5rem;
   flex-direction: row;
   flex-wrap: wrap;
@@ -37,11 +37,16 @@
 .books-current-reading-container .display-current-reading-books .books-displayed img {
   width: 8rem;
   height: 12rem;
-  box-shadow: 0.1rem 0.1rem 0.5rem rgba(128, 128, 128, 0.3), -0.1rem -0.1rem 0.5rem rgba(128, 128, 128, 0.3);
+  box-shadow:
+    0.1rem 0.1rem 0.5rem rgba(128, 128, 128, 0.3),
+    -0.1rem -0.1rem 0.5rem rgba(128, 128, 128, 0.3);
   position: relative;
   z-index: 2;
 }
-.books-current-reading-container .display-current-reading-books .books-displayed .see-and-delete-icons {
+.books-current-reading-container
+  .display-current-reading-books
+  .books-displayed
+  .see-and-delete-icons {
   position: absolute;
   bottom: 2rem;
   left: 50%;
@@ -52,12 +57,16 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
+  column-gap: 0.5rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
 }
-.books-current-reading-container .display-current-reading-books .books-displayed .see-and-delete-icons img {
+.books-current-reading-container
+  .display-current-reading-books
+  .books-displayed
+  .see-and-delete-icons
+  img {
   width: 1.6rem;
   height: 1.6rem;
   background-color: transparent;
@@ -80,7 +89,11 @@
     scale: 1.1;
     transition: 0.3s;
   }
-  .books-current-reading-container .display-current-reading-books .books-displayed .see-and-delete-icons img:hover {
+  .books-current-reading-container
+    .display-current-reading-books
+    .books-displayed
+    .see-and-delete-icons
+    img:hover {
     cursor: pointer;
     scale: 1.1;
     z-index: 1;
@@ -97,7 +110,7 @@
     justify-content: center;
     align-items: flex-start;
     -moz-column-gap: 2rem;
-         column-gap: 2rem;
+    column-gap: 2rem;
     row-gap: 2.5rem;
     flex-direction: row;
     flex-wrap: wrap;
@@ -105,4 +118,4 @@
   .books-current-reading-container .category-book {
     font-size: 1.1rem;
   }
-}/*# sourceMappingURL=booksCurrentReading.css.map */
+} /*# sourceMappingURL=booksCurrentReading.css.map */
