@@ -1,31 +1,28 @@
 import { useState } from "react";
-import Home from "../page/Home";
-import MyBooks from "../page/MyBooks";
+import Home from "../pages/Home";
+import MyBooks from "../pages/MyBooks";
 import Searched from "../components/Searched";
-import BooksCurrentReading from "../page/BooksCurrentReading";
-import BooksFavorite from "../page/BooksFavorite";
-import BooksToRead from "../page/BooksToRead";
-import BooksHaveRead from "../page/BooksHaveRead";
-import BooksArchived from "../page/BooksArchived";
-import MyNotes from "../page/MyNotes";
-import AllCurrentReadingBooksNotes from "../page/AllCurrentReadingBooksNotes";
-import CurrentReadingBooksNotes from "../page/CurrentReadingBooksNotes";
-import ArchivedBooksNotes from "../page/ArchivedBooksNotes";
-import AllArchivedBooksNotes from "../page/AllArchivedBooksNotes";
+import BooksCurrentReading from "../pages/BooksCurrentReading";
+import BooksFavorite from "../pages/BooksFavorite";
+import BooksToRead from "../pages/BooksToRead";
+import BooksHaveRead from "../pages/BooksHaveRead";
+import BooksArchived from "../pages/BooksArchived";
+import MyNotes from "../pages/MyNotes";
+import AllCurrentReadingBooksNotes from "../pages/AllCurrentReadingBooksNotes";
+import CurrentReadingBooksNotes from "../pages/CurrentReadingBooksNotes";
+import ArchivedBooksNotes from "../pages/ArchivedBooksNotes";
+import AllArchivedBooksNotes from "../pages/AllArchivedBooksNotes";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { getLocalStorage } from "../App";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 import { AnimatePresence } from "framer-motion";
 import WriteNote from "../components/WriteNote";
 
 function AnimatedRoutes({ darkMode }) {
-  const [archivedBooks, setArchivedBooks] = useState(() => getLocalStorage("archived books"));
-  const [currentReadingBookNotes, setCurrentReadingBookNotes] = useState(() =>
-    getLocalStorage("current reading book notes")
+  const [archivedBooks, setArchivedBooks] = useLocalStorage("archived books");
+  const [currentReadingBookNotes, setCurrentReadingBookNotes] = useLocalStorage(
+    "current reading book notes"
   );
-  const [archivedBookNotes, setArchivedBookNotes] = useState(() =>
-    getLocalStorage("archived book notes")
-  );
-  const [data, setData] = useState();
+  const [archivedBookNotes, setArchivedBookNotes] = useLocalStorage("archived book notes");
   const location = useLocation();
 
   const commonProps = {
@@ -42,7 +39,7 @@ function AnimatedRoutes({ darkMode }) {
     <main style={darkMode ? { backgroundColor: "#1f1f1f" } : { backgroundColor: "#ffffff" }}>
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home darkMode={darkMode} data={data} setData={setData} />} />
+          <Route path="/" element={<Home darkMode={darkMode} />} />
           <Route path="mybooks">
             <Route index element={<MyBooks darkMode={darkMode} />} />
             <Route path="bookscurrentreading">

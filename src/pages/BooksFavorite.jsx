@@ -1,7 +1,7 @@
-import { useContext, useEffect, useRef } from "react";
-import "../styles/booksToReadStyles/booksToRead.css";
+import { useEffect, useRef } from "react";
+import "../styles/booksFavoriteStyles/bookFavorite.css";
 import Back from "../components/Back";
-import { toReadBooksContext } from "../App";
+import { useBooks } from "../contexts/BookContext";
 import deleteIcon from "../assets/delete-icon.svg";
 import deleteIconDarkMode from "../assets/delete-icon-darkmode.svg";
 import deleteAllIcon from "../assets/delete-all-icon.svg";
@@ -18,8 +18,8 @@ import {
 import { motion } from "framer-motion";
 import Toast, { notifyEmptyList } from "../components/Toast";
 
-function BooksToRead({ darkMode }) {
-  const { toReadBooks, setToReadBooks } = useContext(toReadBooksContext);
+function BooksFavorite({ darkMode }) {
+  const { favoriteBooks, setFavoriteBooks } = useBooks();
 
   const booksRef = useRef();
 
@@ -34,38 +34,38 @@ function BooksToRead({ darkMode }) {
     }
   };
 
-  const deleteToReadBooks = e => {
+  const deleteFavoriteBooks = e => {
     deleteOneItemAlert(darkMode, "book").then(result => {
       if (result.isConfirmed) {
-        const nonDeletedBooks = toReadBooks.filter(book => book.id !== e.target.id);
-        setToReadBooks(nonDeletedBooks);
+        const nonDeletedBooks = favoriteBooks.filter(book => book.id !== e.target.id);
+        setFavoriteBooks(nonDeletedBooks);
         deleteOneItemConfirmed(darkMode, "book");
       }
     });
   };
 
-  const deleteAllToReadBooks = () => {
-    if (toReadBooks.length) {
+  const deleteAllFavoriteBooks = () => {
+    if (favoriteBooks.length) {
       deleteAllItemsAlert(darkMode, "books").then(result => {
         if (result.isConfirmed) {
-          setToReadBooks([]);
+          setFavoriteBooks([]);
           deleteAllItemsConfirm(darkMode, "books");
         }
       });
     } else {
-      notifyEmptyList(' "to read books" ');
+      notifyEmptyList(' "favorite books" ');
     }
   };
 
   useEffect(() => {
-    if (toReadBooks) {
-      localStorage.setItem("to read books", JSON.stringify(toReadBooks));
+    if (favoriteBooks) {
+      localStorage.setItem("favorite books", JSON.stringify(favoriteBooks));
     }
-  }, [toReadBooks]);
+  }, [favoriteBooks]);
 
   return (
     <motion.main
-      className={darkMode ? "books-to-read-container dark-mode" : "books-to-read-container"}
+      className={darkMode ? "books-favorite-container dark-mode" : "books-favorite-container"}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{
@@ -74,16 +74,16 @@ function BooksToRead({ darkMode }) {
     >
       <Back darkMode={darkMode} />
       <h3 className="category-book">
-        To read Books
+        Favorite books
         <img
           src={darkMode ? deleteAllIconDarkMode : deleteAllIcon}
           alt="delete all icon"
-          onClick={deleteAllToReadBooks}
+          onClick={deleteAllFavoriteBooks}
         />
       </h3>
-      <section className="display-to-read-books" ref={booksRef}>
-        {toReadBooks
-          ? toReadBooks.map(book => {
+      <section className="display-favorite-books" ref={booksRef}>
+        {favoriteBooks
+          ? favoriteBooks.map(book => {
               return (
                 <div key={book.id} className="books-displayed">
                   <img
@@ -99,7 +99,7 @@ function BooksToRead({ darkMode }) {
                       src={darkMode ? deleteIconDarkMode : deleteIcon}
                       alt="delete icon"
                       id={book.id}
-                      onClick={deleteToReadBooks}
+                      onClick={deleteFavoriteBooks}
                     />
                   </div>
                 </div>
@@ -112,4 +112,4 @@ function BooksToRead({ darkMode }) {
   );
 }
 
-export default BooksToRead;
+export default BooksFavorite;

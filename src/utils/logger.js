@@ -7,7 +7,7 @@ const LOG_LEVELS = {
 
 class Logger {
   constructor() {
-    this.level = process.env.NODE_ENV === "production" ? LOG_LEVELS.WARN : LOG_LEVELS.DEBUG;
+    this.level = import.meta.env.PROD ? LOG_LEVELS.WARN : LOG_LEVELS.DEBUG;
   }
 
   log(level, message, context = {}) {

@@ -1,7 +1,7 @@
 class ErrorReporter {
   constructor() {
-    this.endpoint = process.env.REACT_APP_ERROR_ENDPOINT || null;
-    this.enabled = process.env.NODE_ENV === "production" && this.endpoint;
+    this.endpoint = import.meta.env.VITE_ERROR_ENDPOINT || null;
+    this.enabled = import.meta.env.PROD && this.endpoint;
   }
 
   async report(error, context = {}) {

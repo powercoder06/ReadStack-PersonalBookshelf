@@ -1,12 +1,6 @@
-import { useContext } from "react";
 import "../styles/myBooksStyles/myBooks.css";
 import Back from "../components/Back";
-import {
-  currentReadingContext,
-  favoriteBooksContext,
-  toReadBooksContext,
-  haveReadBooksContext,
-} from "../App";
+import { useBooks } from "../contexts/BookContext";
 import BookCurrentReadingIcon from "../assets/book-current-reading-icon.svg";
 import BookCurrentReadingIconDarkMode from "../assets/book-current-reading-icon-darkmode.svg";
 import FavoriteBookIcon from "../assets/favorite-book-icon.svg";
@@ -21,10 +15,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function MyBooks({ darkMode }) {
-  const { currentReadingBooks } = useContext(currentReadingContext);
-  const { favoriteBooks } = useContext(favoriteBooksContext);
-  const { toReadBooks } = useContext(toReadBooksContext);
-  const { haveReadBooks } = useContext(haveReadBooksContext);
+  const { currentReadingBooks, favoriteBooks, toReadBooks, haveReadBooks } = useBooks();
 
   return (
     <motion.main
