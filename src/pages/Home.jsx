@@ -5,16 +5,19 @@ import { motion } from "framer-motion";
 import { SearchForm } from "../components/ui/SearchForm";
 import { BookGrid } from "../components/ui/BookGrid";
 import { ScrollToTop } from "../components/ui/ScrollToTop";
+import ErrorFallback from "../components/ErrorFallback";
 import { useBookSearch } from "../hooks/useBookSearch";
 import { useScrollBehavior } from "../hooks/useScrollBehavior";
+import { usePerformanceMonitor } from "../hooks/usePerformanceMonitor";
 
 function Home({ darkMode }) {
-  const { data, loading, searchBooks } = useBookSearch();
+  const { data, loading, error, searchBooks, retrySearch, clearError } = useBookSearch();
   const { showScrollTop, scrollToTop, scrollToElement } = useScrollBehavior();
+  const { measureOperation } = usePerformanceMonitor("Home");
   const booksRef = useRef();
 
   const handleSearch = async query => {
-    await searchBooks(query);
+    await measureOperation("search", () => searchBooks(query))();
   };
 
   useEffect(() => {
@@ -50,6 +53,13 @@ function Home({ darkMode }) {
 
       <div ref={booksRef}>
         {loading && <div>Loading...</div>}
+        {error && (
+          <ErrorFallback
+            error={error}
+            retry={() => retrySearch(error.context?.query)}
+            resetError={clearError}
+          />
+        )}
         <BookGrid books={data} darkMode={darkMode} />
       </div>
 

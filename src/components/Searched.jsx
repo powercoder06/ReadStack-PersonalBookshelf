@@ -20,6 +20,8 @@ import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
+import { usePerformanceMonitor } from "../hooks/usePerformanceMonitor";
+import logger from "../utils/logger";
 
 function Searched({ darkMode, archivedBooks }) {
   const {
@@ -41,15 +43,33 @@ function Searched({ darkMode, archivedBooks }) {
   const [rating, setRating] = useState(parseInt(initialRating));
   const [hoverRating, setHoverRating] = useState(0);
 
-  const handleAddingBooks = (booksCategory, setBooksCategory, name) => {
-    const foundBook = booksCategory?.find(book => book.id === location.state.bookDetails.id);
-    if (foundBook) {
-      notifyAlreadyAdded(name);
-    } else {
-      setBooksCategory([...booksCategory, location.state.bookDetails]);
-      notifySuccessfullyAdded(name);
+  const { measureOperation } = usePerformanceMonitor("Searched");
+
+  const handleAddingBooks = measureOperation("addBook", (booksCategory, setBooksCategory, name) => {
+    try {
+      const foundBook = booksCategory?.find(book => book.id === location.state.bookDetails.id);
+      if (foundBook) {
+        notifyAlreadyAdded(name);
+        logger.userAction("Book already in category", {
+          category: name,
+          bookId: location.state.bookDetails.id,
+        });
+      } else {
+        setBooksCategory([...booksCategory, location.state.bookDetails]);
+        notifySuccessfullyAdded(name);
+        logger.userAction("Book added to category", {
+          category: name,
+          bookId: location.state.bookDetails.id,
+        });
+      }
+    } catch (error) {
+      logger.error("Failed to add book to category", {
+        category: name,
+        bookId: location.state.bookDetails.id,
+        error: error.message,
+      });
     }
-  };
+  });
 
   const handleCurrentReadingBooks = () => {
     if (archivedBooks) {
@@ -91,9 +111,10 @@ function Searched({ darkMode, archivedBooks }) {
     sessionStorage.setItem(bookKey, rating);
   }, [currentReadingBooks, favoriteBooks, toReadBooks, haveReadBooks, rating, bookKey]);
 
-  const handleSetRating = ratingValue => {
+  const handleSetRating = measureOperation("setRating", ratingValue => {
     setRating(ratingValue);
-  };
+    logger.userAction("Book rated", { bookId: location.state.bookDetails.id, rating: ratingValue });
+  });
 
   const handleSetHoverRating = ratingValue => {
     setHoverRating(ratingValue);
@@ -130,12 +151,20 @@ function Searched({ darkMode, archivedBooks }) {
     );
   };
 
-  const handleBuyNow = () => {
+  const handleBuyNow = measureOperation("buyNow", () => {
     const googleBooksLink = location.state?.bookDetails?.volumeInfo?.infoLink;
     if (googleBooksLink && googleBooksLink.startsWith("https://books.google.")) {
       window.open(googleBooksLink, "_blank");
+      logger.userAction("Buy now clicked", {
+        bookId: location.state.bookDetails.id,
+        link: googleBooksLink,
+      });
+    } else {
+      logger.warn("Buy now clicked but no valid link found", {
+        bookId: location.state.bookDetails.id,
+      });
     }
-  };
+  });
 
   return (
     <motion.main
