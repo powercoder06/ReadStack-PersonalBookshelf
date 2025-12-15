@@ -3,160 +3,161 @@
 @use "../colors" as *;
 
 .mybooks-container {
-   width: 100%;
-   min-height: calc(100vh - 4.5rem);
-   padding: 0 2rem;
-   background-color: $White;
-   transition: 0.3s;
-   .books {
-      margin-top: 2rem;
-      @include flexbox(flex-start, flex-start);
-      .books-categories {
-         width: 12rem;
-         .mybooks-nav {
-            ul {
-               li {
-                  width: fit-content;
-                  padding: 0.5rem 0;
-                  margin-bottom: 2rem;
-                  list-style: none;
-                  .book-category {
-                     text-decoration: none;
-                     @include flexbox(flex-start, center, 2rem);
-                     img {
-                        width: 1.5rem;
-                     }
-                     p {
-                        color: $Very-dark-blue;
-                     }
-                  }
-               }
+  width: 100%;
+  min-height: calc(100vh - 4.5rem);
+  padding: 0 2rem;
+  background-color: $White;
+  transition: 0.3s;
+  .books {
+    margin-top: 2rem;
+    @include flexbox(flex-start, flex-start);
+    .books-categories {
+      width: 12rem;
+      .mybooks-nav {
+        ul {
+          li {
+            width: fit-content;
+            padding: 0.5rem 0;
+            margin-bottom: 2rem;
+            list-style: none;
+            .book-category {
+              text-decoration: none;
+              @include flexbox(flex-start, center, 2rem);
+              img {
+                width: 1.5rem;
+              }
+              p {
+                color: $Very-dark-blue;
+              }
             }
-            .number-of-all-books {
-               font-size: 1.1rem;
-               font-weight: $font-500;
-               color: $Very-dark-blue;
-            }
-         }
+          }
+        }
+        .number-of-all-books {
+          font-size: 1.1rem;
+          font-weight: $font-500;
+          color: $Very-dark-blue;
+        }
       }
-      .display-books {
-         width: calc(100% - 12rem);
-         min-height: calc(100vh - 9.1rem);
-         padding: 1rem 1.5rem 0;
-         border-left: 1px solid $Very-dark-blue;
-         h3 {
-            margin-bottom: 1.5rem;
-            font-weight: $font-700;
-            color: $Very-dark-blue;
-         }
-         > div {
-            padding-bottom: 1rem;
-            margin-bottom: 3rem;
-            border-bottom: 0.1rem solid $Very-dark-blue;
-            @include flexbox(flex-start, flex-start, 1.5rem, 1.5rem, row, wrap);
-            img {
-               width: 8rem;
-               height: 11rem;
-               box-shadow: 0.1rem 0.1rem 0.5rem rgba(128, 128, 128, 0.3),
-                  -0.1rem -0.1rem 0.5rem rgba(128, 128, 128, 0.3);
-            }
-         }
+    }
+    .display-books {
+      width: calc(100% - 12rem);
+      min-height: calc(100vh - 9.1rem);
+      padding: 1rem 1.5rem 0;
+      border-left: 1px solid $Very-dark-blue;
+      h3 {
+        margin-bottom: 1.5rem;
+        font-weight: $font-700;
+        color: $Very-dark-blue;
       }
-   }
+      > div {
+        padding-bottom: 1rem;
+        margin-bottom: 3rem;
+        border-bottom: 0.1rem solid $Very-dark-blue;
+        @include flexbox(flex-start, flex-start, 1.5rem, 1.5rem, row, wrap);
+        img {
+          width: 8rem;
+          height: 11rem;
+          box-shadow:
+            0.1rem 0.1rem 0.5rem rgba(128, 128, 128, 0.3),
+            -0.1rem -0.1rem 0.5rem rgba(128, 128, 128, 0.3);
+        }
+      }
+    }
+  }
 }
 
 .mybooks-container.darkmode {
-   background-color: $Black;
-   .books {
-      .books-categories {
-         .mybooks-nav {
-            ul {
-               li {
-                  .book-category {
-                     p {
-                        color: $Turquoise;
-                     }
-                  }
-               }
+  background-color: $Black;
+  .books {
+    .books-categories {
+      .mybooks-nav {
+        ul {
+          li {
+            .book-category {
+              p {
+                color: $Turquoise;
+              }
             }
-            .number-of-all-books {
-               color: $Turquoise;
-            }
-         }
+          }
+        }
+        .number-of-all-books {
+          color: $Turquoise;
+        }
       }
-      .display-books {
-         border-left-color: $Turquoise;
-         h3 {
-            color: $Turquoise;
-         }
-         > div {
-            border-color: $Turquoise;
-         }
+    }
+    .display-books {
+      border-left-color: $Turquoise;
+      h3 {
+        color: $Turquoise;
       }
-   }
+      > div {
+        border-color: $Turquoise;
+      }
+    }
+  }
 }
 
 @media (hover: hover) {
-   .mybooks-container {
-      .books {
-         .books-categories {
-            .mybooks-nav {
-               ul {
-                  li:hover {
-                     scale: 1.1;
-                     transition: 0.3s;
-                  }
-               }
+  .mybooks-container {
+    .books {
+      .books-categories {
+        .mybooks-nav {
+          ul {
+            li:hover {
+              scale: 1.1;
+              transition: 0.3s;
             }
-         }
-         .display-books {
-            > div {
-               img:hover {
-                  cursor: pointer;
-                  scale: 1.1;
-                  transition: 0.3s;
-               }
-            }
-         }
+          }
+        }
       }
-   }
+      .display-books {
+        > div {
+          img:hover {
+            cursor: pointer;
+            scale: 1.1;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 600px) {
-   .mybooks-container {
-      .books {
-         .display-books {
-            padding: 1rem 0rem 0 1rem;
-            h3 {
-               font-size: 1rem;
-               span {
-                  display: none;
-               }
-            }
-         }
+  .mybooks-container {
+    .books {
+      .display-books {
+        padding: 1rem 0rem 0 1rem;
+        h3 {
+          font-size: 1rem;
+          span {
+            display: none;
+          }
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 500px) {
-   .mybooks-container {
-      padding: 0 1rem;
-      .books {
-         .display-books {
-            > div {
-               @include flexbox(center, flex-start, 0, 1.5rem, row, wrap);
-            }
-         }
+  .mybooks-container {
+    padding: 0 1rem;
+    .books {
+      .display-books {
+        > div {
+          @include flexbox(center, flex-start, 0, 1.5rem, row, wrap);
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 425px) {
-   .mybooks-container {
-      .books {
-         .display-books {
-            display: none;
-         }
+  .mybooks-container {
+    .books {
+      .display-books {
+        display: none;
       }
-   }
+    }
+  }
 }

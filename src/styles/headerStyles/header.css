@@ -9,7 +9,7 @@
   justify-content: space-between;
   align-items: center;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -23,7 +23,7 @@
   justify-content: flex-start;
   align-items: center;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -38,7 +38,7 @@
   justify-content: space-between;
   align-items: center;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -53,7 +53,7 @@
   justify-content: space-between;
   align-items: center;
   -moz-column-gap: 4rem;
-       column-gap: 4rem;
+  column-gap: 4rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -70,7 +70,7 @@
   justify-content: flex-start;
   align-items: center;
   -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
+  column-gap: 0.5rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -145,7 +145,7 @@
     justify-content: space-between;
     align-items: center;
     -moz-column-gap: 3rem;
-         column-gap: 3rem;
+    column-gap: 3rem;
     row-gap: 0;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -157,7 +157,7 @@
     justify-content: space-between;
     align-items: center;
     -moz-column-gap: 2rem;
-         column-gap: 2rem;
+    column-gap: 2rem;
     row-gap: 0;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -172,7 +172,7 @@
     justify-content: space-between;
     align-items: center;
     -moz-column-gap: 1rem;
-         column-gap: 1rem;
+    column-gap: 1rem;
     row-gap: 0;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -186,7 +186,7 @@
     justify-content: space-between;
     align-items: center;
     -moz-column-gap: 0;
-         column-gap: 0;
+    column-gap: 0;
     row-gap: 0;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -213,7 +213,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     -moz-column-gap: 0;
-         column-gap: 0;
+    column-gap: 0;
     row-gap: 4rem;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -226,7 +226,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     -moz-column-gap: 0;
-         column-gap: 0;
+    column-gap: 0;
     row-gap: 3rem;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -237,4 +237,4 @@
   .header.header.dark-mode .header-nav {
     background-color: #1f1f1f;
   }
-}/*# sourceMappingURL=header.css.map */
+} /*# sourceMappingURL=header.css.map */

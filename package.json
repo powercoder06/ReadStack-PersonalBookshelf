@@ -13,12 +13,17 @@
     "test:ci": "vitest run --coverage",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext js,jsx --fix",
+    "format": "prettier --write src/**/*.{js,jsx,css,scss,json}",
+    "format:check": "prettier --check src/**/*.{js,jsx,css,scss,json}",
     "prepare": "husky install"
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
+      "prettier --write",
+      "eslint --fix --max-warnings 50"
+    ],
+    "src/**/*.{css,scss,json}": [
+      "prettier --write"
     ]
   },
   "dependencies": {
@@ -49,6 +54,7 @@
     "husky": "^8.0.3",
     "jsdom": "^25.0.1",
     "lint-staged": "^15.2.0",
+    "prettier": "^3.2.5",
     "vite": "^6.0.7",
     "vitest": "^4.0.15"
   }

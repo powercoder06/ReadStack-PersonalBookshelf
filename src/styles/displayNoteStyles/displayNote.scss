@@ -3,119 +3,119 @@
 @use "../colors" as *;
 
 .display-note-container {
-   width: 100%;
-   margin-top: 1rem;
-   transition: 0.3s;
-   .selected-book-note {
-      .number-of-notes {
-         margin-bottom: 0.5rem;
-         color: $Very-dark-blue;
-         font-size: 1.3rem;
-         font-weight: $font-500;
+  width: 100%;
+  margin-top: 1rem;
+  transition: 0.3s;
+  .selected-book-note {
+    .number-of-notes {
+      margin-bottom: 0.5rem;
+      color: $Very-dark-blue;
+      font-size: 1.3rem;
+      font-weight: $font-500;
+    }
+    .last-note {
+      .last-note-date-page {
+        margin-bottom: 0.5rem;
+        color: $Very-dark-blue;
+        font-size: 1.2rem;
+        font-weight: $font-500;
+        @include flexbox(flex-start, center, 1rem);
+        > p {
+          color: $Black;
+          font-size: 1rem;
+        }
       }
-      .last-note {
-         .last-note-date-page {
-            margin-bottom: 0.5rem;
-            color: $Very-dark-blue;
-            font-size: 1.2rem;
-            font-weight: $font-500;
-            @include flexbox(flex-start, center, 1rem);
-            > p {
-               color: $Black;
-               font-size: 1rem;
-            }
-         }
-         .last-note-text {
-            margin-bottom: 1rem;
-            color: $Black;
-            overflow-wrap: break-word;
-         }
+      .last-note-text {
+        margin-bottom: 1rem;
+        color: $Black;
+        overflow-wrap: break-word;
       }
-      .see-all-notes {
-         font-size: 1.1rem;
-         font-weight: $font-700;
-         color: $Very-dark-blue;
-      }
-   }
+    }
+    .see-all-notes {
+      font-size: 1.1rem;
+      font-weight: $font-700;
+      color: $Very-dark-blue;
+    }
+  }
 }
 
 .display-note-container.dark-mode {
-   .selected-book-note {
-      .number-of-notes {
-         color: $Turquoise;
+  .selected-book-note {
+    .number-of-notes {
+      color: $Turquoise;
+    }
+    .last-note {
+      .last-note-date-page {
+        color: $Turquoise;
+        > p {
+          color: $White;
+        }
       }
-      .last-note {
-         .last-note-date-page {
-            color: $Turquoise;
-            > p {
-               color: $White;
-            }
-         }
-         .last-note-text {
-            color: $White;
-         }
+      .last-note-text {
+        color: $White;
       }
-      .see-all-notes {
-         color: $Turquoise;
-      }
-   }
+    }
+    .see-all-notes {
+      color: $Turquoise;
+    }
+  }
 }
 
 @media (hover: hover) {
-   .display-note-container {
-      .selected-book-note {
-         .see-all-notes:hover {
-            cursor: pointer;
-            text-decoration: underline;
-         }
+  .display-note-container {
+    .selected-book-note {
+      .see-all-notes:hover {
+        cursor: pointer;
+        text-decoration: underline;
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 1150px) {
-   .display-note-container {
-      .selected-book-note {
-         .number-of-notes {
-            font-size: 1.1rem;
-         }
-         .last-note {
-            .last-note-date-page {
-               font-size: 1rem;
-               > p {
-                  font-size: 0.9rem;
-               }
-            }
-            .last-note-text {
-               font-size: 0.9rem;
-            }
-         }
-         .see-all-notes {
-            font-size: 1rem;
-         }
+  .display-note-container {
+    .selected-book-note {
+      .number-of-notes {
+        font-size: 1.1rem;
       }
-   }
+      .last-note {
+        .last-note-date-page {
+          font-size: 1rem;
+          > p {
+            font-size: 0.9rem;
+          }
+        }
+        .last-note-text {
+          font-size: 0.9rem;
+        }
+      }
+      .see-all-notes {
+        font-size: 1rem;
+      }
+    }
+  }
 }
 
 @media (max-width: 375px) {
-   .display-note-container {
-      .selected-book-note {
-         .number-of-notes {
-            font-size: 1rem;
-         }
-         .last-note {
-            .last-note-date-page {
-               font-size: 0.9rem;
-               > p {
-                  font-size: 0.85rem;
-               }
-            }
-            .last-note-text {
-               font-size: 0.85rem;
-            }
-         }
-         .see-all-notes {
-            font-size: 0.9rem;
-         }
+  .display-note-container {
+    .selected-book-note {
+      .number-of-notes {
+        font-size: 1rem;
       }
-   }
+      .last-note {
+        .last-note-date-page {
+          font-size: 0.9rem;
+          > p {
+            font-size: 0.85rem;
+          }
+        }
+        .last-note-text {
+          font-size: 0.85rem;
+        }
+      }
+      .see-all-notes {
+        font-size: 0.9rem;
+      }
+    }
+  }
 }

@@ -3,57 +3,57 @@
 @use "../colors" as *;
 
 .my-notes-container {
-   width: 100%;
-   min-height: calc(100vh - 4.5rem);
-   padding: 0 2rem 1rem;
-   background-color: $White;
-   transition: 0.3s;
-   .book-notes-selection {
-      margin: 1rem 0 2rem;
-      @include flexbox(flex-start, flex-start, 2rem);
-      .link {
-         padding: 0.5rem;
-         text-decoration: none;
-         color: $Very-dark-blue;
-         border-radius: 0.5rem;
-         font-weight: $font-500;
-      }
-   }
+  width: 100%;
+  min-height: calc(100vh - 4.5rem);
+  padding: 0 2rem 1rem;
+  background-color: $White;
+  transition: 0.3s;
+  .book-notes-selection {
+    margin: 1rem 0 2rem;
+    @include flexbox(flex-start, flex-start, 2rem);
+    .link {
+      padding: 0.5rem;
+      text-decoration: none;
+      color: $Very-dark-blue;
+      border-radius: 0.5rem;
+      font-weight: $font-500;
+    }
+  }
 }
 
 .my-notes-container.dark-mode {
-   background-color: $Black;
-   .book-notes-selection {
-      .link {
-         color: $Turquoise;
-      }
-   }
+  background-color: $Black;
+  .book-notes-selection {
+    .link {
+      color: $Turquoise;
+    }
+  }
 }
 
 @media (hover: hover) {
-   .my-notes-container {
-      .book-notes-selection {
-         .link:hover {
-            background-color: $Very-dark-blue;
-            color: $White;
-         }
+  .my-notes-container {
+    .book-notes-selection {
+      .link:hover {
+        background-color: $Very-dark-blue;
+        color: $White;
       }
-   }
-   .my-notes-container.dark-mode {
-      .book-notes-selection {
-         .link:hover {
-            background-color: $Turquoise;
-            color: $Black;
-         }
+    }
+  }
+  .my-notes-container.dark-mode {
+    .book-notes-selection {
+      .link:hover {
+        background-color: $Turquoise;
+        color: $Black;
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 500px) {
-   .my-notes-container {
-      padding: 0 1rem 1rem;
-      .book-notes-selection {
-         @include flexbox(flex-start, flex-start, 0, 0.5rem, column);
-      }
-   }
+  .my-notes-container {
+    padding: 0 1rem 1rem;
+    .book-notes-selection {
+      @include flexbox(flex-start, flex-start, 0, 0.5rem, column);
+    }
+  }
 }

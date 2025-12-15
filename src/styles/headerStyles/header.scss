@@ -3,208 +3,208 @@
 @use "../colors" as *;
 
 .header {
-   width: 100%;
-   height: 4.5rem;
-   padding: 0 2rem;
-   background-color: $White;
-   font-weight: $font-700;
-   transition: 0.3s;
-   @include flexbox(space-between, center);
-   .humburger-menu {
+  width: 100%;
+  height: 4.5rem;
+  padding: 0 2rem;
+  background-color: $White;
+  font-weight: $font-700;
+  transition: 0.3s;
+  @include flexbox(space-between, center);
+  .humburger-menu {
+    width: 2.5rem;
+    display: none;
+  }
+  .header-logo {
+    @include flexbox(flex-start, center);
+    margin-right: 2rem;
+    img {
+      width: 2.5rem;
+    }
+  }
+  .header-nav {
+    width: 80%;
+    @include flexbox(space-between, center);
+    .close {
       width: 2.5rem;
       display: none;
-   }
-   .header-logo {
-      @include flexbox(flex-start, center);
-      margin-right: 2rem;
-      img {
-         width: 2.5rem;
+    }
+    ul {
+      list-style: none;
+      @include flexbox(space-between, center, 4rem);
+      li {
+        .link {
+          padding: 0.5rem;
+          text-decoration: none;
+          color: $Very-dark-blue;
+          border-radius: 0.5rem;
+          font-weight: $font-500;
+        }
       }
-   }
-   .header-nav {
-      width: 80%;
-      @include flexbox(space-between, center);
-      .close {
-         width: 2.5rem;
-         display: none;
+    }
+  }
+  .mode {
+    @include flexbox(flex-start, center, 0.5rem);
+    img {
+      width: 2rem;
+    }
+    .toggle {
+      width: 3rem;
+      height: 1.5rem;
+      position: relative;
+      input {
+        width: 0;
+        height: 0;
+        opacity: 0;
       }
-      ul {
-         list-style: none;
-         @include flexbox(space-between, center, 4rem);
-         li {
-            .link {
-               padding: 0.5rem;
-               text-decoration: none;
-               color: $Very-dark-blue;
-               border-radius: 0.5rem;
-               font-weight: $font-500;
-            }
-         }
+      .slider {
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        background-color: $Very-dark-blue;
+        border-radius: 1rem;
+        transition: 0.3s;
       }
-   }
-   .mode {
-      @include flexbox(flex-start, center, 0.5rem);
-      img {
-         width: 2rem;
+      .slider:before {
+        width: 1rem;
+        height: 1rem;
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background-color: $White;
+        top: 50%;
+        left: 0.2rem;
+        transform: translate(0, -50%);
+        transition: 0.3s;
       }
-      .toggle {
-         width: 3rem;
-         height: 1.5rem;
-         position: relative;
-         input {
-            width: 0;
-            height: 0;
-            opacity: 0;
-         }
-         .slider {
-            width: inherit;
-            height: inherit;
-            position: absolute;
-            background-color: $Very-dark-blue;
-            border-radius: 1rem;
-            transition: 0.3s;
-         }
-         .slider:before {
-            width: 1rem;
-            height: 1rem;
-            content: "";
-            position: absolute;
-            border-radius: 50%;
-            background-color: $White;
-            top: 50%;
-            left: 0.2rem;
-            transform: translate(0, -50%);
-            transition: 0.3s;
-         }
-         input:checked + .slider {
-            background-color: $Turquoise;
-         }
-         input:checked + .slider:before {
-            transform: translate(1.6rem, -50%);
-            background-color: $Black;
-         }
+      input:checked + .slider {
+        background-color: $Turquoise;
       }
-   }
+      input:checked + .slider:before {
+        transform: translate(1.6rem, -50%);
+        background-color: $Black;
+      }
+    }
+  }
 }
 
 .header.dark-mode {
-   background-color: $Black;
-   .header-nav {
-      li {
-         .link {
-            color: $Turquoise;
-         }
+  background-color: $Black;
+  .header-nav {
+    li {
+      .link {
+        color: $Turquoise;
       }
-   }
+    }
+  }
 }
 
 @media (hover: hover) {
-   .header {
-      .humburger-menu {
-         cursor: pointer;
+  .header {
+    .humburger-menu {
+      cursor: pointer;
+    }
+    .header-nav {
+      ul {
+        li {
+          .link:hover {
+            background-color: $Very-dark-blue;
+            color: $White;
+          }
+        }
       }
-      .header-nav {
-         ul {
-            li {
-               .link:hover {
-                  background-color: $Very-dark-blue;
-                  color: $White;
-               }
-            }
-         }
-         .close {
-            cursor: pointer;
-         }
+      .close {
+        cursor: pointer;
       }
-   }
+    }
+  }
 
-   .header.header.dark-mode {
-      .header-nav {
-         ul {
-            li {
-               .link:hover {
-                  background-color: $Turquoise;
-                  color: $Black;
-               }
-            }
-         }
+  .header.header.dark-mode {
+    .header-nav {
+      ul {
+        li {
+          .link:hover {
+            background-color: $Turquoise;
+            color: $Black;
+          }
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 900px) {
-   .header {
-      .header-nav {
-         ul {
-            @include flexbox(space-between, center, 3rem);
-         }
+  .header {
+    .header-nav {
+      ul {
+        @include flexbox(space-between, center, 3rem);
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 700px) {
-   .header {
-      .header-nav {
-         ul {
-            @include flexbox(space-between, center, 2rem);
-         }
+  .header {
+    .header-nav {
+      ul {
+        @include flexbox(space-between, center, 2rem);
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 600px) {
-   .header {
-      .header-logo {
-         margin-right: 1rem;
+  .header {
+    .header-logo {
+      margin-right: 1rem;
+    }
+    .header-nav {
+      ul {
+        @include flexbox(space-between, center, 1rem);
       }
-      .header-nav {
-         ul {
-            @include flexbox(space-between, center, 1rem);
-         }
-      }
-   }
+    }
+  }
 }
 
 @media (max-width: 500px) {
-   .header {
-      position: relative;
-      padding: 0 1rem 0 4rem;
-      @include flexbox(space-between, center);
-      .humburger-menu {
-         position: absolute;
-         display: block;
-         top: 1rem;
-         left: 0.5rem;
+  .header {
+    position: relative;
+    padding: 0 1rem 0 4rem;
+    @include flexbox(space-between, center);
+    .humburger-menu {
+      position: absolute;
+      display: block;
+      top: 1rem;
+      left: 0.5rem;
+    }
+    .header-nav {
+      width: fit-content;
+      min-height: 100%;
+      padding: 1rem 2rem 2rem 1rem;
+      position: absolute;
+      top: 0;
+      left: -10rem;
+      background-color: $White;
+      box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+      z-index: 1;
+      transition: 0.3s;
+      @include flexbox(flex-start, flex-start, 0, 4rem, column);
+      .close {
+        display: block;
       }
-      .header-nav {
-         width: fit-content;
-         min-height: 100%;
-         padding: 1rem 2rem 2rem 1rem;
-         position: absolute;
-         top: 0;
-         left: -10rem;
-         background-color: $White;
-         box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3);
-         z-index: 1;
-         transition: 0.3s;
-         @include flexbox(flex-start, flex-start, 0, 4rem, column);
-         .close {
-            display: block;
-         }
-         ul {
-            @include flexbox(flex-start, flex-start, 0, 3rem, column);
-         }
+      ul {
+        @include flexbox(flex-start, flex-start, 0, 3rem, column);
       }
-      .header-nav.show-sidebar {
-         left: 0rem;
-      }
-   }
+    }
+    .header-nav.show-sidebar {
+      left: 0rem;
+    }
+  }
 
-   .header.header.dark-mode {
-      .header-nav {
-         background-color: $Black;
-      }
-   }
+  .header.header.dark-mode {
+    .header-nav {
+      background-color: $Black;
+    }
+  }
 }
 
 // @media (max-width: 375px) {

@@ -18,7 +18,7 @@
   justify-content: flex-start;
   align-items: center;
   -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  column-gap: 1rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -93,4 +93,4 @@
   .display-note-container .selected-book-note .see-all-notes {
     font-size: 0.9rem;
   }
-}/*# sourceMappingURL=displayNote.css.map */
+} /*# sourceMappingURL=displayNote.css.map */

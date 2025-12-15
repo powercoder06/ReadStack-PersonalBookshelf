@@ -14,7 +14,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 3rem;
-       column-gap: 3rem;
+  column-gap: 3rem;
   row-gap: 3rem;
   flex-direction: row;
   flex-wrap: wrap;
@@ -23,38 +23,64 @@
   width: calc((100% - 6rem) / 3);
   min-height: 20rem;
   padding: 1rem 1rem 0;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3), -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+  box-shadow:
+    0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+    -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
   border-radius: 0.5rem;
   overflow-wrap: break-word;
   transition: 0.3s;
   position: relative;
 }
-.archived-books-notes-container .all-my-archived-notes .book-archived-note .image-infos-archived-book-note {
+.archived-books-notes-container
+  .all-my-archived-notes
+  .book-archived-note
+  .image-infos-archived-book-note {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
   margin-bottom: 1rem;
 }
-.archived-books-notes-container .all-my-archived-notes .book-archived-note .image-infos-archived-book-note .image-archived-book-note img {
+.archived-books-notes-container
+  .all-my-archived-notes
+  .book-archived-note
+  .image-infos-archived-book-note
+  .image-archived-book-note
+  img {
   width: 5rem;
   height: 7.5rem;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3), -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+  box-shadow:
+    0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+    -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
 }
-.archived-books-notes-container .all-my-archived-notes .book-archived-note .image-infos-archived-book-note .infos-archived-book-note {
+.archived-books-notes-container
+  .all-my-archived-notes
+  .book-archived-note
+  .image-infos-archived-book-note
+  .infos-archived-book-note {
   padding: 1rem 1rem 0;
   font-size: 1.2rem;
   font-weight: 500;
   color: #5d0085;
 }
-.archived-books-notes-container .all-my-archived-notes .book-archived-note .image-infos-archived-book-note .infos-archived-book-note .note-archived-date {
+.archived-books-notes-container
+  .all-my-archived-notes
+  .book-archived-note
+  .image-infos-archived-book-note
+  .infos-archived-book-note
+  .note-archived-date {
   margin-bottom: 1rem;
 }
-.archived-books-notes-container .all-my-archived-notes .book-archived-note .image-infos-archived-book-note .infos-archived-book-note .note-archived-time {
+.archived-books-notes-container
+  .all-my-archived-notes
+  .book-archived-note
+  .image-infos-archived-book-note
+  .infos-archived-book-note
+  .note-archived-time {
   margin-bottom: 1rem;
 }
 .archived-books-notes-container .all-my-archived-notes .book-archived-note .note-text-saved {
@@ -69,7 +95,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   -moz-column-gap: 0.5rem;
-       column-gap: 0.5rem;
+  column-gap: 0.5rem;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -87,7 +113,7 @@
   justify-content: center;
   align-items: center;
   -moz-column-gap: 0;
-       column-gap: 0;
+  column-gap: 0;
   row-gap: 0;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -99,10 +125,17 @@
 .archived-books-notes-container.dark-mode .all-archived-notes-title {
   color: #c20aff;
 }
-.archived-books-notes-container.dark-mode .all-my-archived-notes .book-archived-note .image-infos-archived-book-note .infos-archived-book-note {
+.archived-books-notes-container.dark-mode
+  .all-my-archived-notes
+  .book-archived-note
+  .image-infos-archived-book-note
+  .infos-archived-book-note {
   color: #c20aff;
 }
-.archived-books-notes-container.dark-mode .all-my-archived-notes .book-archived-note .note-text-saved {
+.archived-books-notes-container.dark-mode
+  .all-my-archived-notes
+  .book-archived-note
+  .note-text-saved {
   color: #ffffff;
 }
 .archived-books-notes-container.dark-mode .all-my-archived-notes .no-archived-note-found {
@@ -141,28 +174,40 @@
   }
 }
 @media (max-width: 375px) {
-  .archived-books-notes-container .all-my-archived-notes .book-archived-note .image-infos-archived-book-note {
+  .archived-books-notes-container
+    .all-my-archived-notes
+    .book-archived-note
+    .image-infos-archived-book-note {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     -moz-column-gap: 0;
-         column-gap: 0;
+    column-gap: 0;
     row-gap: 0;
     flex-direction: column-reverse;
     flex-wrap: wrap;
   }
-  .archived-books-notes-container .all-my-archived-notes .book-archived-note .image-infos-archived-book-note .image-archived-book-note img {
+  .archived-books-notes-container
+    .all-my-archived-notes
+    .book-archived-note
+    .image-infos-archived-book-note
+    .image-archived-book-note
+    img {
     width: 8rem;
     height: 12rem;
   }
-  .archived-books-notes-container .all-my-archived-notes .book-archived-note .image-infos-archived-book-note .infos-archived-book-note {
+  .archived-books-notes-container
+    .all-my-archived-notes
+    .book-archived-note
+    .image-infos-archived-book-note
+    .infos-archived-book-note {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     -moz-column-gap: 1rem;
-         column-gap: 1rem;
+    column-gap: 1rem;
     row-gap: 0;
     flex-direction: row;
     flex-wrap: wrap;
   }
-}/*# sourceMappingURL=archivedBooksNotes.css.map */
+} /*# sourceMappingURL=archivedBooksNotes.css.map */

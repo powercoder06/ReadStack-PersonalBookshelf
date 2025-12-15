@@ -3,204 +3,205 @@
 @use "../colors" as *;
 
 .searched-container {
-   padding: 0rem 2rem 2.85rem;
-   min-height: calc(100vh - 4.5rem);
-   background-color: $White;
-   transition: 0.3s;
-   .back-and-add-to {
-      margin-bottom: 2rem;
-      @include flexbox(space-between, flex-start, 1rem);
-      .add-to {
-         width: 35rem;
-         @include flexbox(center, center, 2rem);
-         div {
-            position: relative;
-            img {
-               width: 2rem;
-               transition: 0.5s;
-            }
-            p {
-               width: 9.5rem;
-               padding: 0.5rem;
-               border-radius: 0.5rem;
-               background-color: $Very-dark-blue;
-               color: $White;
-               font-size: 0.8rem;
-               font-weight: $font-500;
-               text-align: center;
-               position: absolute;
-               left: 50%;
-               top: 3rem;
-               transform: translateX(-50%);
-               opacity: 0;
-               transition: 0.3s;
-               &:before {
-                  content: "";
-                  position: absolute;
-                  width: 0;
-                  height: 0;
-                  border: 0.5rem solid;
-                  border-color: transparent transparent $Very-dark-blue transparent;
-                  left: 50%;
-                  top: -1rem;
-                  transform: translateX(-50%);
-               }
-            }
-         }
-         div:last-child {
-            img {
-               width: 2.5rem;
-            }
-            p {
-               top: 3.3rem;
-            }
-         }
+  padding: 0rem 2rem 2.85rem;
+  min-height: calc(100vh - 4.5rem);
+  background-color: $White;
+  transition: 0.3s;
+  .back-and-add-to {
+    margin-bottom: 2rem;
+    @include flexbox(space-between, flex-start, 1rem);
+    .add-to {
+      width: 35rem;
+      @include flexbox(center, center, 2rem);
+      div {
+        position: relative;
+        img {
+          width: 2rem;
+          transition: 0.5s;
+        }
+        p {
+          width: 9.5rem;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          background-color: $Very-dark-blue;
+          color: $White;
+          font-size: 0.8rem;
+          font-weight: $font-500;
+          text-align: center;
+          position: absolute;
+          left: 50%;
+          top: 3rem;
+          transform: translateX(-50%);
+          opacity: 0;
+          transition: 0.3s;
+          &:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 0.5rem solid;
+            border-color: transparent transparent $Very-dark-blue transparent;
+            left: 50%;
+            top: -1rem;
+            transform: translateX(-50%);
+          }
+        }
       }
-   }
-   .searched-book {
-      @include flexbox(flex-start, flex-start, 1rem);
-      .searched-book-image {
-         > img {
-            width: 18rem;
-            height: 27rem;
-            margin-bottom: 0.5rem;
-            box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
-               -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
-         }
+      div:last-child {
+        img {
+          width: 2.5rem;
+        }
+        p {
+          top: 3.3rem;
+        }
       }
-      .searched-book-text {
-         h2,
-         p {
-            color: $Black;
-            font-size: 1rem;
-            font-weight: $font-400;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            span {
-               color: $Very-dark-blue;
-               font-size: 1.1rem;
-               font-weight: $font-500;
-            }
-         }
+    }
+  }
+  .searched-book {
+    @include flexbox(flex-start, flex-start, 1rem);
+    .searched-book-image {
+      > img {
+        width: 18rem;
+        height: 27rem;
+        margin-bottom: 0.5rem;
+        box-shadow:
+          0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+          -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
       }
-   }
+    }
+    .searched-book-text {
+      h2,
+      p {
+        color: $Black;
+        font-size: 1rem;
+        font-weight: $font-400;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+        span {
+          color: $Very-dark-blue;
+          font-size: 1.1rem;
+          font-weight: $font-500;
+        }
+      }
+    }
+  }
 }
 
 .searched-container.dark-mode {
-   background-color: $Black;
-   .back-and-add-to {
-      .add-to {
-         p {
-            color: $Black;
-            background-color: $Turquoise;
-            &:before {
-               border-color: transparent transparent $Turquoise transparent;
-            }
-         }
+  background-color: $Black;
+  .back-and-add-to {
+    .add-to {
+      p {
+        color: $Black;
+        background-color: $Turquoise;
+        &:before {
+          border-color: transparent transparent $Turquoise transparent;
+        }
       }
-   }
+    }
+  }
 
-   .searched-book {
-      .searched-book-text {
-         h2,
-         p {
-            color: $White;
-            span {
-               color: $Turquoise;
-            }
-         }
+  .searched-book {
+    .searched-book-text {
+      h2,
+      p {
+        color: $White;
+        span {
+          color: $Turquoise;
+        }
       }
-   }
+    }
+  }
 }
 
 @media (hover: hover) {
-   .searched-container {
-      .back-and-add-to {
-         .add-to {
-            div {
-               img:hover {
-                  cursor: pointer;
-                  scale: 1.2;
-               }
-               img:hover + p {
-                  opacity: 1;
-               }
-            }
-         }
+  .searched-container {
+    .back-and-add-to {
+      .add-to {
+        div {
+          img:hover {
+            cursor: pointer;
+            scale: 1.2;
+          }
+          img:hover + p {
+            opacity: 1;
+          }
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 1150px) {
-   .searched-container {
-      .searched-book {
-         .searched-book-image {
-            > img {
-               width: 16rem;
-               height: 24rem;
-            }
-         }
+  .searched-container {
+    .searched-book {
+      .searched-book-image {
+        > img {
+          width: 16rem;
+          height: 24rem;
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 900px) {
-   .searched-container {
-      .searched-book {
-         .searched-book-image {
-            > img {
-               width: 14rem;
-               height: 21rem;
-            }
-         }
+  .searched-container {
+    .searched-book {
+      .searched-book-image {
+        > img {
+          width: 14rem;
+          height: 21rem;
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 800px) {
-   .searched-container {
-      .searched-book {
-         .searched-book-image {
-            > img {
-               width: 12rem;
-               height: 18rem;
-            }
-         }
+  .searched-container {
+    .searched-book {
+      .searched-book-image {
+        > img {
+          width: 12rem;
+          height: 18rem;
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 700px) {
-   .searched-container {
-      .searched-book {
-         .searched-book-image {
-            > img {
-               width: 10rem;
-               height: 15rem;
-            }
-         }
+  .searched-container {
+    .searched-book {
+      .searched-book-image {
+        > img {
+          width: 10rem;
+          height: 15rem;
+        }
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 600px) {
-   .searched-container {
-      .searched-book {
-         .searched-book-image {
-            display: none;
-         }
+  .searched-container {
+    .searched-book {
+      .searched-book-image {
+        display: none;
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 500px) {
-   .searched-container {
-      .back-and-add-to {
-         @include flexbox(flex-start, flex-start, 0, 1rem, column);
-         .add-to {
-            width: 100%;
-            @include flexbox(flex-start, center, 2rem, 2rem, row, wrap);
-         }
+  .searched-container {
+    .back-and-add-to {
+      @include flexbox(flex-start, flex-start, 0, 1rem, column);
+      .add-to {
+        width: 100%;
+        @include flexbox(flex-start, center, 2rem, 2rem, row, wrap);
       }
-   }
+    }
+  }
 }

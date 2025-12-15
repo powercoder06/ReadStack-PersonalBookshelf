@@ -3,172 +3,174 @@
 @use "../colors" as *;
 
 .archived-books-notes-container {
-   width: 100%;
-   background-color: $White;
-   transition: 0.3s;
-   .all-archived-notes-title {
-      margin: 1rem 0 0;
-      color: $Very-dark-blue;
-   }
-   .all-my-archived-notes {
-      width: inherit;
-      margin: 2rem 0;
-      @include flexbox(flex-start, flex-start, 3rem, 3rem, row, wrap);
-      .book-archived-note {
-         width: calc((100% - 6rem) / 3);
-         min-height: 20rem;
-         padding: 1rem 1rem 0;
-         box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
-            -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
-         border-radius: 0.5rem;
-         overflow-wrap: break-word;
-         transition: 0.3s;
-         position: relative;
-         .image-infos-archived-book-note {
-            @include flexbox(flex-start, flex-start);
+  width: 100%;
+  background-color: $White;
+  transition: 0.3s;
+  .all-archived-notes-title {
+    margin: 1rem 0 0;
+    color: $Very-dark-blue;
+  }
+  .all-my-archived-notes {
+    width: inherit;
+    margin: 2rem 0;
+    @include flexbox(flex-start, flex-start, 3rem, 3rem, row, wrap);
+    .book-archived-note {
+      width: calc((100% - 6rem) / 3);
+      min-height: 20rem;
+      padding: 1rem 1rem 0;
+      box-shadow:
+        0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+        -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+      border-radius: 0.5rem;
+      overflow-wrap: break-word;
+      transition: 0.3s;
+      position: relative;
+      .image-infos-archived-book-note {
+        @include flexbox(flex-start, flex-start);
+        margin-bottom: 1rem;
+        .image-archived-book-note {
+          img {
+            width: 5rem;
+            height: 7.5rem;
+            box-shadow:
+              0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
+              -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
+          }
+        }
+        .infos-archived-book-note {
+          padding: 1rem 1rem 0;
+          font-size: 1.2rem;
+          font-weight: $font-500;
+          color: $Very-dark-blue;
+          .note-archived-date {
             margin-bottom: 1rem;
-            .image-archived-book-note {
-               img {
-                  width: 5rem;
-                  height: 7.5rem;
-                  box-shadow: 0.1rem 0.1rem 0.3rem rgba(128, 128, 128, 0.3),
-                     -0.1rem -0.1rem 0.3rem rgba(128, 128, 128, 0.3);
-               }
-            }
-            .infos-archived-book-note {
-               padding: 1rem 1rem 0;
-               font-size: 1.2rem;
-               font-weight: $font-500;
-               color: $Very-dark-blue;
-               .note-archived-date {
-                  margin-bottom: 1rem;
-               }
-               .note-archived-time {
-                  margin-bottom: 1rem;
-               }
-            }
-         }
-         .note-text-saved {
-            padding-bottom: 1rem;
-            color: $Black;
-         }
-         .show-all {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            @include flexbox(flex-start, flex-start, 0.5rem);
-            img {
-               width: 1.5rem;
-            }
-         }
+          }
+          .note-archived-time {
+            margin-bottom: 1rem;
+          }
+        }
       }
-      .no-archived-note-found {
-         width: 100%;
-         font-size: 2rem;
-         font-weight: $font-700;
-         color: $Very-dark-blue;
-         text-align: center;
-         @include flexbox(center, center);
+      .note-text-saved {
+        padding-bottom: 1rem;
+        color: $Black;
       }
-   }
+      .show-all {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        @include flexbox(flex-start, flex-start, 0.5rem);
+        img {
+          width: 1.5rem;
+        }
+      }
+    }
+    .no-archived-note-found {
+      width: 100%;
+      font-size: 2rem;
+      font-weight: $font-700;
+      color: $Very-dark-blue;
+      text-align: center;
+      @include flexbox(center, center);
+    }
+  }
 }
 
 .archived-books-notes-container.dark-mode {
-   background-color: $Black;
-   .all-archived-notes-title {
+  background-color: $Black;
+  .all-archived-notes-title {
+    color: $Turquoise;
+  }
+  .all-my-archived-notes {
+    .book-archived-note {
+      .image-infos-archived-book-note {
+        .infos-archived-book-note {
+          color: $Turquoise;
+        }
+      }
+      .note-text-saved {
+        color: $White;
+      }
+    }
+    .no-archived-note-found {
       color: $Turquoise;
-   }
-   .all-my-archived-notes {
-      .book-archived-note {
-         .image-infos-archived-book-note {
-            .infos-archived-book-note {
-               color: $Turquoise;
-            }
-         }
-         .note-text-saved {
-            color: $White;
-         }
-      }
-      .no-archived-note-found {
-         color: $Turquoise;
-      }
-   }
+    }
+  }
 }
 
 @media (hover: hover) {
-   .archived-books-notes-container {
-      .all-archived-notes-title {
-         img:hover {
+  .archived-books-notes-container {
+    .all-archived-notes-title {
+      img:hover {
+        cursor: pointer;
+        scale: 1.1;
+      }
+    }
+    .all-my-archived-notes {
+      .book-archived-note {
+        &:hover {
+          scale: 1.1;
+        }
+        .show-all {
+          img:hover {
             cursor: pointer;
             scale: 1.1;
-         }
+          }
+        }
       }
-      .all-my-archived-notes {
-         .book-archived-note {
-            &:hover {
-               scale: 1.1;
-            }
-            .show-all {
-               img:hover {
-                  cursor: pointer;
-                  scale: 1.1;
-               }
-            }
-         }
-      }
-   }
+    }
+  }
 }
 
 @media (max-width: 1150px) {
-   .archived-books-notes-container {
-      .all-my-archived-notes {
-         .book-archived-note {
-            padding-top: 2rem;
-         }
+  .archived-books-notes-container {
+    .all-my-archived-notes {
+      .book-archived-note {
+        padding-top: 2rem;
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 900px) {
-   .archived-books-notes-container {
-      .all-my-archived-notes {
-         .book-archived-note {
-            width: calc((100% - 3rem) / 2);
-         }
+  .archived-books-notes-container {
+    .all-my-archived-notes {
+      .book-archived-note {
+        width: calc((100% - 3rem) / 2);
       }
-   }
+    }
+  }
 }
 
 @media (max-width: 700px) {
-   .archived-books-notes-container {
-      .all-my-archived-notes {
-         .book-archived-note {
-            width: 100%;
-         }
-         .book-archived-note:hover {
-            scale: none;
-         }
+  .archived-books-notes-container {
+    .all-my-archived-notes {
+      .book-archived-note {
+        width: 100%;
       }
-   }
+      .book-archived-note:hover {
+        scale: none;
+      }
+    }
+  }
 }
 
 @media (max-width: 375px) {
-   .archived-books-notes-container {
-      .all-my-archived-notes {
-         .book-archived-note {
-            .image-infos-archived-book-note {
-               @include flexbox(flex-start, center, 0, 0, column-reverse, wrap);
-               .image-archived-book-note {
-                  img {
-                     width: 8rem;
-                     height: 12rem;
-                  }
-               }
-               .infos-archived-book-note {
-                  @include flexbox(flex-start, flex-start, 1rem, 0, row, wrap);
-               }
+  .archived-books-notes-container {
+    .all-my-archived-notes {
+      .book-archived-note {
+        .image-infos-archived-book-note {
+          @include flexbox(flex-start, center, 0, 0, column-reverse, wrap);
+          .image-archived-book-note {
+            img {
+              width: 8rem;
+              height: 12rem;
             }
-         }
+          }
+          .infos-archived-book-note {
+            @include flexbox(flex-start, flex-start, 1rem, 0, row, wrap);
+          }
+        }
       }
-   }
+    }
+  }
 }
