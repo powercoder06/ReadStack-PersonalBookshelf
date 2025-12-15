@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import Back from "../components/Back";
 import { useBooks } from "../contexts/BookContext";
 import "../styles/booksArchivedStyles/booksArchived.css";
@@ -34,24 +34,10 @@ function BooksArchived({
 }) {
   const { currentReadingBooks, setCurrentReadingBooks } = useBooks();
 
-  const booksRef = useRef();
+  const [activeBookId, setActiveBookId] = useState(null);
 
-  const handleClickBook = e => {
-    const targetElement = e.target.nextElementSibling;
-    if (!targetElement) return;
-
-    const isExpanded = targetElement.style.bottom === "-1.8rem";
-
-    if (isExpanded) {
-      targetElement.style.bottom = "1.8rem";
-    } else {
-      // Close all other expanded items
-      booksRef.current?.childNodes.forEach(child => {
-        const iconContainer = child.firstElementChild?.nextElementSibling;
-        if (iconContainer) iconContainer.style.bottom = "1.8rem";
-      });
-      targetElement.style.bottom = "-1.8rem";
-    }
+  const handleClickBook = bookId => {
+    setActiveBookId(activeBookId === bookId ? null : bookId);
   };
 
   const moveBackToCurrentReadingBooks = e => {
@@ -147,44 +133,40 @@ function BooksArchived({
           onClick={deleteAllArchivedBooks}
         />
       </h3>
-      <section className="display-archived-books" ref={booksRef}>
-        {archivedBooks
-          ? archivedBooks.map(book => {
-              return (
-                <div key={book.id} className="books-displayed">
-                  <img
-                    src={book.volumeInfo.imageLinks?.thumbnail}
-                    alt={book.volumeInfo.title}
-                    onClick={handleClickBook}
-                  />
-                  <div className="see-and-delete-icons">
-                    <img
-                      src={darkMode ? moveBackIconDarkMode : moveBackIcon}
-                      alt="move back icon"
-                      id={book.id}
-                      onClick={moveBackToCurrentReadingBooks}
-                    />
-                    <Link
-                      to={`/mynotes/archivedbooksnotes/${book.id}`}
-                      state={{ bookId: book.id, currentBook: book }}
-                    >
-                      <img
-                        id={book.id}
-                        src={darkMode ? allNotesIconDarkMode : allNotesIcon}
-                        alt="show all book's note icon"
-                      />
-                    </Link>
-                    <img
-                      src={darkMode ? deleteIconDarkMode : deleteIcon}
-                      alt="delete icon"
-                      id={book.id}
-                      onClick={deleteArchivedBooks}
-                    />
-                  </div>
-                </div>
-              );
-            })
-          : null}
+      <section className="display-archived-books">
+        {archivedBooks?.map(book => (
+          <div key={book.id} className="books-displayed">
+            <img
+              src={book.volumeInfo?.imageLinks?.thumbnail}
+              alt={book.volumeInfo?.title || "Book cover"}
+              onClick={() => handleClickBook(book.id)}
+            />
+            <div className={"see-and-delete-icons" + (activeBookId === book.id ? " active" : "")}>
+              <img
+                src={darkMode ? moveBackIconDarkMode : moveBackIcon}
+                alt="move back icon"
+                id={book.id}
+                onClick={moveBackToCurrentReadingBooks}
+              />
+              <Link
+                to={`/mynotes/archivedbooksnotes/${book.id}`}
+                state={{ bookId: book.id, currentBook: book }}
+              >
+                <img
+                  id={book.id}
+                  src={darkMode ? allNotesIconDarkMode : allNotesIcon}
+                  alt="show all book's note icon"
+                />
+              </Link>
+              <img
+                src={darkMode ? deleteIconDarkMode : deleteIcon}
+                alt="delete icon"
+                id={book.id}
+                onClick={deleteArchivedBooks}
+              />
+            </div>
+          </div>
+        ))}
       </section>
       <Toast />
     </main>

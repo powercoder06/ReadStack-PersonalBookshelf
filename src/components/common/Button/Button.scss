@@ -1,0 +1,94 @@
+@use "sass:color";
+@use "../../../styles/colors" as *;
+@use "../../../styles/mixins" as *;
+
+.btn {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &:focus {
+    outline: 2px solid $Blue;
+    outline-offset: 2px;
+  }
+
+  // Variants
+  &--primary {
+    background-color: $Very-dark-blue;
+    color: $White;
+
+    &:hover:not(.btn--disabled) {
+      background-color: color.adjust($Very-dark-blue, $lightness: -10%);
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: $Very-dark-blue;
+    border: 2px solid $Very-dark-blue;
+
+    &:hover:not(.btn--disabled) {
+      background-color: $Very-dark-blue;
+      color: $White;
+    }
+  }
+
+  &--danger {
+    background-color: #e74c3c;
+    color: $White;
+
+    &:hover:not(.btn--disabled) {
+      background-color: color.adjust(#e74c3c, $lightness: -10%);
+    }
+  }
+
+  // Sizes
+  &--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  &--medium {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  &--large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+
+  // States
+  &--disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // Dark mode
+  &--dark {
+    &.btn--primary {
+      background-color: $Turquoise;
+
+      &:hover:not(.btn--disabled) {
+        background-color: color.adjust($Turquoise, $lightness: -10%);
+      }
+    }
+
+    &.btn--secondary {
+      color: $White;
+      border-color: $Turquoise;
+
+      &:hover:not(.btn--disabled) {
+        background-color: $Turquoise;
+        color: $Black;
+      }
+    }
+  }
+}

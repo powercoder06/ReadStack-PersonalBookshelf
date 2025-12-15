@@ -5,16 +5,19 @@ import { motion } from "framer-motion";
 import { SearchForm } from "../components/ui/SearchForm";
 import { BookGrid } from "../components/ui/BookGrid";
 import { ScrollToTop } from "../components/ui/ScrollToTop";
+import ErrorFallback from "../components/ErrorFallback";
 import { useBookSearch } from "../hooks/useBookSearch";
 import { useScrollBehavior } from "../hooks/useScrollBehavior";
+import { usePerformanceMonitor } from "../hooks/usePerformanceMonitor";
 
 function Home({ darkMode }) {
-  const { data, loading, searchBooks } = useBookSearch();
+  const { data, loading, error, searchBooks, retrySearch, clearError } = useBookSearch();
   const { showScrollTop, scrollToTop, scrollToElement } = useScrollBehavior();
+  const { measureOperation } = usePerformanceMonitor("Home");
   const booksRef = useRef();
 
-  const handleSearch = async query => {
-    await searchBooks(query);
+  const handleSearch = query => {
+    measureOperation("search", () => searchBooks(query))();
   };
 
   useEffect(() => {
@@ -33,7 +36,7 @@ function Home({ darkMode }) {
       <article className="hero">
         <section className="hero-text">
           <div className="quote">
-            <h1>" The right book can turn a non-reader into a bookworm "</h1>
+            <h1>&quot; The right book can turn a non-reader into a bookworm &quot;</h1>
           </div>
           <div className="get-started">
             <h2>Get ready to transform !</h2>
@@ -49,7 +52,8 @@ function Home({ darkMode }) {
       </article>
 
       <div ref={booksRef}>
-        {loading && <div>Loading...</div>}
+        {loading && <div className="loading-state">Loading...</div>}
+        {error && <ErrorFallback error={error} retry={retrySearch} resetError={clearError} />}
         <BookGrid books={data} darkMode={darkMode} />
       </div>
 

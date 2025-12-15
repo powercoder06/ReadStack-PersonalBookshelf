@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import "../styles/booksCurrentReadingStyles/booksCurrentReading.css";
 import Back from "../components/Back";
 import { useBooks } from "../contexts/BookContext";
@@ -35,17 +35,10 @@ function BooksCurrentReading({
 }) {
   const { currentReadingBooks, setCurrentReadingBooks } = useBooks();
 
-  const booksRef = useRef();
+  const [activeBookId, setActiveBookId] = useState(null);
 
-  const handleClickBook = e => {
-    if (e.target.nextElementSibling.style.bottom === "-1.8rem") {
-      e.target.nextElementSibling.style.bottom = "1.8rem";
-    } else {
-      for (const child of booksRef.current.childNodes) {
-        child.firstElementChild.nextElementSibling.style.bottom = "1.8rem";
-      }
-      e.target.nextElementSibling.style.bottom = "-1.8rem";
-    }
+  const handleClickBook = bookId => {
+    setActiveBookId(activeBookId === bookId ? null : bookId);
   };
 
   const moveToArchivedBooks = e => {
@@ -123,28 +116,17 @@ function BooksCurrentReading({
   };
 
   useEffect(() => {
-    if (currentReadingBooks) {
-      localStorage.setItem("current reading books", JSON.stringify(currentReadingBooks));
-    }
-  }, [currentReadingBooks]);
+    const updates = [
+      [currentReadingBooks, "current reading books"],
+      [currentReadingBookNotes, "current reading book notes"],
+      [archivedBooks, "archived books"],
+      [archivedBookNotes, "archived book notes"],
+    ];
 
-  useEffect(() => {
-    if (currentReadingBookNotes) {
-      localStorage.setItem("current reading book notes", JSON.stringify(currentReadingBookNotes));
-    }
-  }, [currentReadingBookNotes]);
-
-  useEffect(() => {
-    if (archivedBooks) {
-      localStorage.setItem("archived books", JSON.stringify(archivedBooks));
-    }
-  }, [archivedBooks]);
-
-  useEffect(() => {
-    if (archivedBookNotes) {
-      localStorage.setItem("archived book notes", JSON.stringify(archivedBookNotes));
-    }
-  }, [archivedBookNotes]);
+    updates.forEach(([data, key]) => {
+      if (data) localStorage.setItem(key, JSON.stringify(data));
+    });
+  }, [currentReadingBooks, currentReadingBookNotes, archivedBooks, archivedBookNotes]);
 
   return (
     <motion.main
@@ -166,7 +148,7 @@ function BooksCurrentReading({
           onClick={deleteAllCurrentReadingBooks}
         />
       </h3>
-      <section className="display-current-reading-books" ref={booksRef}>
+      <section className="display-current-reading-books">
         {currentReadingBooks
           ? currentReadingBooks.map(book => {
               return (
@@ -174,9 +156,11 @@ function BooksCurrentReading({
                   <img
                     src={book.volumeInfo.imageLinks?.thumbnail}
                     alt={book.volumeInfo.title}
-                    onClick={handleClickBook}
+                    onClick={() => handleClickBook(book.id)}
                   />
-                  <div className="see-and-delete-icons">
+                  <div
+                    className={`see-and-delete-icons ${activeBookId === book.id ? "active" : ""}`}
+                  >
                     <Link to={`${book.id}`} state={{ bookId: book.id, currentBook: book }}>
                       <img
                         src={darkMode ? noteWriteIconDarkMode : noteWriteIcon}

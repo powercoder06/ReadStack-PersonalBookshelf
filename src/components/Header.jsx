@@ -30,7 +30,7 @@ function Header({ darkMode, setDarkMode }) {
     };
     document.body.addEventListener("click", handleClickOutside, true);
     return () => document.body.removeEventListener("click", handleClickOutside, true);
-  });
+  }, []);
 
   return (
     <header className={darkMode ? "header dark-mode" : "header"}>

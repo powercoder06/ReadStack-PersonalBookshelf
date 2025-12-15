@@ -68,32 +68,35 @@ function AllCurrentReadingBooksNotes({
   };
 
   const handleEditedTextAndCharactersCount = e => {
-    setEditedText(e.target.value);
-    if (e.target.value.length - editedText.length === 1) {
-      setCharactersLeft(charactersLeft => charactersLeft - 1);
-    } else if (e.target.value.length - editedText.length === -1) {
-      setCharactersLeft(charactersLeft => charactersLeft + 1);
-    } else {
-      setCharactersLeft(350 - e.target.value.length);
-    }
+    const newText = e.target.value;
+    setEditedText(newText);
+    setCharactersLeft(350 - newText.length);
   };
 
   const handleSaveEdited = e => {
     e.preventDefault();
-    edited.text = editedText;
-    currentReadingBookNotes.map(note => (note.editing ? (note.editing = false) : note.editing));
+    const updatedNotes = currentReadingBookNotes.map(note => ({
+      ...note,
+      text: note.id === edited.id ? editedText : note.text,
+      editing: false,
+    }));
+    setCurrentReadingBookNotes(updatedNotes);
     setEdited(null);
     notifySuccessfullyEdited();
   };
 
   const handleCancelEdited = e => {
     e.preventDefault();
-    currentReadingBookNotes.map(note => (note.editing ? (note.editing = false) : note.editing));
+    const updatedNotes = currentReadingBookNotes.map(note => ({
+      ...note,
+      editing: false,
+    }));
+    setCurrentReadingBookNotes(updatedNotes);
     setEdited(null);
   };
 
   useEffect(() => {
-    if (currentReadingBookNotes) {
+    if (currentReadingBookNotes && location.state?.bookId) {
       const filteredNotes = currentReadingBookNotes.filter(note => {
         return note.bookId === location.state.bookId;
       });
@@ -104,12 +107,16 @@ function AllCurrentReadingBooksNotes({
       }
       localStorage.setItem("current reading book notes", JSON.stringify(currentReadingBookNotes));
     }
-  }, [currentReadingBookNotes, edited]);
+  }, [currentReadingBookNotes, edited, location.state?.bookId]);
 
   useEffect(() => {
-    currentReadingBookNotes.map(note => (note.editing ? (note.editing = false) : note.editing));
+    const updatedNotes = currentReadingBookNotes.map(note => ({
+      ...note,
+      editing: false,
+    }));
+    setCurrentReadingBookNotes(updatedNotes);
     setEdited(null);
-  }, [window.reloadPage]);
+  }, []);
 
   return (
     <motion.main
@@ -125,11 +132,11 @@ function AllCurrentReadingBooksNotes({
       }}
     >
       <article>
-        {location.state.currentBook ? (
+        {location.state?.currentBook?.volumeInfo ? (
           <section className="filtered-current-reading-book-info">
             <div className="filtered-current-reading-book-image">
               <img
-                src={location.state.currentBook.volumeInfo.imageLinks.thumbnail}
+                src={location.state.currentBook.volumeInfo.imageLinks?.thumbnail}
                 alt={`${location.state.currentBook.volumeInfo.title} cover`}
               />
             </div>
@@ -140,26 +147,27 @@ function AllCurrentReadingBooksNotes({
               </p>
               <p className="filtered-current-reading-book-authors">
                 <span>Authors: </span>
-                {location.state.currentBook.volumeInfo.authors.map(author => `${author} `)}
+                {location.state.currentBook.volumeInfo.authors?.map(author => `${author} `) ||
+                  "N/A"}
               </p>
               <p className="filtered-current-reading-book-plublisher">
                 <span>Publisher: </span>
-                {location.state.currentBook.volumeInfo.publisher}
+                {location.state.currentBook.volumeInfo.publisher || "N/A"}
               </p>
               <p className="filtered-current-reading-book-plublished-date">
                 <span>Published date: </span>
-                {location.state.currentBook.volumeInfo.publishedDate}
+                {location.state.currentBook.volumeInfo.publishedDate || "N/A"}
               </p>
               <p className="filtered-current-reading-book-plublished-page">
                 <span>Pages: </span>
-                {location.state.currentBook.volumeInfo.pageCount}
+                {location.state.currentBook.volumeInfo.pageCount || "N/A"}
               </p>
             </div>
           </section>
         ) : null}
         {singleBookNotes ? (
           <h3 className="Delete-all-current-reading-book-notes">
-            All book's notes
+            All book&apos;s notes
             <img
               id={singleBookNotes[0].bookId}
               src={darkMode ? deleteAllIconDarkMode : deleteAllIcon}
@@ -198,7 +206,7 @@ function AllCurrentReadingBooksNotes({
                         className="textarea-edited-note"
                         maxLength="350"
                         onChange={handleEditedTextAndCharactersCount}
-                      ></textarea>
+                      />
                       <div className="characters-and-buttons">
                         <p className="characters">
                           Characters left <span>{charactersLeft}</span>

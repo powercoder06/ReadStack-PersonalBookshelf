@@ -22,12 +22,8 @@ function CurrentReadingBooksNotes({
   const deleteCurrentReadingBookNote = e => {
     deleteOneItemAlert(darkMode, "note").then(result => {
       if (result.isConfirmed) {
-        if (currentReadingBookNotes.length > 1) {
-          const nonDeletedNotes = currentReadingBookNotes.filter(note => note.id !== e.target.id);
-          setCurrentReadingBookNotes(nonDeletedNotes);
-        } else {
-          setCurrentReadingBookNotes([]);
-        }
+        const nonDeletedNotes = currentReadingBookNotes.filter(note => note.id !== e.target.id);
+        setCurrentReadingBookNotes(nonDeletedNotes);
         deleteOneItemConfirmed(darkMode, "note");
       }
     });
@@ -44,18 +40,18 @@ function CurrentReadingBooksNotes({
 
   useEffect(() => {
     if (currentReadingBookNotes) {
-      localStorage.setItem("current reading book notes", JSON.stringify(currentReadingBookNotes));
+      localStorage.setItem("currentReadingBookNotes", JSON.stringify(currentReadingBookNotes));
     }
   }, [currentReadingBookNotes]);
   return (
     <main
       className={
         darkMode
-          ? "current-Reading-books-notes-container dark-mode"
-          : "current-Reading-books-notes-container"
+          ? "current-reading-books-notes-container dark-mode"
+          : "current-reading-books-notes-container"
       }
     >
-      <h3 className="all-current-Reading-notes-title">
+      <h3 className="all-current-reading-notes-title">
         Current reading Notes
         <img
           src={darkMode ? deleteAllIconDarkMode : deleteAllIcon}
@@ -63,22 +59,22 @@ function CurrentReadingBooksNotes({
           onClick={deleteAllCurrentReadingBookNotes}
         />
       </h3>
-      <section className="all-my-current-Reading-notes">
+      <section className="all-my-current-reading-notes">
         {currentReadingBookNotes?.length ? (
           currentReadingBookNotes.map(note => {
             return (
-              <div className="book-current-Reading-note" key={note.id}>
-                <div className="image-infos-current-Reading-book-note">
-                  <div className="image-current-Reading-book-note">
+              <div className="book-current-reading-note" key={note.id}>
+                <div className="image-infos-current-reading-book-note">
+                  <div className="image-current-reading-book-note">
                     <img
-                      src={note.currentBook.volumeInfo.imageLinks?.thumbnail}
-                      alt={note.currentBook.volumeInfo.title}
+                      src={note.currentBook?.volumeInfo?.imageLinks?.thumbnail}
+                      alt={note.currentBook?.volumeInfo?.title || "Book cover"}
                     />
                   </div>
-                  <div className="infos-current-Reading-book-note">
-                    <p className="note-current-Reading-date">{`${note.date}`}</p>
-                    <p className="note-current-Reading-time">{`${note.time}`}</p>
-                    <p className="note-current-Reading-page-number">
+                  <div className="infos-current-reading-book-note">
+                    <p className="note-current-reading-date">{`${note.date}`}</p>
+                    <p className="note-current-reading-time">{`${note.time}`}</p>
+                    <p className="note-current-reading-page-number">
                       Page <span>{note.page}</span>
                     </p>
                   </div>
@@ -106,7 +102,7 @@ function CurrentReadingBooksNotes({
             );
           })
         ) : (
-          <p className="no-current-Reading-note-found">
+          <p className="no-current-reading-note-found">
             No note found.
             <br />
             <br />

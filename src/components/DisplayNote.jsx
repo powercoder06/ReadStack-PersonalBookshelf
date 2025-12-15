@@ -8,18 +8,14 @@ function DisplayNote({ currentBook, currentReadingBookNotes, bookId, darkMode })
 
   useEffect(() => {
     if (currentBook) {
-      try {
-        localStorage.setItem(`current reading book notes`, JSON.stringify(currentReadingBookNotes));
-      } catch (error) {
-        console.error("[DisplayNote] Failed to save notes to localStorage:", error);
-      }
+      localStorage.setItem(`current reading book notes`, JSON.stringify(currentReadingBookNotes));
     }
   }, [currentBook, currentReadingBookNotes]);
   return (
     <main className={darkMode ? "display-note-container dark-mode" : "display-note-container"}>
       {currentBook?.id ? (
         <div className="selected-book-note">
-          // amazonq-ignore-next-line
+          {/* amazonq-ignore-next-line */}
           <p className="number-of-notes">{`Notes (${displayNote.length})`}</p>
           {displayNote.length ? (
             <div className="last-note">

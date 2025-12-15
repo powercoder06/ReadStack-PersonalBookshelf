@@ -7,7 +7,7 @@ export const ThemeToggle = ({ darkMode, onToggle }) => {
       <img src={darkMode ? moonIcon : sunIcon} alt={darkMode ? "moon icon" : "sun icon"} />
       <label className="toggle">
         <input type="checkbox" onChange={onToggle} checked={darkMode} />
-        <span className="slider"></span>
+        <span className="slider" />
       </label>
     </div>
   );

@@ -1,0 +1,94 @@
+@use "../../../styles/colors" as *;
+@use "../../../styles/mixins" as *;
+
+.book-details {
+  @include flexbox(flex-start, flex-start, 2rem, 1rem, row, nowrap);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  @include mobile {
+    @include flexbox(flex-start, flex-start, 0, 1rem, column, nowrap);
+    padding: 1rem;
+  }
+
+  &__image {
+    flex-shrink: 0;
+  }
+
+  &__cover {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    @include mobile {
+      width: 150px;
+      align-self: center;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: $text-light;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  &__authors,
+  &__publisher,
+  &__published-date,
+  &__pages {
+    margin-bottom: 0.75rem;
+    color: $text-muted;
+
+    span {
+      font-weight: 600;
+      color: $text-light;
+    }
+  }
+
+  &__description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: $text-muted;
+
+    span {
+      font-weight: 600;
+      color: $text-light;
+    }
+  }
+
+  &__actions {
+    @include flexbox(flex-start, center, 1rem, 1rem, column, nowrap);
+    align-items: flex-start;
+  }
+
+  &.dark-mode {
+    .book-details__title {
+      color: $text-dark;
+
+      span {
+        color: $text-dark;
+      }
+    }
+
+    .book-details__authors,
+    .book-details__publisher,
+    .book-details__published-date,
+    .book-details__pages,
+    .book-details__description {
+      span {
+        color: $text-dark;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+// Light mode colors
+$White: #ffffff;
+$Very-dark-blue: #5d0085;
+$Very-light-gray: #ededed;
+$Gray: #707070;
+$Blue: #0c93ed;
+
+// Dark mode colors
+$Black: #1f1f1f;
+$Dark-gray: #151519;
+$Turquoise: #c20aff;
+
+// Semantic colors
+$primary-light: $Very-dark-blue;
+$primary-dark: $Turquoise;
+$background-light: $White;
+$background-dark: $Black;
+$surface-light: $Very-light-gray;
+$surface-dark: $Dark-gray;
+$text-light: $Very-dark-blue;
+$text-dark: $White;
+$text-muted: $Gray;
+$accent: $Blue;
+
+// Status colors
+$success: #27ae60;
+$warning: #f39c12;
+$error: #e74c3c;
+$info: $Blue;

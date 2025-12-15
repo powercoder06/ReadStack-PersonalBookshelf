@@ -1,0 +1,76 @@
+// Flexbox mixin
+@mixin flexbox(
+  $justify-content: flex-start,
+  $align-items: flex-start,
+  $column-gap: 0,
+  $row-gap: 0,
+  $flex-direction: row,
+  $flex-wrap: nowrap
+) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  column-gap: $column-gap;
+  row-gap: $row-gap;
+  flex-direction: $flex-direction;
+  flex-wrap: $flex-wrap;
+}
+
+// Grid mixin
+@mixin grid($columns: 1fr, $rows: auto, $gap: 1rem) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+
+// Responsive breakpoints
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+// Theme mixin
+@mixin theme-aware {
+  @content;
+
+  .dark-mode & {
+    @content;
+  }
+}
+
+// Button reset
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+// Card styles
+@mixin card($padding: 1rem, $radius: 8px) {
+  background: var(--surface-color);
+  border-radius: $radius;
+  padding: $padding;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+}

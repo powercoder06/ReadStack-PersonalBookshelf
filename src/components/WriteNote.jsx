@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import "../styles/writeNoteStyles/writeNote.css";
 import Back from "./Back";
-import DisplayNote from "./DispalyNote";
+import DisplayNote from "./DisplayNote";
 import Toast, { notifySuccessfullySaved } from "./Toast";
 import { useLocation } from "react-router-dom";
 
@@ -66,7 +66,7 @@ function WriteNote({ darkMode, currentReadingBookNotes, setCurrentReadingBookNot
     }
     setBookId(location.state?.bookId || "");
     setCurrentBook(location.state?.currentBook);
-  }, [location.state?.currentBook]);
+  }, [location.state?.currentBook, location.state?.bookId]);
 
   return (
     <article className={darkMode ? "write-note-container dark-mode" : "write-note-container"}>
