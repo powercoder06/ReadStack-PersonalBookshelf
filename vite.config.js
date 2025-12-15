@@ -2,8 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
+  base: command === 'build' ? '/ReadStack-PersonalBookshelf/' : '/',
   test: {
     globals: true,
     environment: 'jsdom',
@@ -22,4 +23,4 @@ export default defineConfig({
       exclude: ['src/test/**', 'src/**/*.test.{js,jsx}'],
     },
   },
-})
+}))
