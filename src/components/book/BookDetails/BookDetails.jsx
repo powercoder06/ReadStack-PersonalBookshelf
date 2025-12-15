@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { usePerformanceMonitor } from "../../../hooks/usePerformanceMonitor";
 import { useBookRating } from "../../../hooks/business/useBookRating";
-import { Rating } from "../../common/Rating/Rating";
-import { Button } from "../../common/Button/Button";
+import Rating from "../../common/Rating/Rating";
+import Button from "../../common/Button/Button";
 import logger from "../../../utils/logger";
 import "./BookDetails.scss";
 

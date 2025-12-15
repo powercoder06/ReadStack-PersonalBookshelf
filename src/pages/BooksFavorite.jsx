@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import "../styles/booksFavoriteStyles/bookFavorite.css";
 import Back from "../components/Back";
 import { useBooks } from "../contexts/BookContext";
@@ -21,17 +21,10 @@ import Toast, { notifyEmptyList } from "../components/Toast";
 function BooksFavorite({ darkMode }) {
   const { favoriteBooks, setFavoriteBooks } = useBooks();
 
-  const booksRef = useRef();
+  const [activeBookId, setActiveBookId] = useState(null);
 
-  const handleClickBook = e => {
-    if (e.target.nextElementSibling.style.bottom === "-1.8rem") {
-      e.target.nextElementSibling.style.bottom = "1.8rem";
-    } else {
-      for (const child of booksRef.current.childNodes) {
-        child.firstElementChild.nextElementSibling.style.bottom = "1.8rem";
-      }
-      e.target.nextElementSibling.style.bottom = "-1.8rem";
-    }
+  const handleClickBook = bookId => {
+    setActiveBookId(activeBookId === bookId ? null : bookId);
   };
 
   const deleteFavoriteBooks = e => {
@@ -81,7 +74,7 @@ function BooksFavorite({ darkMode }) {
           onClick={deleteAllFavoriteBooks}
         />
       </h3>
-      <section className="display-favorite-books" ref={booksRef}>
+      <section className="display-favorite-books">
         {favoriteBooks
           ? favoriteBooks.map(book => {
               return (
@@ -89,9 +82,11 @@ function BooksFavorite({ darkMode }) {
                   <img
                     src={book.volumeInfo.imageLinks?.thumbnail}
                     alt={book.volumeInfo.title}
-                    onClick={handleClickBook}
+                    onClick={() => handleClickBook(book.id)}
                   />
-                  <div className="see-and-delete-icons">
+                  <div
+                    className={`see-and-delete-icons ${activeBookId === book.id ? "active" : ""}`}
+                  >
                     <Link to={`/searchedbook/${book.id}`} state={{ bookDetails: book }}>
                       <img src={darkMode ? seeBookIconDarkMode : seeBookIcon} alt="see book icon" />
                     </Link>

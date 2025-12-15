@@ -1,24 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import "../styles/allArchivedBooksNotesStyles/allArchivedBooksNotes.css";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function AllArchivedBooksNotes({ darkMode, archivedBookNotes }) {
-  const [singleArchivedBookNotes, setArchivedSingleBookNotes] = useState();
+  const [singleArchivedBookNotes, setSingleArchivedBookNotes] = useState();
   const location = useLocation();
+  const filteredNotes = useMemo(() => {
+    if (!archivedBookNotes || !location.state?.bookId) return null;
+    const filtered = archivedBookNotes.filter(note => note.bookId === location.state.bookId);
+    return filtered.length ? filtered : null;
+  }, [archivedBookNotes, location.state?.bookId]);
+
   useEffect(() => {
-    if (archivedBookNotes && location.state?.bookId) {
-      const filteredNotes = archivedBookNotes.filter(
-        note => note.bookId === location.state?.bookId
-      );
-      if (filteredNotes.length) {
-        setArchivedSingleBookNotes(filteredNotes);
-      } else {
-        setArchivedSingleBookNotes(null);
-      }
+    setSingleArchivedBookNotes(filteredNotes);
+  }, [filteredNotes]);
+
+  useEffect(() => {
+    if (archivedBookNotes) {
       localStorage.setItem("archived book notes", JSON.stringify(archivedBookNotes));
     }
-  }, [archivedBookNotes, location.state?.bookId]);
+  }, [archivedBookNotes]);
 
   return (
     <motion.main
@@ -34,36 +36,36 @@ function AllArchivedBooksNotes({ darkMode, archivedBookNotes }) {
       }}
     >
       <article>
-        {location.state?.currentBook ? (
+        {location.state?.currentBook?.volumeInfo ? (
           <section className="filtered-archived-book-info">
             <div className="filtered-archived-book-image">
               <img
                 src={location.state.currentBook.volumeInfo.imageLinks?.thumbnail}
-                alt={`${location.state.currentBook.volumeInfo.title} cover`}
+                alt={`${location.state.currentBook.volumeInfo.title || "Book"} cover`}
               />
             </div>
             <div className="filtered-archived-book-text">
               <p className="filtered-archived-book-title">
                 <span>Title: </span>
-                {location.state.currentBook.volumeInfo.title}
+                {location.state.currentBook.volumeInfo.title || "N/A"}
               </p>
               <p className="filtered-archived-book-authors">
                 <span>Authors: </span>
                 {location.state.currentBook.volumeInfo.authors?.map(author => (
                   <span key={author}>{author} </span>
-                ))}
+                )) || "N/A"}
               </p>
               <p className="filtered-archived-book-plublisher">
                 <span>Publisher: </span>
-                {location.state.currentBook.volumeInfo.publisher}
+                {location.state.currentBook.volumeInfo.publisher || "N/A"}
               </p>
               <p className="filtered-archived-book-plublished-date">
                 <span>Published date: </span>
-                {location.state.currentBook.volumeInfo.publishedDate}
+                {location.state.currentBook.volumeInfo.publishedDate || "N/A"}
               </p>
               <p className="filtered-archived-book-plublished-page">
                 <span>Pages: </span>
-                {location.state.currentBook.volumeInfo.pageCount}
+                {location.state.currentBook.volumeInfo.pageCount || "N/A"}
               </p>
             </div>
           </section>

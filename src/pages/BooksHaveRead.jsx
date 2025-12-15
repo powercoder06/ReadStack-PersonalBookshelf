@@ -47,7 +47,7 @@ function BooksHaveRead({ darkMode }) {
   };
 
   const deleteAllHaveReadBooks = () => {
-    if (haveReadBooks.length) {
+    if (haveReadBooks?.length) {
       deleteAllItemsAlert(darkMode, "books").then(result => {
         if (result.isConfirmed) {
           setHaveReadBooks([]);
@@ -84,11 +84,11 @@ function BooksHaveRead({ darkMode }) {
         />
       </h3>
       <section className="display-have-read-books" ref={booksRef}>
-        {haveReadBooks.map(book => (
+        {haveReadBooks?.map(book => (
           <div key={book.id} className="books-displayed">
             <img
-              src={book.volumeInfo.imageLinks.thumbnail}
-              alt={book.volumeInfo.title}
+              src={book.volumeInfo?.imageLinks?.thumbnail}
+              alt={book.volumeInfo?.title || "Book cover"}
               onClick={handleClickBook}
             />
             <div className="see-and-delete-icons">

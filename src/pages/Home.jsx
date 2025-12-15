@@ -16,8 +16,8 @@ function Home({ darkMode }) {
   const { measureOperation } = usePerformanceMonitor("Home");
   const booksRef = useRef();
 
-  const handleSearch = async query => {
-    await measureOperation("search", () => searchBooks(query))();
+  const handleSearch = query => {
+    measureOperation("search", () => searchBooks(query))();
   };
 
   useEffect(() => {
@@ -52,14 +52,8 @@ function Home({ darkMode }) {
       </article>
 
       <div ref={booksRef}>
-        {loading && <div>Loading...</div>}
-        {error && (
-          <ErrorFallback
-            error={error}
-            retry={() => retrySearch(error.context?.query)}
-            resetError={clearError}
-          />
-        )}
+        {loading && <div className="loading-state">Loading...</div>}
+        {error && <ErrorFallback error={error} retry={retrySearch} resetError={clearError} />}
         <BookGrid books={data} darkMode={darkMode} />
       </div>
 

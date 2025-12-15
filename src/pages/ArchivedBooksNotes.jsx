@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function ArchivedBooksNotes({ darkMode, archivedBookNotes }) {
   useEffect(() => {
     if (archivedBookNotes) {
-      localStorage.setItem("archived book notes", JSON.stringify(archivedBookNotes));
+      localStorage.setItem("archivedBookNotes", JSON.stringify(archivedBookNotes));
     }
   }, [archivedBookNotes]);
   return (
@@ -25,13 +25,13 @@ function ArchivedBooksNotes({ darkMode, archivedBookNotes }) {
                 <div className="image-infos-archived-book-note">
                   <div className="image-archived-book-note">
                     <img
-                      src={note.currentBook.volumeInfo.imageLinks?.thumbnail}
-                      alt={note.currentBook.volumeInfo.title}
+                      src={note.currentBook?.volumeInfo?.imageLinks?.thumbnail}
+                      alt={note.currentBook?.volumeInfo?.title || "Book cover"}
                     />
                   </div>
                   <div className="infos-archived-book-note">
-                    <p className="note-archived-date">{`${note.date}`}</p>
-                    <p className="note-archived-time">{`${note.time}`}</p>
+                    <p className="note-archived-date">{note.date}</p>
+                    <p className="note-archived-time">{note.time}</p>
                     <p className="note-archived-page-number">
                       Page <span>{note.page}</span>
                     </p>

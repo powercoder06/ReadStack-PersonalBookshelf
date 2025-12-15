@@ -81,10 +81,10 @@ function MyBooks({ darkMode }) {
               All books
               <span>
                 {` (${
-                  currentReadingBooks.length +
-                  favoriteBooks.length +
-                  toReadBooks.length +
-                  haveReadBooks.length
+                  (currentReadingBooks?.length || 0) +
+                  (favoriteBooks?.length || 0) +
+                  (toReadBooks?.length || 0) +
+                  (haveReadBooks?.length || 0)
                 })`}
               </span>
             </p>
@@ -92,92 +92,60 @@ function MyBooks({ darkMode }) {
         </section>
         <section className="display-books">
           <h3 className="display-books-category">
-            Current Reading books<span>{` (${currentReadingBooks.length})`}</span>
+            Current Reading books<span>{` (${currentReadingBooks?.length || 0})`}</span>
           </h3>
           <div className="reading-now-books">
-            {currentReadingBooks
-              ? currentReadingBooks.map(book => {
-                  return (
-                    <Link
-                      key={book.id}
-                      to={`/searchedbook/${book.id}`}
-                      state={{ bookDetails: book }}
-                    >
-                      <img
-                        src={book.volumeInfo.imageLinks?.thumbnail}
-                        alt={book.volumeInfo.title}
-                        id={book.id}
-                      />
-                    </Link>
-                  );
-                })
-              : null}
+            {currentReadingBooks?.map(book => (
+              <Link key={book.id} to={`/searchedbook/${book.id}`} state={{ bookDetails: book }}>
+                <img
+                  src={book.volumeInfo?.imageLinks?.thumbnail}
+                  alt={book.volumeInfo?.title || "Book cover"}
+                  id={book.id}
+                />
+              </Link>
+            ))}
           </div>
           <h3 className="display-books-category">
-            Favorite books<span>{` (${favoriteBooks.length})`}</span>
+            Favorite books<span>{` (${favoriteBooks?.length || 0})`}</span>
           </h3>
           <div className="favorite-books">
-            {favoriteBooks
-              ? favoriteBooks.map(book => {
-                  return (
-                    <Link
-                      key={book.id}
-                      to={`/searchedbook/${book.id}`}
-                      state={{ bookDetails: book }}
-                    >
-                      <img
-                        src={book.volumeInfo.imageLinks?.thumbnail}
-                        alt={book.volumeInfo.title}
-                        id={book.id}
-                      />
-                    </Link>
-                  );
-                })
-              : null}
+            {favoriteBooks?.map(book => (
+              <Link key={book.id} to={`/searchedbook/${book.id}`} state={{ bookDetails: book }}>
+                <img
+                  src={book.volumeInfo?.imageLinks?.thumbnail}
+                  alt={book.volumeInfo?.title || "Book cover"}
+                  id={book.id}
+                />
+              </Link>
+            ))}
           </div>
           <h3 className="display-books-category">
-            To read books<span>{` (${toReadBooks.length})`}</span>
+            To read books<span>{` (${toReadBooks?.length || 0})`}</span>
           </h3>
           <div className="to-read-books">
-            {toReadBooks
-              ? toReadBooks.map(book => {
-                  return (
-                    <Link
-                      key={book.id}
-                      to={`/searchedbook/${book.id}`}
-                      state={{ bookDetails: book }}
-                    >
-                      <img
-                        src={book.volumeInfo.imageLinks?.thumbnail}
-                        alt={book.volumeInfo.title}
-                        id={book.id}
-                      />
-                    </Link>
-                  );
-                })
-              : null}
+            {toReadBooks?.map(book => (
+              <Link key={book.id} to={`/searchedbook/${book.id}`} state={{ bookDetails: book }}>
+                <img
+                  src={book.volumeInfo?.imageLinks?.thumbnail}
+                  alt={book.volumeInfo?.title || "Book cover"}
+                  id={book.id}
+                />
+              </Link>
+            ))}
           </div>
           <h3 className="display-books-category">
-            Have read books<span>{` (${haveReadBooks.length})`}</span>
+            Have read books<span>{` (${haveReadBooks?.length || 0})`}</span>
           </h3>
           <div className="have-read-books">
-            {haveReadBooks
-              ? haveReadBooks.map(book => {
-                  return (
-                    <Link
-                      key={book.id}
-                      to={`/searchedbook/${book.id}`}
-                      state={{ bookDetails: book }}
-                    >
-                      <img
-                        src={book.volumeInfo.imageLinks?.thumbnail}
-                        alt={book.volumeInfo.title}
-                        id={book.id}
-                      />
-                    </Link>
-                  );
-                })
-              : null}
+            {haveReadBooks?.map(book => (
+              <Link key={book.id} to={`/searchedbook/${book.id}`} state={{ bookDetails: book }}>
+                <img
+                  src={book.volumeInfo?.imageLinks?.thumbnail}
+                  alt={book.volumeInfo?.title || "Book cover"}
+                  id={book.id}
+                />
+              </Link>
+            ))}
           </div>
         </section>
       </article>
