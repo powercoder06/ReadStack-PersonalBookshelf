@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../styles/searchedStyles/searchedStyles.css";
 import Back from "./Back";
 import BookCurrentReadingIcon from "../assets/book-current-reading-icon.svg";
@@ -38,18 +38,6 @@ function Searched({ darkMode, archivedBooks }) {
   const bookKey = location.state?.bookDetails?.id;
   const initialRating = bookKey ? sessionStorage.getItem(bookKey) || 0 : 0;
 
-  try {
-    if (!bookKey) {
-      console.error("[Searched] Missing book key from location state");
-    } else {
-      console.info(
-        `[Searched] Loaded book rating - Key: ${bookKey}, Rating: ${initialRating || "none"}`
-      );
-    }
-  } catch (error) {
-    console.error("[Searched] Error loading book rating:", error);
-  }
-
   const [rating, setRating] = useState(parseInt(initialRating));
   const [hoverRating, setHoverRating] = useState(0);
 
@@ -71,10 +59,18 @@ function Searched({ darkMode, archivedBooks }) {
       if (foundArchivedBooks) {
         notifyAlreadyArchivedBook();
       } else {
-        handleAddingBooks(currentReadingBooks, setCurrentReadingBooks, '" Current reading "');
+        handleAddingBooks(
+          currentReadingBooks,
+          setCurrentReadingBooks,
+          "&quot; Current reading &quot;"
+        );
       }
     } else {
-      handleAddingBooks(currentReadingBooks, setCurrentReadingBooks, '" Current reading "');
+      handleAddingBooks(
+        currentReadingBooks,
+        setCurrentReadingBooks,
+        "&quot; Current reading &quot;"
+      );
     }
   };
 
@@ -138,8 +134,6 @@ function Searched({ darkMode, archivedBooks }) {
     const googleBooksLink = location.state?.bookDetails?.volumeInfo?.infoLink;
     if (googleBooksLink && googleBooksLink.startsWith("https://books.google.")) {
       window.open(googleBooksLink, "_blank");
-    } else {
-      console.warn("[Searched] Invalid or untrusted URL blocked:", googleBooksLink);
     }
   };
 
@@ -159,31 +153,37 @@ function Searched({ darkMode, archivedBooks }) {
               alt="book current reading icon"
               onClick={handleCurrentReadingBooks}
             />
-            <p>add to 'current reading'</p>
+            <p>add to &apos;current reading&apos;</p>
           </div>
           <div className="add-to-favorite">
             <img
               src={darkMode ? FavoriteBookIconDarkMode : FavoriteBookIcon}
               alt="favorite book icon"
-              onClick={() => handleAddingBooks(favoriteBooks, setFavoriteBooks, '" Favorite "')}
+              onClick={() =>
+                handleAddingBooks(favoriteBooks, setFavoriteBooks, "&quot; Favorite &quot;")
+              }
             />
-            <p>add to 'favorite'</p>
+            <p>add to &apos;favorite&apos;</p>
           </div>
           <div className="add-to-to-read">
             <img
               src={darkMode ? BookToReadIconDarkMode : BookToReadIcon}
               alt="to read book icon"
-              onClick={() => handleAddingBooks(toReadBooks, setToReadBooks, '" To read "')}
+              onClick={() =>
+                handleAddingBooks(toReadBooks, setToReadBooks, "&quot; To read &quot;")
+              }
             />
-            <p>add to 'to read'</p>
+            <p>add to &apos;to read&apos;</p>
           </div>
           <div className="add-to-have-read">
             <img
               src={darkMode ? BookHaveReadIconDarkMode : BookHaveReadIcon}
               alt="have read book icon"
-              onClick={() => handleAddingBooks(haveReadBooks, setHaveReadBooks, '" Have read "')}
+              onClick={() =>
+                handleAddingBooks(haveReadBooks, setHaveReadBooks, "&quot; Have read &quot;")
+              }
             />
-            <p>add to 'have read'</p>
+            <p>add to &apos;have read&apos;</p>
           </div>
         </div>
       </section>

@@ -104,12 +104,12 @@ function AllCurrentReadingBooksNotes({
       }
       localStorage.setItem("current reading book notes", JSON.stringify(currentReadingBookNotes));
     }
-  }, [currentReadingBookNotes, edited]);
+  }, [currentReadingBookNotes, edited, location.state.bookId]);
 
   useEffect(() => {
     currentReadingBookNotes.map(note => (note.editing ? (note.editing = false) : note.editing));
     setEdited(null);
-  }, [window.reloadPage]);
+  }, [currentReadingBookNotes]);
 
   return (
     <motion.main
@@ -159,7 +159,7 @@ function AllCurrentReadingBooksNotes({
         ) : null}
         {singleBookNotes ? (
           <h3 className="Delete-all-current-reading-book-notes">
-            All book's notes
+            All book&apos;s notes
             <img
               id={singleBookNotes[0].bookId}
               src={darkMode ? deleteAllIconDarkMode : deleteAllIcon}
@@ -198,7 +198,7 @@ function AllCurrentReadingBooksNotes({
                         className="textarea-edited-note"
                         maxLength="350"
                         onChange={handleEditedTextAndCharactersCount}
-                      ></textarea>
+                      />
                       <div className="characters-and-buttons">
                         <p className="characters">
                           Characters left <span>{charactersLeft}</span>

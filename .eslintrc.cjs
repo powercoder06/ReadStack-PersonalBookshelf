@@ -7,8 +7,12 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'coverage'],
+  parserOptions: { 
+    ecmaVersion: 'latest', 
+    sourceType: 'module',
+    ecmaFeatures: { jsx: true }
+  },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
@@ -18,6 +22,13 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/no-unescaped-entities': 'warn',
     'react/jsx-no-comment-textnodes': 'warn',
+    'react/jsx-key': 'error',
+    'react/jsx-no-duplicate-props': 'error',
+    'react/jsx-no-undef': 'error',
+    'react/no-array-index-key': 'warn',
+    'react/no-danger': 'warn',
+    'react/self-closing-comp': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'no-unused-vars': 'warn',
     'no-console': 'warn',
     'prefer-const': 'error',

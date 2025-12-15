@@ -16,11 +16,7 @@ function AllArchivedBooksNotes({ darkMode, archivedBookNotes }) {
       } else {
         setArchivedSingleBookNotes(null);
       }
-      try {
-        localStorage.setItem("archived book notes", JSON.stringify(archivedBookNotes));
-      } catch (error) {
-        console.error("[AllArchivedBooksNotes] Failed to save notes to localStorage:", error);
-      }
+      localStorage.setItem("archived book notes", JSON.stringify(archivedBookNotes));
     }
   }, [archivedBookNotes, location.state?.bookId]);
 
@@ -53,8 +49,8 @@ function AllArchivedBooksNotes({ darkMode, archivedBookNotes }) {
               </p>
               <p className="filtered-archived-book-authors">
                 <span>Authors: </span>
-                {location.state.currentBook.volumeInfo.authors?.map((author, index) => (
-                  <span key={index}>{author} </span>
+                {location.state.currentBook.volumeInfo.authors?.map(author => (
+                  <span key={author}>{author} </span>
                 ))}
               </p>
               <p className="filtered-archived-book-plublisher">
@@ -72,7 +68,7 @@ function AllArchivedBooksNotes({ darkMode, archivedBookNotes }) {
             </div>
           </section>
         ) : null}
-        <h3 className="all-archived-book-notes">All book's notes</h3>
+        <h3 className="all-archived-book-notes">All book&apos;s notes</h3>
         <section className="filtered-archived-book-notes">
           {singleArchivedBookNotes ? (
             singleArchivedBookNotes.map(note => {

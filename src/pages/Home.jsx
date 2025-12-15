@@ -33,7 +33,7 @@ function Home({ darkMode }) {
       <article className="hero">
         <section className="hero-text">
           <div className="quote">
-            <h1>" The right book can turn a non-reader into a bookworm "</h1>
+            <h1>&quot; The right book can turn a non-reader into a bookworm &quot;</h1>
           </div>
           <div className="get-started">
             <h2>Get ready to transform !</h2>
