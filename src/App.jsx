@@ -1,56 +1,46 @@
-import { createContext, useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import AnimatedRoutes from "./animatedRoutes/AnimatedRoutes";
+import ErrorBoundary from "./components/ErrorBoundary";
+import errorReporter from "./utils/errorReporter";
+import { BookProvider } from "./contexts/BookContext";
+import { useTheme } from "./hooks/useTheme";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
-export const currentReadingContext = createContext();
-export const favoriteBooksContext = createContext();
-export const toReadBooksContext = createContext();
-export const haveReadBooksContext = createContext();
-
-export const getLocalStorage = name => {
-  try {
-    const item = localStorage.getItem(name);
-    return item ? JSON.parse(item) : [];
-  } catch (error) {
-    console.error(`[App] Failed to parse localStorage item "${name}":`, error);
-    return [];
-  }
-};
-
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, toggleTheme } = useTheme();
 
-  const [currentReadingBooks, setCurrentReadingBooks] = useState(() =>
-    getLocalStorage("current reading books")
-  );
-  const [favoriteBooks, setFavoriteBooks] = useState(() => getLocalStorage("favorite books"));
-  const [toReadBooks, setToReadBooks] = useState(() => getLocalStorage("to read books"));
-  const [haveReadBooks, setHaveReadBooks] = useState(() => getLocalStorage("have read books"));
+  useEffect(() => {
+    const handleUnhandledError = event => {
+      errorReporter.reportUnhandledError(event.error, { source: "window.onerror" });
+    };
 
-  const providers = [
-    [currentReadingContext, { currentReadingBooks, setCurrentReadingBooks }],
-    [favoriteBooksContext, { favoriteBooks, setFavoriteBooks }],
-    [toReadBooksContext, { toReadBooks, setToReadBooks }],
-    [haveReadBooksContext, { haveReadBooks, setHaveReadBooks }],
-  ];
+    const handleUnhandledRejection = event => {
+      errorReporter.reportUnhandledError(new Error(event.reason), { source: "unhandledrejection" });
+    };
+
+    window.addEventListener("error", handleUnhandledError);
+    window.addEventListener("unhandledrejection", handleUnhandledRejection);
+
+    return () => {
+      window.removeEventListener("error", handleUnhandledError);
+      window.removeEventListener("unhandledrejection", handleUnhandledRejection);
+    };
+  }, []);
 
   return (
-    <Router>
-      <div className="App">
-        {providers.reduceRight(
-          (children, [Context, value]) => (
-            <Context.Provider value={value}>{children}</Context.Provider>
-          ),
-          <>
-            <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+    <ErrorBoundary>
+      <BookProvider>
+        <Router>
+          <div className="App">
+            <Header darkMode={darkMode} setDarkMode={toggleTheme} />
             <AnimatedRoutes darkMode={darkMode} />
-          </>
-        )}
-      </div>
-    </Router>
+          </div>
+        </Router>
+      </BookProvider>
+    </ErrorBoundary>
   );
 }
 

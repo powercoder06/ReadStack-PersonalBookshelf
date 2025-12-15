@@ -2,42 +2,36 @@ import { useEffect, useRef, useState } from "react";
 import "../styles/headerStyles/header.css";
 import logo from "../assets/logo1light.png";
 import logoDarkMode from "../assets/logo1.png";
-import sunIcon from "../assets/sun-icon.svg";
-import moonIcon from "../assets/moon-icon.svg";
 import hamburgerMenuIcon from "../assets/hamburger-menu-icon.svg";
 import hamburgerMenuIconDarkMode from "../assets/hamburger-menu-icon-darkmode.svg";
 import closeIcon from "../assets/close-icon.svg";
 import closeIconDarkMode from "../assets/close-icon-darkmode.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Navigation } from "../components/layout/Navigation";
+import { ThemeToggle } from "../components/ui/ThemeToggle";
 
 function Header({ darkMode, setDarkMode }) {
   const [sideBar, setSideBar] = useState(false);
   const navRef = useRef();
 
-  const handleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   const showSideBar = () => {
     setSideBar(!sideBar);
   };
 
-  const getNavLinkStyle = ({ isActive }) => {
-    if (!isActive) return {};
-    return darkMode
-      ? { backgroundColor: "#c20aff", color: "#1f1f1f" }
-      : { backgroundColor: "#7800ac", color: "#ffffff" };
+  const closeSideBar = () => {
+    setSideBar(false);
   };
 
   useEffect(() => {
-    const closeSideBar = e => {
+    const handleClickOutside = e => {
       if (navRef.current && !navRef.current.contains(e.target)) {
         setSideBar(false);
       }
     };
-    document.body.addEventListener("click", closeSideBar, true);
-    return () => document.body.removeEventListener("click", closeSideBar, true);
+    document.body.addEventListener("click", handleClickOutside, true);
+    return () => document.body.removeEventListener("click", handleClickOutside, true);
   });
+
   return (
     <header className={darkMode ? "header dark-mode" : "header"}>
       <img
@@ -51,38 +45,18 @@ function Header({ darkMode, setDarkMode }) {
           <img src={darkMode ? logoDarkMode : logo} alt="Books icon" />
         </Link>
       </div>
-      <nav className={sideBar ? "header-nav show-sidebar" : "header-nav"} ref={navRef}>
-        <img
-          className="close"
-          src={darkMode ? closeIconDarkMode : closeIcon}
-          alt="close icon"
-          onClick={showSideBar}
-        />
-        <ul>
-          <li>
-            <NavLink className="link" style={getNavLinkStyle} to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="link" style={getNavLinkStyle} to="mybooks">
-              Bookshelf
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="link" style={getNavLinkStyle} to="mynotes/currentreadingbooksnotes">
-              My Notes
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-      <div className={darkMode ? "mode dark-mode" : "mode"}>
-        <img src={darkMode ? moonIcon : sunIcon} alt={darkMode ? "moon icon" : "sun icon"} />
-        <label className="toggle">
-          <input type="checkbox" onClick={handleDarkMode} />
-          <span className="slider"></span>
-        </label>
+      <div ref={navRef}>
+        <Navigation darkMode={darkMode} isOpen={sideBar} onClose={closeSideBar} />
+        {sideBar && (
+          <img
+            className="close"
+            src={darkMode ? closeIconDarkMode : closeIcon}
+            alt="close icon"
+            onClick={showSideBar}
+          />
+        )}
       </div>
+      <ThemeToggle darkMode={darkMode} onToggle={setDarkMode} />
     </header>
   );
 }

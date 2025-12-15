@@ -1,6 +1,6 @@
-import { useEffect, useContext, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Back from "../components/Back";
-import { currentReadingContext } from "../App";
+import { useBooks } from "../contexts/BookContext";
 import "../styles/booksArchivedStyles/booksArchived.css";
 import deleteIcon from "../assets/delete-icon.svg";
 import deleteIconDarkMode from "../assets/delete-icon-darkmode.svg";
@@ -32,7 +32,7 @@ function BooksArchived({
   currentReadingBookNotes,
   setCurrentReadingBookNotes,
 }) {
-  const { currentReadingBooks, setCurrentReadingBooks } = useContext(currentReadingContext);
+  const { currentReadingBooks, setCurrentReadingBooks } = useBooks();
 
   const booksRef = useRef();
 

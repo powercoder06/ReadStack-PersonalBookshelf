@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/searchedStyles/searchedStyles.css";
 import Back from "./Back";
 import BookCurrentReadingIcon from "../assets/book-current-reading-icon.svg";
@@ -9,12 +9,7 @@ import BookToReadIcon from "../assets/book-to-read-icon.svg";
 import BookToReadIconDarkMode from "../assets/book-to-read-icon-darkmode.svg";
 import BookHaveReadIcon from "../assets/book-have-read-icon.svg";
 import BookHaveReadIconDarkMode from "../assets/book-have-read-icon-darkmode.svg";
-import {
-  currentReadingContext,
-  favoriteBooksContext,
-  toReadBooksContext,
-  haveReadBooksContext,
-} from "../App";
+import { useBooks } from "../contexts/BookContext";
 import Toast, {
   notifyAlreadyAdded,
   notifySuccessfullyAdded,
@@ -27,10 +22,16 @@ import { faStar as solidStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as regularStar } from "@fortawesome/free-regular-svg-icons";
 
 function Searched({ darkMode, archivedBooks }) {
-  const { currentReadingBooks, setCurrentReadingBooks } = useContext(currentReadingContext);
-  const { favoriteBooks, setFavoriteBooks } = useContext(favoriteBooksContext);
-  const { toReadBooks, setToReadBooks } = useContext(toReadBooksContext);
-  const { haveReadBooks, setHaveReadBooks } = useContext(haveReadBooksContext);
+  const {
+    currentReadingBooks,
+    setCurrentReadingBooks,
+    favoriteBooks,
+    setFavoriteBooks,
+    toReadBooks,
+    setToReadBooks,
+    haveReadBooks,
+    setHaveReadBooks,
+  } = useBooks();
 
   const location = useLocation();
 
